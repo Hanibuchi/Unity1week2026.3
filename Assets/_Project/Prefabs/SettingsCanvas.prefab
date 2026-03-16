@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 5140148565584800138}
   - component: {fileID: 4764576612152158250}
   - component: {fileID: 3747092363843293589}
+  - component: {fileID: 4371986189789028485}
   m_Layer: 5
   m_Name: SettingsCanvas
   m_TagString: Untagged
@@ -789,6 +790,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4371986189789028485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031164873285007587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a63207feac96b9429aba31be3d6844b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsUI
+  bgmSlider: {fileID: 4130625993470177975}
+  seSlider: {fileID: 3654410736377860571}
+  closeButton: {fileID: 6062178396044003248}
 --- !u!1 &8441257402219976181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1076,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3063140416574100936, guid: d5eddc7717b99d14ebd61778cefabbae, type: 3}
   m_PrefabInstance: {fileID: 2608257768011243312}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3654410736377860571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1622834826150907627, guid: d5eddc7717b99d14ebd61778cefabbae, type: 3}
+  m_PrefabInstance: {fileID: 2608257768011243312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3447393200771398748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1194,3 +1221,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3063140416574100936, guid: d5eddc7717b99d14ebd61778cefabbae, type: 3}
   m_PrefabInstance: {fileID: 3447393200771398748}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4130625993470177975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1622834826150907627, guid: d5eddc7717b99d14ebd61778cefabbae, type: 3}
+  m_PrefabInstance: {fileID: 3447393200771398748}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
