@@ -202,9 +202,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1464981236}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: TestPlay
+      - m_Target: {fileID: 1670377901}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Test_ShowSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1018,8 +1018,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   bgmSource: {fileID: 1464981235}
   seSource: {fileID: 1464981234}
-  sampleBGM: {fileID: 8300000, guid: fd13e0e6910d2b443be7de0fa95dbbb2, type: 3}
-  sampleSE: {fileID: 0}
 --- !u!4 &1464981237
 Transform:
   m_ObjectHideFlags: 0
@@ -1027,6 +1025,63 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464981233}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600436196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4371986189789028485, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
+  m_PrefabInstance: {fileID: 8416226248429524817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a63207feac96b9429aba31be3d6844b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsUI
+--- !u!1 &1670377900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1670377902}
+  - component: {fileID: 1670377901}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1670377901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670377900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4866df3cbce7f584f900fbc452eae30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  registeredViews:
+  - {fileID: 1600436196}
+--- !u!4 &1670377902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670377900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1045,19 +1100,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1171146721546422323, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1171146721546422323, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1992072059479829343, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1992072059479829343, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3165233785293909544, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_Pivot.x
@@ -1141,31 +1196,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3877506339743632823, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3877506339743632823, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3877506339743632823, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4479487612106272475, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4479487612106272475, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4479487612106272475, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8031164873285007587, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
       propertyPath: m_Name
       value: SettingsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031164873285007587, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1182,3 +1241,4 @@ SceneRoots:
   - {fileID: 1297789597}
   - {fileID: 1464981237}
   - {fileID: 8416226248429524817}
+  - {fileID: 1670377902}

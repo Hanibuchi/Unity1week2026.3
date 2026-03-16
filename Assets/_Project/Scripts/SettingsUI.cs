@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsUI : MonoBehaviour
+public class SettingsUI : UIView
 {
     [Header("UI Components")]
     [SerializeField] private Slider bgmSlider;
@@ -32,7 +32,7 @@ public class SettingsUI : MonoBehaviour
         // 閉じるボタンのイベント登録
         if (closeButton != null)
         {
-            closeButton.onClick.AddListener(CloseSettings);
+            closeButton.onClick.AddListener(Hide);
         }
     }
 
@@ -46,7 +46,7 @@ public class SettingsUI : MonoBehaviour
             seSlider.onValueChanged.RemoveListener(OnSEVolumeChanged);
             
         if (closeButton != null)
-            closeButton.onClick.RemoveListener(CloseSettings);
+            closeButton.onClick.RemoveListener(Hide);
     }
 
     private void OnBGMVolumeChanged(float volume)
@@ -69,10 +69,9 @@ public class SettingsUI : MonoBehaviour
         }
     }
 
-    public void OpenSettings()
+    public override void Show()
     {
-        // UIを表示する
-        gameObject.SetActive(true);
+        base.Show();
         
         // オプション: ここで SoundManager から現在の音量を取得してスライダーの値に反映すると
         // 開くたびに最新の音量がUIに表示されます。
@@ -89,9 +88,8 @@ public class SettingsUI : MonoBehaviour
         }
     }
 
-    private void CloseSettings()
+    public override void Hide()
     {
-        // UIを非表示にする
-        gameObject.SetActive(false);
+        base.Hide();
     }
 }
