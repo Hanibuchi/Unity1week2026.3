@@ -8,6 +8,10 @@ public class SettingsUI : UIView
     [SerializeField] private Slider seSlider;
     [SerializeField] private Button closeButton;
 
+    [Header("Sound Settings")]
+    [Tooltip("スライダー変更時に鳴らすSE")]
+    [SerializeField] private AudioClip sliderChangeSE;
+
     private void Start()
     {
         // スライダーのイベント登録
@@ -56,6 +60,12 @@ public class SettingsUI : UIView
             // スライダーが整数値(Whole Numbers)の場合、maxValueを使って0.0～1.0の範囲に変換
             float normalizedVolume = bgmSlider.maxValue > 0 ? volume / bgmSlider.maxValue : 0;
             SoundManager.Instance.SetBGMVolume(normalizedVolume);
+            
+            // SEを鳴らす
+            if (sliderChangeSE != null)
+            {
+                SoundManager.Instance.PlaySE(sliderChangeSE);
+            }
         }
     }
 
@@ -66,6 +76,12 @@ public class SettingsUI : UIView
             // スライダーが整数値(Whole Numbers)の場合、maxValueを使って0.0～1.0の範囲に変換
             float normalizedVolume = seSlider.maxValue > 0 ? volume / seSlider.maxValue : 0;
             SoundManager.Instance.SetSEVolume(normalizedVolume);
+            
+            // SEを鳴らす
+            if (sliderChangeSE != null)
+            {
+                SoundManager.Instance.PlaySE(sliderChangeSE);
+            }
         }
     }
 
@@ -79,11 +95,13 @@ public class SettingsUI : UIView
         {
             if (bgmSlider != null)
             {
-                bgmSlider.value = bgmSlider.maxValue > 0 ? SoundManager.Instance.BGMVolume * bgmSlider.maxValue : SoundManager.Instance.BGMVolume;
+                float targetValue = bgmSlider.maxValue > 0 ? SoundManager.Instance.BGMVolume * bgmSlider.maxValue : SoundManager.Instance.BGMVolume;
+                bgmSlider.SetValueWithoutNotify(targetValue);
             }
             if (seSlider != null)
             {
-                seSlider.value = seSlider.maxValue > 0 ? SoundManager.Instance.SEVolume * seSlider.maxValue : SoundManager.Instance.SEVolume;
+                float targetValue = seSlider.maxValue > 0 ? SoundManager.Instance.SEVolume * seSlider.maxValue : SoundManager.Instance.SEVolume;
+                seSlider.SetValueWithoutNotify(targetValue);
             }
         }
     }

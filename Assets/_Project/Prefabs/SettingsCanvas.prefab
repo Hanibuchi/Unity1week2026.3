@@ -805,6 +805,7 @@ MonoBehaviour:
   bgmSlider: {fileID: 4130625993470177975}
   seSlider: {fileID: 3654410736377860571}
   closeButton: {fileID: 6062178396044003248}
+  sliderChangeSE: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
 --- !u!1 &8441257402219976181
 GameObject:
   m_ObjectHideFlags: 0
