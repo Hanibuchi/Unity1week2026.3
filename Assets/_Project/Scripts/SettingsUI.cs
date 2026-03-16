@@ -13,12 +13,19 @@ public class SettingsUI : MonoBehaviour
         // スライダーのイベント登録
         if (bgmSlider != null)
         {
+            if (SoundManager.Instance != null)
+            {
+                bgmSlider.value = bgmSlider.maxValue > 0 ? SoundManager.Instance.BGMVolume * bgmSlider.maxValue : SoundManager.Instance.BGMVolume;
+            }
             bgmSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
-            // オプション: SoundManagerから現在の音量を取得してスライダーの初期値にする場合はここに追加します
         }
 
         if (seSlider != null)
         {
+            if (SoundManager.Instance != null)
+            {
+                seSlider.value = seSlider.maxValue > 0 ? SoundManager.Instance.SEVolume * seSlider.maxValue : SoundManager.Instance.SEVolume;
+            }
             seSlider.onValueChanged.AddListener(OnSEVolumeChanged);
         }
 
@@ -69,6 +76,17 @@ public class SettingsUI : MonoBehaviour
         
         // オプション: ここで SoundManager から現在の音量を取得してスライダーの値に反映すると
         // 開くたびに最新の音量がUIに表示されます。
+        if (SoundManager.Instance != null)
+        {
+            if (bgmSlider != null)
+            {
+                bgmSlider.value = bgmSlider.maxValue > 0 ? SoundManager.Instance.BGMVolume * bgmSlider.maxValue : SoundManager.Instance.BGMVolume;
+            }
+            if (seSlider != null)
+            {
+                seSlider.value = seSlider.maxValue > 0 ? SoundManager.Instance.SEVolume * seSlider.maxValue : SoundManager.Instance.SEVolume;
+            }
+        }
     }
 
     private void CloseSettings()
