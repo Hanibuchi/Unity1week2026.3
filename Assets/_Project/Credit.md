@@ -6,3 +6,6 @@
 
 ## Sound
 - FREE Casual Game SFX Pack / Dustyroom
+
+## Graphics
+- 2D Platformer Tileset / Danil Chernyaev
