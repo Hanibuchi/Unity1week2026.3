@@ -1477,6 +1477,13 @@ MonoBehaviour:
   invincibilityDuration: 1
   animator: {fileID: 0}
   invincibleAnimParam: IsInvincible
+  healItemLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  pullRadius: 5
+  pullSpeed: 10
+  itemsNeededToHeal: 5
+  currentItemCount: 0
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2644,6 +2651,63 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1001 &5720382934515677262
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 850118433090738945, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_Name
+      value: HealItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
 --- !u!1001 &8012238634189793773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2887,3 +2951,4 @@ SceneRoots:
   - {fileID: 224074776}
   - {fileID: 8012238634189793773}
   - {fileID: 1097179419}
+  - {fileID: 5720382934515677262}
