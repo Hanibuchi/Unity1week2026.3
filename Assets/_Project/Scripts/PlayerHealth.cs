@@ -3,6 +3,20 @@ using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [Header("Health Settings")]
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private int currentHealth;
