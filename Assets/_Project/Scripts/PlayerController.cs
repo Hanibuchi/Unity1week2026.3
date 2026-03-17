@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerAbilities
 {
     public bool canJetDash;
+    public bool canAttackDown;
 }
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
@@ -119,7 +120,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetTrigger("OnAttackUp");
             }
-            else if (moveInput.y < -0.5f && !isGrounded)
+            else if (moveInput.y < -0.5f && !isGrounded && currentAbilities.canAttackDown)
             {
                 animator.SetTrigger("OnAttackDown");
             }

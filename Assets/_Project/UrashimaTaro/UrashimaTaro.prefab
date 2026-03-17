@@ -222,7 +222,7 @@ MonoBehaviour:
   moveSpeed: 8
   jumpForce: 15
   jetDashSpeed: 20
-  timeToTriggerJet: 0.2
+  timeToTriggerJet: 0
   maxJetDashDuration: 1
   groundCheck: {fileID: 3823791670562578155}
   groundCheckRadius: 0.2
@@ -230,8 +230,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   currentAbilities:
-    canDoubleJump: 0
     canJetDash: 1
+    canAttackDown: 1
 --- !u!95 &9155595953895323866
 Animator:
   serializedVersion: 7
