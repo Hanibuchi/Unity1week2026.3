@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Settings")]
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxHealth = 5;
     [SerializeField] private int currentHealth;
 
     [Header("Invincibility Settings")]
@@ -94,5 +94,21 @@ public class PlayerHealth : MonoBehaviour
         OnDie?.Invoke();
         // 死亡時の処理はOnDieイベントに登録して外部で制御できるようにしています。
         // 必要に応じてここに直接記述しても問題ありません。
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<EnemyAttack>(out var enemyAttack))
+        {
+            TakeDamage(enemyAttack.DamageAmount);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<EnemyAttack>(out var enemyAttack))
+        {
+            TakeDamage(enemyAttack.DamageAmount);
+        }
     }
 }
