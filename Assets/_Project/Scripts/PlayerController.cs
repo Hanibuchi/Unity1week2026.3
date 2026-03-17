@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private float jetDashTimer;
     private Vector2 jetDashDirection;
     private float defaultGravityScale;
+    private bool isJetDepleted;
 
     private void Awake()
     {
@@ -153,7 +154,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpHoldTimer += Time.deltaTime;
 
-            if (!isJetDashing && jumpHoldTimer >= timeToTriggerJet && moveInput.magnitude > 0.1f)
+            if (!isJetDashing && jumpHoldTimer >= timeToTriggerJet && moveInput.magnitude > 0.1f && !isJetDepleted)
             {
                 StartJetDash();
             }
@@ -161,9 +162,15 @@ public class PlayerController : MonoBehaviour
 
         if (isJetDashing)
         {
+            if (moveInput.magnitude > 0.1f)
+            {
+                jetDashDirection = moveInput.normalized;
+            }
+
             jetDashTimer -= Time.deltaTime;
             if (jetDashTimer <= 0)
             {
+                isJetDepleted = true;
                 StopJetDash();
             }
         }
@@ -172,7 +179,6 @@ public class PlayerController : MonoBehaviour
     private void StartJetDash()
     {
         isJetDashing = true;
-        jetDashTimer = maxJetDashDuration;
         jetDashDirection = moveInput.normalized;
         rb.gravityScale = 0f;
     }
@@ -191,6 +197,12 @@ public class PlayerController : MonoBehaviour
         if (groundCheck != null)
         {
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        }
+
+        if (isGrounded)
+        {
+            jetDashTimer = maxJetDashDuration;
+            isJetDepleted = false;
         }
     }
 
