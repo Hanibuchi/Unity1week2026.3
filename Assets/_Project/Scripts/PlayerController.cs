@@ -220,6 +220,21 @@ public class PlayerController : MonoBehaviour
         
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetBool("IsMoving", Mathf.Abs(moveInput.x) > 0.1f);
+
+        animator.SetBool("IsJetting", isJetDashing);
+        if (isJetDashing)
+        {
+            float jetDirValue = 1f; // 横 (Horizontal)
+            if (jetDashDirection.y > 0.5f)
+            {
+                jetDirValue = 0f; // 上 (Up)
+            }
+            else if (jetDashDirection.y < -0.5f)
+            {
+                jetDirValue = 2f; // 下 (Down)
+            }
+            animator.SetFloat("JetDirection", jetDirValue);
+        }
     }
 
     private void OnDrawGizmosSelected()
