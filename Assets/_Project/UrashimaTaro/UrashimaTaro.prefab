@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8600761970292348072}
   - component: {fileID: 7414888827082056939}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4784511049695003310}
   - component: {fileID: 7164691271739846662}
   - component: {fileID: 907129246344946672}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DownAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 8783232736287562215}
   - component: {fileID: 3169848945678235556}
   - component: {fileID: 1553443396098428030}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4601381534720791884}
   - component: {fileID: 3189773147886556117}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,8 @@ GameObject:
   - component: {fileID: 9155595953895323866}
   - component: {fileID: 7198171999523822038}
   - component: {fileID: 2168438448348271505}
-  m_Layer: 0
+  - component: {fileID: 4508679359314592312}
+  m_Layer: 11
   m_Name: UrashimaTaro
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -792,6 +793,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4508679359314592312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637291647498165453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988d7691005734745aa8cca5e54f019f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 5
+  currentHealth: 0
+  invincibilityDuration: 1
+  animator: {fileID: 0}
+  invincibleAnimParam: IsInvincible
+  healItemLayer:
+    serializedVersion: 2
+    m_Bits: 32768
+  pullRadius: 5
+  pullSpeed: 10
+  itemsNeededToHeal: 5
+  currentItemCount: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5134760475810846056
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +839,7 @@ GameObject:
   - component: {fileID: 5143682668809478102}
   - component: {fileID: 8317796977339871451}
   - component: {fileID: 6006970002414643382}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,7 +1030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3823791670562578155}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

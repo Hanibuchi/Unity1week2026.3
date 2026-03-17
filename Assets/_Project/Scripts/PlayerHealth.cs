@@ -12,6 +12,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string invincibleAnimParam = "IsInvincible";
 
+    [Header("Item Collection Settings")]
+    [SerializeField] private LayerMask healItemLayer;
+    [SerializeField] private float pullRadius = 5.0f;
+    [SerializeField] private float pullSpeed = 10.0f;
+    [SerializeField] private int itemsNeededToHeal = 5;
+    [SerializeField] private int currentItemCount = 0;
+
     private bool isInvincible;
     private float invincibilityTimer;
 
@@ -38,6 +45,19 @@ public class PlayerHealth : MonoBehaviour
             {
                 SetInvincibility(false);
             }
+        }
+
+        PullHealItems();
+    }
+
+    private void PullHealItems()
+    {
+        if (healItemLayer.value == 0) return;
+
+        Collider2D[] itemsInRange = Physics2D.OverlapCircleAll(transform.position, pullRadius, healItemLayer);
+        foreach (var item in itemsInRange)
+        {
+            item.transform.position = Vector3.MoveTowards(item.transform.position, transform.position, pullSpeed * Time.deltaTime);
         }
     }
 
@@ -77,6 +97,11 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            // ダメージを受けた際、貯めていたアイテムがあれば消費して回復する
+            TryConsumeHealItems();
+        }
     }
 
     public void Heal(int healAmount)
@@ -102,6 +127,39 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(enemyAttack.DamageAmount);
         }
+
+        // アイテムのレイヤーかチェック
+        if (((1 << collision.gameObject.layer) & healItemLayer.value) != 0)
+        {
+            CollectHealItem(collision.gameObject);
+        }
+    }
+
+    private void CollectHealItem(GameObject itemObj)
+    {
+        Destroy(itemObj); // アイテムを削除
+        
+        // 体力が最大の時に、規定数を超えてアイテムをストックしないように制限
+        if (currentHealth >= maxHealth && currentItemCount >= itemsNeededToHeal)
+        {
+            // アイテムは吸収（削除）されるが、カウントは増やさない
+        }
+        else
+        {
+            currentItemCount++;
+        }
+
+        TryConsumeHealItems();
+    }
+
+    private void TryConsumeHealItems()
+    {
+        // 体力が最大値よりも低く、アイテムが規定数集まっていれば消費して継続的に回復する
+        while (currentHealth < maxHealth && currentItemCount >= itemsNeededToHeal)
+        {
+            currentItemCount -= itemsNeededToHeal;
+            Heal(1);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -110,5 +168,16 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(enemyAttack.DamageAmount);
         }
+
+        if (((1 << collision.gameObject.layer) & healItemLayer.value) != 0)
+        {
+            CollectHealItem(collision.gameObject);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, pullRadius);
     }
 }

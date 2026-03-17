@@ -1455,44 +1455,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &1827935187 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4637291647498165453, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-  m_PrefabInstance: {fileID: 8012238634189793773}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1827935194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827935187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988d7691005734745aa8cca5e54f019f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 5
-  currentHealth: 0
-  invincibilityDuration: 1
-  animator: {fileID: 0}
-  invincibleAnimParam: IsInvincible
-  healItemLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  pullRadius: 5
-  pullSpeed: 10
-  itemsNeededToHeal: 5
-  currentItemCount: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDie:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2129827055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,63 +2613,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1001 &5720382934515677262
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 850118433090738945, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_Name
-      value: HealItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3303330354464163208, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e35f1a4c18bf6c147af8333e759f3d5c, type: 3}
 --- !u!1001 &8012238634189793773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2716,37 +2621,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 41185568585260153, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 910834123088431592, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1671897819143832544, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3183384675233850823, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 4637291647498165453, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
       propertyPath: m_Name
       value: UrashimaTaro
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637291647498165453, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134760475810846056, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7813159771566868056, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9174020439868125373, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2791,10 +2668,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4637291647498165453, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1827935194}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
 --- !u!1001 &8416226248429524817
 PrefabInstance:
@@ -2951,4 +2825,3 @@ SceneRoots:
   - {fileID: 224074776}
   - {fileID: 8012238634189793773}
   - {fileID: 1097179419}
-  - {fileID: 5720382934515677262}
