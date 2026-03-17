@@ -7,6 +7,14 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
 
+    [Header("Invincibility Settings")]
+    [SerializeField] private float invincibilityDuration = 1.0f;
+    [SerializeField] private Animator animator;
+    [SerializeField] private string invincibleAnimParam = "IsInvincible";
+
+    private bool isInvincible;
+    private float invincibilityTimer;
+
     [Header("Events")]
     public UnityEvent<int, int> OnHealthChanged; // Current HP, Max HP
     public UnityEvent OnTakeDamage;
@@ -18,6 +26,33 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         InitializeHealth();
+        if (animator == null) animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (isInvincible)
+        {
+            invincibilityTimer -= Time.deltaTime;
+            if (invincibilityTimer <= 0)
+            {
+                SetInvincibility(false);
+            }
+        }
+    }
+
+    private void SetInvincibility(bool state)
+    {
+        isInvincible = state;
+        if (state)
+        {
+            invincibilityTimer = invincibilityDuration;
+        }
+
+        if (animator != null)
+        {
+            animator.SetBool(invincibleAnimParam, state);
+        }
     }
 
     public void InitializeHealth()
@@ -28,10 +63,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (currentHealth <= 0 || damageAmount <= 0) return;
+        if (currentHealth <= 0 || damageAmount <= 0 || isInvincible) return;
 
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        SetInvincibility(true);
 
         OnTakeDamage?.Invoke();
         OnHealthChanged?.Invoke(currentHealth, maxHealth);

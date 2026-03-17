@@ -1302,6 +1302,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1827935187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4637291647498165453, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
+  m_PrefabInstance: {fileID: 8012238634189793773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1827935194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827935187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988d7691005734745aa8cca5e54f019f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 5
+  currentHealth: 0
+  invincibilityDuration: 1
+  animator: {fileID: 0}
+  invincibleAnimParam: IsInvincible
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2129827055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,7 +2574,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4637291647498165453, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1827935194}
   m_SourcePrefab: {fileID: 100100000, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
 --- !u!1001 &8416226248429524817
 PrefabInstance:
