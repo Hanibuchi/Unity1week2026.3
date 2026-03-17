@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float recoilForceNormal = 5f;
     public float recoilForceUp = 5f;
     public float recoilForceDown = 8f;
+    public float recoilDuration = 0.15f;
     
     [Header("Jet Dash Settings")]
     public float jetDashSpeed = 20f;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 jetDashDirection;
     private float defaultGravityScale;
     private bool isJetDepleted;
+    private float recoilTimer;
 
     private void Awake()
     {
@@ -62,11 +64,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (recoilTimer > 0)
+        {
+            recoilTimer -= Time.deltaTime;
+        }
+
         CheckGrounded();
         HandleJetDashLogic();
         UpdateAnimations();
 
-        if (!isJetDashing)
+        if (!isJetDashing && recoilTimer <= 0)
         {
             FlipController();
         }
@@ -77,6 +84,11 @@ public class PlayerController : MonoBehaviour
         if (isJetDashing)
         {
             rb.linearVelocity = jetDashDirection * jetDashSpeed;
+        }
+        else if (recoilTimer > 0)
+        {
+            // 反動中は入力を受け付けずに現在の速度を維持（または減速）
+            // rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, Time.deltaTime * 5f), rb.linearVelocity.y);
         }
         else
         {
@@ -146,18 +158,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnHitAttackNormal()
     {
+        // Debug.Log("Hit Normal Attack");
         float recoilDir = isFacingRight ? -1f : 1f;
         rb.linearVelocity = new Vector2(recoilDir * recoilForceNormal, rb.linearVelocity.y);
+        recoilTimer = recoilDuration;
     }
 
     public void OnHitAttackUp()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, -recoilForceUp);
+        recoilTimer = recoilDuration;
     }
 
     public void OnHitAttackDown()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, recoilForceDown);
+        recoilTimer = recoilDuration;
     }
 
     private void PerformJump()

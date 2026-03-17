@@ -2384,7 +2384,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 809dded7dfecb2e4a8128ea7dfdc460a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2497,6 +2497,10 @@ PrefabInstance:
       propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2168438448348271505, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: f5128b1dd7867ac4aa7e9fcfe3a4b591, type: 2}
     - target: {fileID: 4637291647498165453, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
       propertyPath: m_Name
       value: UrashimaTaro
@@ -2528,6 +2532,14 @@ PrefabInstance:
     - target: {fileID: 6006970002414643382, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
       propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563285360964288756, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563285360964288756, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
+      propertyPath: timeToTriggerJet
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 9174020439868125373, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
       propertyPath: m_LocalPosition.x
