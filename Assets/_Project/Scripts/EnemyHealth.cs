@@ -1,0 +1,42 @@
+using UnityEngine;
+
+public class EnemyHealth : MonoBehaviour
+{
+    [Header("Health Settings")]
+    public int maxHealth = 10;
+    public int currentHealth;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // プレイヤーの攻撃を検出
+        PlayerAttack playerAttack = other.GetComponent<PlayerAttack>();
+        if (playerAttack != null)
+        {
+            // ダメージ処理（必要に応じて変更してください）
+            TakeDamage(playerAttack.damage);
+
+            // プレイヤーの攻撃用クラスに通知
+            playerAttack.OnHitTarget(this);
+        }
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // 死亡時の処理（例としてオブジェクトを破棄）
+        Destroy(gameObject);
+    }
+}
