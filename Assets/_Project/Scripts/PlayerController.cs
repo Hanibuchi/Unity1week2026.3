@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class PlayerAbilities
 {
-    public bool canDoubleJump;
     public bool canJetDash;
 }
 
@@ -39,7 +38,6 @@ public class PlayerController : MonoBehaviour
     // Player States
     private bool isGrounded;
     private bool isFacingRight = true;
-    private bool canDoubleJump;
 
     // Jet Dash States
     private bool isJetDashing;
@@ -145,11 +143,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
-        else if (currentAbilities.canDoubleJump && canDoubleJump)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            canDoubleJump = false;
-        }
     }
 
     private void HandleJetDashLogic()
@@ -198,11 +191,6 @@ public class PlayerController : MonoBehaviour
         if (groundCheck != null)
         {
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        }
-
-        if (isGrounded)
-        {
-            canDoubleJump = true;
         }
     }
 
