@@ -15,11 +15,11 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerAttack
+  - Player
+  - Enemy
+  - EnemyAttack
+  - EnemySensor
   - 
   - 
   - 
