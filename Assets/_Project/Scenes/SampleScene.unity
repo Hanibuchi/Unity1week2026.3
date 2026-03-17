@@ -1302,17 +1302,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1827935192 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7563285360964288756, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-  m_PrefabInstance: {fileID: 8012238634189793773}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107848ad1f6315443a1aa9ce79322294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &2129827055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,105 +2430,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 907129246344946672, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 907129246344946672, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 907129246344946672, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1827935192}
-    - target: {fileID: 907129246344946672, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 907129246344946672, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHitAttackDown
-      objectReference: {fileID: 0}
-    - target: {fileID: 907129246344946672, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 907129246344946672, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553443396098428030, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553443396098428030, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553443396098428030, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1827935192}
-    - target: {fileID: 1553443396098428030, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553443396098428030, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHitAttackUp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553443396098428030, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553443396098428030, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2168438448348271505, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: f5128b1dd7867ac4aa7e9fcfe3a4b591, type: 2}
     - target: {fileID: 4637291647498165453, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
       propertyPath: m_Name
       value: UrashimaTaro
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006970002414643382, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006970002414643382, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006970002414643382, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1827935192}
-    - target: {fileID: 6006970002414643382, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006970002414643382, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnHitAttackNormal
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006970002414643382, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006970002414643382, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: onHitEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563285360964288756, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: jumpForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563285360964288756, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: timeToTriggerJet
-      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 9174020439868125373, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
       propertyPath: m_LocalPosition.x
