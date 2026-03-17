@@ -14,6 +14,11 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 8f;
     public float jumpForce = 15f;
+
+    [Header("Recoil Settings")]
+    public float recoilForceNormal = 5f;
+    public float recoilForceUp = 5f;
+    public float recoilForceDown = 8f;
     
     [Header("Jet Dash Settings")]
     public float jetDashSpeed = 20f;
@@ -137,6 +142,22 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Interact triggered");
         }
+    }
+
+    public void OnHitAttackNormal()
+    {
+        float recoilDir = isFacingRight ? -1f : 1f;
+        rb.linearVelocity = new Vector2(recoilDir * recoilForceNormal, rb.linearVelocity.y);
+    }
+
+    public void OnHitAttackUp()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -recoilForceUp);
+    }
+
+    public void OnHitAttackDown()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, recoilForceDown);
     }
 
     private void PerformJump()
