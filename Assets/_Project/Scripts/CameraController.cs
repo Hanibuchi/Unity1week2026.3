@@ -13,6 +13,9 @@ public class CameraController : MonoBehaviour
     [Header("Cinemachine Settings")]
     [SerializeField] private CinemachineCamera virtualCamera;
     
+    [Header("Screen Shake Settings")]
+    [SerializeField] private CinemachineImpulseSource impulseSource;
+
     // Confiner2Dのキャッシュ
     private CinemachineConfiner2D confiner2D;
 
@@ -54,6 +57,11 @@ public class CameraController : MonoBehaviour
         {
             Debug.LogError("CinemachineVirtualCamera が見つかりません。インスペクターから設定するかシーンに配置してください。");
         }
+
+        if (impulseSource == null)
+        {
+            impulseSource = GetComponent<CinemachineImpulseSource>();
+        }
     }
 
     /// <summary>
@@ -87,6 +95,21 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cinemachine Impulse を使って画面を揺らす
+    /// </summary>
+    /// <param name="force">揺れの強さの倍率（デフォルト1.0）</param>
+    public void ShakeScreen(float force = 1f)
+    {
+        if (impulseSource != null)
+        {
+            impulseSource.GenerateImpulse(force);
+        }
+        else
+        {
+            Debug.LogWarning("CinemachineImpulseSource が設定されていないため、画面を揺らすことができません。");
+        }
+    }
 
     // [SerializeField] Transform testTransform;
     // public void TestSetTarget()
