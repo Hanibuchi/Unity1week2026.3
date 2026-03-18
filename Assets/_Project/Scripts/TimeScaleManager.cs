@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class TimeScaleManager : MonoBehaviour
 {
+    public enum TimeScalePriority
+    {
+        Default = 0,
+        HitStop = 10,
+        Menu = 20,
+        System = 100
+    }
+
     public static TimeScaleManager Instance { get; private set; }
 
     private class TimeScaleRequest

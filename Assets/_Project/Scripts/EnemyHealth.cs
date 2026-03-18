@@ -18,6 +18,12 @@ public class EnemyHealth : MonoBehaviour
     public float maxFragmentForce = 15f;
     public float fragmentLifetime = 2f;
 
+    [Header("Hit Stop Settings")]
+    public float hitStopDuration = 0.05f;
+    [Range(0f, 1f)]
+    public float hitStopTimeScale = 0.05f;
+    public TimeScaleManager.TimeScalePriority hitStopPriority = TimeScaleManager.TimeScalePriority.HitStop;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -44,6 +50,11 @@ public class EnemyHealth : MonoBehaviour
 
         SpawnFragments();
 
+        if (hitStopDuration > 0f)
+        {
+            StartCoroutine(HitStopRoutine());
+        }
+
         EnemyController enemyController = GetComponent<EnemyController>();
         if (enemyController != null)
         {
@@ -53,6 +64,16 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+
+    private System.Collections.IEnumerator HitStopRoutine()
+    {
+        if (TimeScaleManager.Instance != null)
+        {
+            TimeScaleManager.Instance.SetTimeScale(hitStopTimeScale, (int)hitStopPriority, this);
+            yield return new WaitForSecondsRealtime(hitStopDuration);
+            TimeScaleManager.Instance.RemoveRequest(this);
         }
     }
 
@@ -98,6 +119,14 @@ public class EnemyHealth : MonoBehaviour
         {
             // なければ即座に破棄
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (TimeScaleManager.Instance != null)
+        {
+            TimeScaleManager.Instance.RemoveRequest(this);
         }
     }
 }

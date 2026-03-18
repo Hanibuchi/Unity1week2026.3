@@ -468,6 +468,14 @@ MonoBehaviour:
   currentHealth: 0
   damageSE: {fileID: 8300000, guid: b07cc7aef936a3a4189def82b97b85bd, type: 3}
   dieSE: {fileID: 8300000, guid: 9fb3526d43401ef4baf436cfe80aaccc, type: 3}
+  fragmentPrefabPath: Fragment
+  fragmentSpawnProbability: 0.5
+  minFragmentForce: 5
+  maxFragmentForce: 15
+  fragmentLifetime: 2
+  hitStopDuration: 0.1
+  hitStopTimeScale: 0.05
+  hitStopPriority: 10
 --- !u!95 &5474610925316897073
 Animator:
   serializedVersion: 7
