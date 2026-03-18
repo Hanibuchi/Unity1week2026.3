@@ -40,9 +40,19 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void Die()
-    {if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
-        
-        // 死亡時の処理（例としてオブジェクトを破棄）
-        Destroy(gameObject);
+    {
+        if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
+
+        // ChildControllerがあればアニメーション等の死亡処理を任せる
+        ChildController childController = GetComponent<ChildController>();
+        if (childController != null)
+        {
+            childController.Die();
+        }
+        else
+        {
+            // なければ即座に破棄
+            Destroy(gameObject);
+        }
     }
 }
