@@ -153,7 +153,7 @@ MonoBehaviour:
   deathColliders:
   - {fileID: 1113938272627305044}
   - {fileID: 3418176974836052581}
-  dropItemCount: 3
+  dropItemCount: 2
   dropScatterForce: 5
   moveSpeed: 2
   groundLayer:

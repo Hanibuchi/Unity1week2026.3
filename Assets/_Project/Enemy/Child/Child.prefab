@@ -440,7 +440,7 @@ MonoBehaviour:
   deathColliders:
   - {fileID: 2334405066827464195}
   - {fileID: 35804661721294386}
-  dropItemCount: 8
+  dropItemCount: 5
   dropScatterForce: 5
   moveSpeed: 3
   attackSensor: {fileID: 7056271368212769036}
@@ -470,6 +470,7 @@ MonoBehaviour:
   dieSE: {fileID: 8300000, guid: 9fb3526d43401ef4baf436cfe80aaccc, type: 3}
   fragmentPrefabPath: Fragment
   fragmentSpawnProbability: 0.5
+  healItemSpawnProbability: 0.25
   minFragmentForce: 5
   maxFragmentForce: 15
   fragmentLifetime: 2

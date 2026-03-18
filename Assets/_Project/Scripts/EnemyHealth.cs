@@ -14,6 +14,8 @@ public class EnemyHealth : MonoBehaviour
     public string fragmentPrefabPath = "Fragment";
     [Range(0f, 1f)]
     public float fragmentSpawnProbability = 0.5f;
+    [Range(0f, 1f)]
+    public float healItemSpawnProbability = 0.25f;
     public float minFragmentForce = 5f;
     public float maxFragmentForce = 15f;
     public float fragmentLifetime = 2f;
@@ -85,28 +87,43 @@ public class EnemyHealth : MonoBehaviour
     private void SpawnFragments(Vector3 position)
     {
         GameObject prefab = Resources.Load<GameObject>(fragmentPrefabPath);
-        if (prefab == null) return;
-
-        while (Random.value < fragmentSpawnProbability)
+        if (prefab != null)
         {
-            // ランダムな角度で
-            Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
-            GameObject fragment = Instantiate(prefab, position, randomRotation);
-            
-            // 一定時間後に削除
-            Destroy(fragment, fragmentLifetime);
-            
-            Rigidbody2D rb = fragment.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            while (Random.value < fragmentSpawnProbability)
             {
-                // ランダムな方向に
-                Vector2 randomDirection = Random.insideUnitCircle.normalized;
-                // ランダムな強さで
-                float randomForce = Random.Range(minFragmentForce, maxFragmentForce);
+                // ランダムな角度で
+                Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
+                GameObject fragment = Instantiate(prefab, position, randomRotation);
                 
-                rb.AddForce(randomDirection * randomForce, ForceMode2D.Impulse);
-                rb.AddTorque(Random.Range(-randomForce, randomForce), ForceMode2D.Impulse);
+                // 一定時間後に削除
+                Destroy(fragment, fragmentLifetime);
+                
+                Rigidbody2D rb = fragment.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    // ランダムな方向に
+                    Vector2 randomDirection = Random.insideUnitCircle.normalized;
+                    // ランダムな強さで
+                    float randomForce = Random.Range(minFragmentForce, maxFragmentForce);
+                    
+                    rb.AddForce(randomDirection * randomForce, ForceMode2D.Impulse);
+                    rb.AddTorque(Random.Range(-randomForce, randomForce), ForceMode2D.Impulse);
+                }
             }
+        }
+
+        // 回復アイテムのドロップ数を破片とは独立して計算
+        int healItemCount = 0;
+
+        while (Random.value < healItemSpawnProbability)
+        {
+            healItemCount++;
+        }
+
+        if (healItemCount > 0 && HealItemDropManager.Instance != null)
+        {
+            float averageForce = (minFragmentForce + maxFragmentForce) / 2f;
+            HealItemDropManager.Instance.DropItemsAtOnce(position, healItemCount, averageForce);
         }
     }
 
