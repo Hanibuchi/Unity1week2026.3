@@ -33,6 +33,13 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damageAmount;
         if (SoundManager.Instance != null && damageSE != null) SoundManager.Instance.PlaySE(damageSE);
+
+        EnemyController enemyController = GetComponent<EnemyController>();
+        if (enemyController != null)
+        {
+            enemyController.OnDamage();
+        }
+
         if (currentHealth <= 0)
         {
             Die();

@@ -74,11 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.196734
+      value: -10.696733
       objectReference: {fileID: 0}
     - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11206055
+      value: -0.61206055
       objectReference: {fileID: 0}
     - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -184,6 +184,7 @@ MonoBehaviour:
   verticalMoveSpeed: 5
   minHeight: -5
   maxHeight: 5
+  fixedHorizontalHeight: -2
   startXPositions:
   - -10
   - 10
