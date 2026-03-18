@@ -78,7 +78,18 @@ public class PlayerHealth : MonoBehaviour
         Collider2D[] itemsInRange = Physics2D.OverlapCircleAll(transform.position, pullRadius, healItemLayer);
         foreach (var item in itemsInRange)
         {
-            item.transform.position = Vector3.MoveTowards(item.transform.position, transform.position, pullSpeed * Time.deltaTime);
+            if (item.TryGetComponent<Rigidbody2D>(out var itemRb))
+            {
+                // 対象に向かう方向ベクトル
+                Vector2 direction = (transform.position - item.transform.position).normalized;
+                // Rigidbody2Dを使って力を加える
+                itemRb.AddForce(direction * pullSpeed * Time.deltaTime * 50f, ForceMode2D.Force);
+            }
+            else
+            {
+                // Rigidbody2Dがない場合の処理（元の挙動）
+                item.transform.position = Vector3.MoveTowards(item.transform.position, transform.position, pullSpeed * Time.deltaTime);
+            }
         }
     }
 
