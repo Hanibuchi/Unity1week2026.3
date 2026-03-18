@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public float recoilForceDown = 8f;
     public float recoilDuration = 0.15f;
     
+    [Header("Attack Settings")]
+    public float attackCooldown = 0.5f;
+
     [Header("Jet Dash Settings")]
     public float jetDashSpeed = 20f;
     public float timeToTriggerJet = 0.2f;
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
     // Player States
     private bool isGrounded;
     private bool isFacingRight = true;
+    private float attackCooldownTimer;
 
     // Jet Dash States
     private bool isJetDashing;
@@ -67,6 +71,11 @@ public class PlayerController : MonoBehaviour
         if (recoilTimer > 0)
         {
             recoilTimer -= Time.deltaTime;
+        }
+
+        if (attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.deltaTime;
         }
 
         CheckGrounded();
@@ -131,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (context.started && !isJetDashing)
+        if (context.started && !isJetDashing && attackCooldownTimer <= 0)
         {
             if (moveInput.y > 0.5f)
             {
@@ -145,6 +154,8 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetTrigger("OnAttackNormal");
             }
+
+            attackCooldownTimer = attackCooldown;
         }
     }
 

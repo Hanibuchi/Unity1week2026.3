@@ -569,10 +569,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9174020439868125373}
   - component: {fileID: 7563285360964288756}
+  - component: {fileID: 4508679359314592312}
   - component: {fileID: 9155595953895323866}
   - component: {fileID: 7198171999523822038}
   - component: {fileID: 2168438448348271505}
-  - component: {fileID: 4508679359314592312}
   m_Layer: 11
   m_Name: UrashimaTaro
   m_TagString: Untagged
@@ -619,6 +619,7 @@ MonoBehaviour:
   recoilForceUp: 5
   recoilForceDown: 8
   recoilDuration: 0.1
+  attackCooldown: 0.2
   jetDashSpeed: 15
   timeToTriggerJet: 0.05
   maxJetDashDuration: 1
@@ -630,6 +631,42 @@ MonoBehaviour:
   currentAbilities:
     canJetDash: 1
     canAttackDown: 1
+--- !u!114 &4508679359314592312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637291647498165453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988d7691005734745aa8cca5e54f019f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 5
+  currentHealth: 0
+  invincibilityDuration: 1
+  animator: {fileID: 0}
+  invincibleAnimParam: IsInvincible
+  healItemLayer:
+    serializedVersion: 2
+    m_Bits: 32768
+  pullRadius: 5
+  pullSpeed: 10
+  itemsNeededToHeal: 5
+  currentItemCount: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealItemProgressChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &9155595953895323866
 Animator:
   serializedVersion: 7
@@ -793,39 +830,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4508679359314592312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4637291647498165453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988d7691005734745aa8cca5e54f019f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 5
-  currentHealth: 0
-  invincibilityDuration: 1
-  animator: {fileID: 0}
-  invincibleAnimParam: IsInvincible
-  healItemLayer:
-    serializedVersion: 2
-    m_Bits: 32768
-  pullRadius: 5
-  pullSpeed: 10
-  itemsNeededToHeal: 5
-  currentItemCount: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDie:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &5134760475810846056
 GameObject:
   m_ObjectHideFlags: 0
