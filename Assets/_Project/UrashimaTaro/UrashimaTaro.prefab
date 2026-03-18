@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7414888827082056939}
   m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -552,7 +552,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -291030165
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2882307768427108894, guid: 9d90a00a3f395d5489547bbeb1817879, type: 3}
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 2168438448348271505}
   m_Layer: 11
   m_Name: UrashimaTaro
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
