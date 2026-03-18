@@ -634,7 +634,7 @@ MonoBehaviour:
   timeToTriggerJet: 0.05
   maxJetDashDuration: 1
   groundCheck: {fileID: 3823791670562578155}
-  groundCheckRadius: 0.5
+  groundCheckRadius: 0.6
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
