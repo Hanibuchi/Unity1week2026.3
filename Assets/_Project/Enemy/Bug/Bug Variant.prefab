@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1529574446513976998, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: damageAmount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2014403066195394580, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: maxHealth
       value: 32
