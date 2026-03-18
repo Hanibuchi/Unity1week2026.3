@@ -8,9 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 35804661721294386, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 35804661721294386, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 35804661721294386, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 35804661721294386, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1124387620347513021, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014403066195394580, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: maxHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Size.y
@@ -24,13 +44,21 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 75fd85c270c4e9642bd9cc652df5f436, type: 2}
-    - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+    - target: {fileID: 6295436831478264314, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+    - target: {fileID: 6295436831478264314, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -94,10 +122,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8987081354514988871, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Name
-      value: FishA
+      value: FishA Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4901588319659164500, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8987081354514988871, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 3651545214082275330}
   m_SourcePrefab: {fileID: 100100000, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+--- !u!1 &1221846317389614132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8987081354514988871, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+  m_PrefabInstance: {fileID: 7803709152299479923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3651545214082275330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221846317389614132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdb8e933b37c794cbac63ced67a2a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishAController
+  moveSpeed: 2
+  moveInterval: 2
+  moveDuration: 1
+  destroyDelay: 2
+  deathColliders: []
