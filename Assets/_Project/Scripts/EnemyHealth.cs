@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
         if (playerAttack != null)
         {
             // ダメージ処理（必要に応じて変更してください）
-            TakeDamage(playerAttack.damage);
+            TakeDamage(playerAttack.damage, playerAttack.transform.position);
 
             // プレイヤーの攻撃用クラスに通知
             playerAttack.OnHitTarget(this);
@@ -45,10 +45,15 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        TakeDamage(damageAmount, transform.position);
+    }
+
+    public void TakeDamage(int damageAmount, Vector3 hitPosition)
+    {
         currentHealth -= damageAmount;
         if (SoundManager.Instance != null && damageSE != null) SoundManager.Instance.PlaySE(damageSE);
 
-        SpawnFragments();
+        SpawnFragments(hitPosition);
 
         if (hitStopDuration > 0f)
         {
@@ -77,7 +82,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    private void SpawnFragments()
+    private void SpawnFragments(Vector3 position)
     {
         GameObject prefab = Resources.Load<GameObject>(fragmentPrefabPath);
         if (prefab == null) return;
@@ -86,7 +91,7 @@ public class EnemyHealth : MonoBehaviour
         {
             // ランダムな角度で
             Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
-            GameObject fragment = Instantiate(prefab, transform.position, randomRotation);
+            GameObject fragment = Instantiate(prefab, position, randomRotation);
             
             // 一定時間後に削除
             Destroy(fragment, fragmentLifetime);
