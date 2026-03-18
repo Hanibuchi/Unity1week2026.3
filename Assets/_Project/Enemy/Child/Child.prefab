@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ba9d5f2396c6c4abaeb6f9af641082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 10
+  maxHealth: 100
   currentHealth: 0
   damageSE: {fileID: 8300000, guid: b07cc7aef936a3a4189def82b97b85bd, type: 3}
   dieSE: {fileID: 8300000, guid: 9fb3526d43401ef4baf436cfe80aaccc, type: 3}

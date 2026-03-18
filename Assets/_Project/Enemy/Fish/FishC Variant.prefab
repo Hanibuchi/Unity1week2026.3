@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8626857062901396327, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
       propertyPath: maxHealth
-      value: 20
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3651545214082275330, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
@@ -154,7 +154,7 @@ MonoBehaviour:
   - {fileID: 2379271477070089758}
   - {fileID: 80664439054358063}
   moveSpeed: 2
-  moveInterval: 2
+  moveInterval: 1
   moveDuration: 1
   detectionRadius: 8
   attackSensor: {fileID: 6957303497212614929}
