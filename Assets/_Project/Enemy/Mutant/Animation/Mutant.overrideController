@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mutant
+  m_Controller: {fileID: 9100000, guid: 110caed498bd7f64bb14effd0e0a9e21, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 371d399cf5c3ba347b87146b7f26038b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d9a465412b23e9e40bb52fb91816b8a9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fd72aded1310e524b8652520b54196b8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 01b81924e2ff65d4e9cb2a4004da6d9b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 10cf2709963413e4096766ab4faf77bd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 085bec7465ff4c245b6120ae73f6cdb5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 44424950661b77f40a812deaf0a4f3be, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ccd30ea4a63baa94b9d6dfb8062f0642, type: 2}
