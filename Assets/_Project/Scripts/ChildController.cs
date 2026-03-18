@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
-public class ChildController : MonoBehaviour
+public class ChildController : EnemyController
 {
     [Header("Movement Settings")]
     public float moveSpeed = 3f;
@@ -18,22 +17,13 @@ public class ChildController : MonoBehaviour
     [Header("Audio")]
     public AudioClip attackSE;
 
-    [Header("Death Settings")]
-    public float destroyDelay = 2f; // 死亡後に破棄されるまでの時間
-    public Collider2D[] deathColliders; // 死亡時に無効化する複数のコライダー
-
-    private Rigidbody2D rb;
-    private Animator animator;
     private Transform player;
 
     private float waitTimer = 0f;
-    private bool isFacingRight = true;
-    private bool isDead = false;
 
-    private void Awake()
+    protected override void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        base.Awake();
     }
 
     private void Update()
@@ -141,43 +131,6 @@ public class ChildController : MonoBehaviour
         {
             Flip();
         }
-    }
-
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-    }
-
-    public void Die()
-    {
-        if (isDead) return;
-        
-        isDead = true;
-        
-        // 死亡アニメーション（Trigger）を再生
-        animator.SetTrigger("Die");
-        
-        // 移動を停止
-        rb.linearVelocity = Vector2.zero;
-        
-        // 必要に応じて当たり判定や物理演算を無効化
-        if (deathColliders != null)
-        {
-            foreach (var col in deathColliders)
-            {
-                if (col != null)
-                {
-                    col.enabled = false;
-                }
-            }
-        }
-        rb.bodyType = RigidbodyType2D.Kinematic;
-
-        // 一定時間後にオブジェクトを破棄
-        Destroy(gameObject, destroyDelay);
     }
 
     // 攻撃センサーと検知範囲の範囲をエディタ上で視覚化する

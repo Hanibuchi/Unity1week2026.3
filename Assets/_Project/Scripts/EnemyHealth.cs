@@ -43,11 +43,11 @@ public class EnemyHealth : MonoBehaviour
     {
         if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
 
-        // ChildControllerがあればアニメーション等の死亡処理を任せる
-        ChildController childController = GetComponent<ChildController>();
-        if (childController != null)
+        // EnemyControllerがあればアニメーション等の死亡処理を任せる
+        EnemyController enemyController = GetComponent<EnemyController>();
+        if (enemyController != null)
         {
-            childController.Die();
+            enemyController.Die();
         }
         else
         {

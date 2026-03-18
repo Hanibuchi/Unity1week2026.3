@@ -1,29 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
-public class FishAController : MonoBehaviour
+public class FishAController : EnemyController
 {
     [Header("Movement Settings")]
     public float moveSpeed = 2f;
     public float moveInterval = 2f; // 移動と移動の間の待機時間
     public float moveDuration = 1f; // 1回の移動にかける時間
 
-    [Header("Death Settings")]
-    public float destroyDelay = 2f; // 死亡後に破棄されるまでの時間
-    public Collider2D[] deathColliders; // 死亡時に無効化する複数のコライダー
-
-    private Rigidbody2D rb;
-    private Animator animator;
-
     private float actionTimer = 0f;
     private bool isMovingState = false;
-    private bool isFacingRight = true;
-    private bool isDead = false;
 
-    private void Awake()
+    protected override void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        base.Awake();
         
         // 無重力として扱うため重力を0にする
         rb.gravityScale = 0f;
@@ -85,42 +74,5 @@ public class FishAController : MonoBehaviour
         
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("IsMoving", false);
-    }
-
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-    }
-
-    public void Die()
-    {
-        if (isDead) return;
-        
-        isDead = true;
-        
-        // 死亡アニメーション（Trigger）を再生
-        animator.SetTrigger("Die");
-        
-        // 移動を停止
-        rb.linearVelocity = Vector2.zero;
-        
-        // 必要に応じて当たり判定や物理演算を無効化
-        if (deathColliders != null)
-        {
-            foreach (var col in deathColliders)
-            {
-                if (col != null)
-                {
-                    col.enabled = false;
-                }
-            }
-        }
-        rb.bodyType = RigidbodyType2D.Kinematic;
-
-        // 一定時間後にオブジェクトを破棄
-        Destroy(gameObject, destroyDelay);
     }
 }
