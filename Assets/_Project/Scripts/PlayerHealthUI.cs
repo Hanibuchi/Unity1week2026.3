@@ -13,6 +13,10 @@ public class PlayerHealthUI : UIView
     [Tooltip("空のハートのプレハブ")]
     [SerializeField] private GameObject emptyHeartPrefab;
 
+    [Header("Item Collection UI")]
+    [Tooltip("回復アイテムの収集状況を示すImage (Image TypeをFilledに設定)")]
+    [SerializeField] private Image healItemProgressImage;
+
     private void Start()
     {
         if (PlayerHealth.Instance != null)
@@ -21,6 +25,7 @@ public class PlayerHealthUI : UIView
             UpdateHealthUI(PlayerHealth.Instance.CurrentHealth, PlayerHealth.Instance.MaxHealth);
             // イベントの購読
             PlayerHealth.Instance.OnHealthChanged.AddListener(UpdateHealthUI);
+            PlayerHealth.Instance.OnHealItemProgressChanged.AddListener(UpdateHealItemProgressUI);
         }
         else
         {
@@ -34,6 +39,7 @@ public class PlayerHealthUI : UIView
         if (PlayerHealth.Instance != null)
         {
             PlayerHealth.Instance.OnHealthChanged.RemoveListener(UpdateHealthUI);
+            PlayerHealth.Instance.OnHealItemProgressChanged.RemoveListener(UpdateHealItemProgressUI);
         }
     }
 
@@ -59,6 +65,17 @@ public class PlayerHealthUI : UIView
         {
             GameObject prefabToInstantiate = (i < currentHealth) ? fullHeartPrefab : emptyHeartPrefab;
             Instantiate(prefabToInstantiate, heartContainer);
+        }
+    }
+
+    /// <summary>
+    /// アイテムの収集度合いに合わせてImageのFill amountを更新する
+    /// </summary>
+    public void UpdateHealItemProgressUI(int currentCount, int maxRequiredCount)
+    {
+        if (healItemProgressImage != null && maxRequiredCount > 0)
+        {
+            healItemProgressImage.fillAmount = (float)currentCount / maxRequiredCount;
         }
     }
 }

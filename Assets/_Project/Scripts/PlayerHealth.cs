@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent<int, int> OnHealthChanged; // Current HP, Max HP
+    public UnityEvent<int, int> OnHealItemProgressChanged; // Current Item Count, Required Items
     public UnityEvent OnTakeDamage;
     public UnityEvent OnDie;
 
@@ -92,7 +93,9 @@ public class PlayerHealth : MonoBehaviour
     public void InitializeHealth()
     {
         currentHealth = maxHealth;
+        currentItemCount = 0;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        OnHealItemProgressChanged?.Invoke(currentItemCount, itemsNeededToHeal);
     }
 
     public void TakeDamage(int damageAmount)
@@ -161,6 +164,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             currentItemCount++;
+            OnHealItemProgressChanged?.Invoke(currentItemCount, itemsNeededToHeal);
         }
 
         TryConsumeHealItems();
@@ -173,6 +177,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentItemCount -= itemsNeededToHeal;
             Heal(1);
+            OnHealItemProgressChanged?.Invoke(currentItemCount, itemsNeededToHeal);
         }
     }
 
