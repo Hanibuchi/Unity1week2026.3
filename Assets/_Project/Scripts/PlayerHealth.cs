@@ -36,6 +36,9 @@ public class PlayerHealth : MonoBehaviour
     private bool isInvincible;
     private float invincibilityTimer;
 
+    [Header("Camera Feedback")]
+    [SerializeField] private float damageShakeForce = 0.2f;
+
     [Header("Audio")]
     [SerializeField] private AudioClip damageSE;
     [SerializeField] private AudioClip healItemSE;
@@ -130,6 +133,11 @@ public class PlayerHealth : MonoBehaviour
         SetInvincibility(true);
 
         if (SoundManager.Instance != null && damageSE != null) SoundManager.Instance.PlaySE(damageSE);
+
+        if (CameraController.Instance != null)
+        {
+            CameraController.Instance.ShakeScreen(damageShakeForce);
+        }
 
         OnTakeDamage?.Invoke();
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
