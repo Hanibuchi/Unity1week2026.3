@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1221846317389614132, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
       propertyPath: m_Name
-      value: FishB
+      value: FishB Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2130407570370117516, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
       propertyPath: m_Sprite
@@ -81,10 +81,59 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1221846317389614132, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1376655368901791889}
     - targetCorrespondingSourceObject: {fileID: 527831013023660237, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8043097708054222378}
   m_SourcePrefab: {fileID: 100100000, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
+--- !u!61 &1405213673796327771 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5487954087672089968, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
+  m_PrefabInstance: {fileID: 6893167486590506027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &3718318836597571946 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7796694156129408321, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
+  m_PrefabInstance: {fileID: 6893167486590506027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5718917928055691295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1221846317389614132, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
+  m_PrefabInstance: {fileID: 6893167486590506027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1376655368901791889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718917928055691295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b432f684896ad9f4f8ff13a169c0c9ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishBController
+  destroyDelay: 2
+  deathColliders:
+  - {fileID: 1405213673796327771}
+  - {fileID: 3718318836597571946}
+  moveSpeed: 2
+  moveInterval: 2
+  moveDuration: 1
+  attackSensor: {fileID: 5911469300067946068}
+  attackRange: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  attackWaitTime: 2
+  attackSE: {fileID: 8300000, guid: eacb3d0e4776a8043a6319035df33605, type: 3}
+--- !u!4 &5911469300067946068 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 981979661499275903, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}
+  m_PrefabInstance: {fileID: 6893167486590506027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6411517061461863654 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 527831013023660237, guid: 4ef756e6c77ec694aa095601f4f16dd7, type: 3}

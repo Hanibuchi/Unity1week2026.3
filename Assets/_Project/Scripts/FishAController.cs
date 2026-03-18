@@ -21,7 +21,7 @@ public class FishAController : EnemyController
         actionTimer = moveInterval;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (isDead) return;
 
