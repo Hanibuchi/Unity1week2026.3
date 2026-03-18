@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: attackWaitTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4901588319659164500, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: maxAttackWaitTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901588319659164500, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: minAttackWaitTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5474610925316897073, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Controller
       value: 

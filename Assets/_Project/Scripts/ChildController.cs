@@ -9,7 +9,8 @@ public class ChildController : EnemyController
     public Transform attackSensor;
     public float attackRange = 1f;
     public LayerMask playerLayer;
-    public float attackWaitTime = 2f; // 攻撃後、その場に留まる時間
+    public float minAttackWaitTime = 1f; // 攻撃後、その場に留まる時間の最小値
+    public float maxAttackWaitTime = 3f; // 攻撃後、その場に留まる時間の最大値
 
     [Header("Detection Settings")]
     public float detectionRadius = 10f; // プレイヤーを検知する半径
@@ -73,7 +74,7 @@ public class ChildController : EnemyController
             animator.SetTrigger("Attack");
             
             // 一定時間その場に留まるためのタイマーを設定
-            waitTimer = attackWaitTime;
+            waitTimer = Random.Range(minAttackWaitTime, maxAttackWaitTime);
             
             // その場で停止
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);

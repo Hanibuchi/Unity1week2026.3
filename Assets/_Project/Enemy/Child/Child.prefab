@@ -284,15 +284,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6099374761294450104, guid: 5484f5a237ff19b438aff34a1252c2f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.33, y: 2.43}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!61 &5233973357985706239
 BoxCollider2D:
@@ -331,14 +331,14 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.33, y: 2.43}
+    newSize: {x: 2.33, y: 2.43}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &5473986095862282566
 MonoBehaviour:
@@ -500,7 +500,7 @@ MonoBehaviour:
   deathColliders:
   - {fileID: 2334405066827464195}
   - {fileID: 35804661721294386}
-  dropItemCount: 3
+  dropItemCount: 8
   dropScatterForce: 5
   moveSpeed: 3
   attackSensor: {fileID: 7056271368212769036}
@@ -508,7 +508,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2048
-  attackWaitTime: 2
+  minAttackWaitTime: 2
+  maxAttackWaitTime: 3
   detectionRadius: 8
   attackSE: {fileID: 8300000, guid: 61ab37410671ccf4282a70bf1757272e, type: 3}
 --- !u!114 &2014403066195394580
