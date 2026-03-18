@@ -5,6 +5,8 @@
 - Klee / The Klee Project Authors
 
 ## Sound
+- 魔王魂
+- 効果音ラボ
 - FREE Casual Game SFX Pack / Dustyroom
 
 ## Graphics

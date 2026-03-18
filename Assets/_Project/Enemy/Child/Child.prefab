@@ -411,6 +411,7 @@ MonoBehaviour:
     m_Bits: 2048
   attackWaitTime: 2
   detectionRadius: 8
+  attackSE: {fileID: 8300000, guid: 61ab37410671ccf4282a70bf1757272e, type: 3}
 --- !u!114 &2014403066195394580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 10
   currentHealth: 0
+  damageSE: {fileID: 8300000, guid: b07cc7aef936a3a4189def82b97b85bd, type: 3}
+  dieSE: {fileID: 8300000, guid: 9fb3526d43401ef4baf436cfe80aaccc, type: 3}
 --- !u!95 &5474610925316897073
 Animator:
   serializedVersion: 7

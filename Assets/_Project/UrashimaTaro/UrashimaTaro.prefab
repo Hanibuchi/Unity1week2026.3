@@ -642,6 +642,11 @@ MonoBehaviour:
     canJetDash: 1
     canAttackDown: 1
     canIncreaseAttack: 0
+  jumpSE: {fileID: 0}
+  attackSEs:
+  - {fileID: 8300000, guid: 61ab37410671ccf4282a70bf1757272e, type: 3}
+  - {fileID: 8300000, guid: 9f7fb64d96b85fc4cb1da7659de21af3, type: 3}
+  jetDashSE: {fileID: 8300000, guid: e8b36d02b09012c479ca5b70339d9488, type: 3}
   testAbilities:
     canJetDash: 1
     canAttackDown: 1
@@ -670,6 +675,10 @@ MonoBehaviour:
   pullSpeed: 10
   itemsNeededToHeal: 5
   currentItemCount: 0
+  damageSE: {fileID: 8300000, guid: a8272320612f9d14d932f70fdc368787, type: 3}
+  healItemSE: {fileID: 8300000, guid: fa66daa4f5a661c4a90ffa79c5fc73ed, type: 3}
+  healSE: {fileID: 8300000, guid: 717ad8f7049df524d9d87ab69179c04c, type: 3}
+  dieSE: {fileID: 8300000, guid: aca7f0d5168220b49b6310ebd5fced84, type: 3}
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []

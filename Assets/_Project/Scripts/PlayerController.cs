@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip jumpSE;
-    public AudioClip attackSE;
+    public AudioClip[] attackSEs;
     public AudioClip jetDashSE;
 
     // Components
@@ -162,7 +162,11 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started && !isJetDashing && attackCooldownTimer <= 0)
         {
-            if (SoundManager.Instance != null && attackSE != null) SoundManager.Instance.PlaySE(attackSE);
+            if (SoundManager.Instance != null && attackSEs != null && attackSEs.Length > 0)
+            {
+                AudioClip clip = attackSEs[Random.Range(0, attackSEs.Length)];
+                if (clip != null) SoundManager.Instance.PlaySE(clip);
+            }
 
             if (moveInput.y > 0.5f)
             {
