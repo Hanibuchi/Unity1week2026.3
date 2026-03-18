@@ -10,21 +10,19 @@ public class EnemyHealth : MonoBehaviour
     public AudioClip damageSE;
     public AudioClip dieSE;
 
-    [Header("Fragment Settings")]
-    public string fragmentPrefabPath = "Fragment";
-    [Range(0f, 1f)]
-    public float fragmentSpawnProbability = 0.5f;
-    [Range(0f, 1f)]
-    public float healItemSpawnProbability = 0.25f;
-    public float minFragmentForce = 5f;
-    public float maxFragmentForce = 15f;
-    public float fragmentLifetime = 2f;
+    private static EnemyGlobalSettings globalSettings;
 
-    [Header("Hit Stop Settings")]
-    public float hitStopDuration = 0.05f;
-    [Range(0f, 1f)]
-    public float hitStopTimeScale = 0.05f;
-    public TimeScaleManager.TimeScalePriority hitStopPriority = TimeScaleManager.TimeScalePriority.HitStop;
+    private void Awake()
+    {
+        if (globalSettings == null)
+        {
+            globalSettings = Resources.Load<EnemyGlobalSettings>("EnemyGlobalSettings");
+            if (globalSettings == null)
+            {
+                Debug.LogError("EnemyGlobalSettings not found in Resources folder!");
+            }
+        }
+    }
 
     private void Start()
     {
@@ -57,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
 
         SpawnFragments(hitPosition);
 
-        if (hitStopDuration > 0f)
+        if (globalSettings != null && globalSettings.hitStopDuration > 0f)
         {
             StartCoroutine(HitStopRoutine());
         }
@@ -76,27 +74,29 @@ public class EnemyHealth : MonoBehaviour
 
     private System.Collections.IEnumerator HitStopRoutine()
     {
-        if (TimeScaleManager.Instance != null)
+        if (TimeScaleManager.Instance != null && globalSettings != null)
         {
-            TimeScaleManager.Instance.SetTimeScale(hitStopTimeScale, (int)hitStopPriority, this);
-            yield return new WaitForSecondsRealtime(hitStopDuration);
+            TimeScaleManager.Instance.SetTimeScale(globalSettings.hitStopTimeScale, (int)globalSettings.hitStopPriority, this);
+            yield return new WaitForSecondsRealtime(globalSettings.hitStopDuration);
             TimeScaleManager.Instance.RemoveRequest(this);
         }
     }
 
     private void SpawnFragments(Vector3 position)
     {
-        GameObject prefab = Resources.Load<GameObject>(fragmentPrefabPath);
+        if (globalSettings == null) return;
+
+        GameObject prefab = Resources.Load<GameObject>(globalSettings.fragmentPrefabPath);
         if (prefab != null)
         {
-            while (Random.value < fragmentSpawnProbability)
+            while (Random.value < globalSettings.fragmentSpawnProbability)
             {
                 // ランダムな角度で
                 Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
                 GameObject fragment = Instantiate(prefab, position, randomRotation);
                 
                 // 一定時間後に削除
-                Destroy(fragment, fragmentLifetime);
+                Destroy(fragment, globalSettings.fragmentLifetime);
                 
                 Rigidbody2D rb = fragment.GetComponent<Rigidbody2D>();
                 if (rb != null)
@@ -104,7 +104,7 @@ public class EnemyHealth : MonoBehaviour
                     // ランダムな方向に
                     Vector2 randomDirection = Random.insideUnitCircle.normalized;
                     // ランダムな強さで
-                    float randomForce = Random.Range(minFragmentForce, maxFragmentForce);
+                    float randomForce = Random.Range(globalSettings.minFragmentForce, globalSettings.maxFragmentForce);
                     
                     rb.AddForce(randomDirection * randomForce, ForceMode2D.Impulse);
                     rb.AddTorque(Random.Range(-randomForce, randomForce), ForceMode2D.Impulse);
@@ -115,14 +115,14 @@ public class EnemyHealth : MonoBehaviour
         // 回復アイテムのドロップ数を破片とは独立して計算
         int healItemCount = 0;
 
-        while (Random.value < healItemSpawnProbability)
+        while (Random.value < globalSettings.healItemSpawnProbability)
         {
             healItemCount++;
         }
 
         if (healItemCount > 0 && HealItemDropManager.Instance != null)
         {
-            float averageForce = (minFragmentForce + maxFragmentForce) / 2f;
+            float averageForce = (globalSettings.minFragmentForce + globalSettings.maxFragmentForce) / 2f;
             HealItemDropManager.Instance.DropItemsAtOnce(position, healItemCount, averageForce);
         }
     }
