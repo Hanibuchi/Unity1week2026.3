@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
     [Header("Current Abilities")]
     [SerializeField] private PlayerAbilities currentAbilities;
 
+    [Header("Audio")]
+    public AudioClip jumpSE;
+    public AudioClip attackSE;
+    public AudioClip jetDashSE;
+
     // Components
     private Rigidbody2D rb;
     private Animator animator;
@@ -157,6 +162,8 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started && !isJetDashing && attackCooldownTimer <= 0)
         {
+            if (SoundManager.Instance != null && attackSE != null) SoundManager.Instance.PlaySE(attackSE);
+
             if (moveInput.y > 0.5f)
             {
                 animator.SetTrigger("OnAttackUp");
@@ -206,6 +213,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
+            if (SoundManager.Instance != null && jumpSE != null) SoundManager.Instance.PlaySE(jumpSE);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }
@@ -241,7 +249,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void StartJetDash()
-    {
+    {if (SoundManager.Instance != null && jetDashSE != null) SoundManager.Instance.PlaySE(jetDashSE);
+        
         isJetDashing = true;
         jetDashDirection = moveInput.normalized;
         rb.gravityScale = 0f;

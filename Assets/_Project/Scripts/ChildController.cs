@@ -15,6 +15,9 @@ public class ChildController : MonoBehaviour
     [Header("Detection Settings")]
     public float detectionRadius = 10f; // プレイヤーを検知する半径
 
+    [Header("Audio")]
+    public AudioClip attackSE;
+
     private Rigidbody2D rb;
     private Animator animator;
     private Transform player;
@@ -78,6 +81,15 @@ public class ChildController : MonoBehaviour
             // その場で停止
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetBool("IsMoving", false);
+        }
+    }
+
+    // アニメーションイベントから呼び出す用
+    public void PlayAttackSE()
+    {
+        if (SoundManager.Instance != null && attackSE != null)
+        {
+            SoundManager.Instance.PlaySE(attackSE);
         }
     }
 

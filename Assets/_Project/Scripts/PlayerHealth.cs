@@ -36,6 +36,12 @@ public class PlayerHealth : MonoBehaviour
     private bool isInvincible;
     private float invincibilityTimer;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip damageSE;
+    [SerializeField] private AudioClip healItemSE;
+    [SerializeField] private AudioClip healSE;
+    [SerializeField] private AudioClip dieSE;
+
     [Header("Events")]
     public UnityEvent<int, int> OnHealthChanged; // Current HP, Max HP
     public UnityEvent<int, int> OnHealItemProgressChanged; // Current Item Count, Required Items
@@ -107,6 +113,8 @@ public class PlayerHealth : MonoBehaviour
 
         SetInvincibility(true);
 
+        if (SoundManager.Instance != null && damageSE != null) SoundManager.Instance.PlaySE(damageSE);
+
         OnTakeDamage?.Invoke();
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
@@ -126,6 +134,8 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0 || healAmount <= 0) return;
 
         currentHealth += healAmount;
+        if (SoundManager.Instance != null && healSE != null) SoundManager.Instance.PlaySE(healSE);
+
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
@@ -133,6 +143,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
         OnDie?.Invoke();
         // 死亡時の処理はOnDieイベントに登録して外部で制御できるようにしています。
         // 必要に応じてここに直接記述しても問題ありません。
@@ -155,7 +166,9 @@ public class PlayerHealth : MonoBehaviour
     private void CollectHealItem(GameObject itemObj)
     {
         Destroy(itemObj); // アイテムを削除
-        
+        if (SoundManager.Instance != null && healItemSE != null) SoundManager.Instance.PlaySE(healItemSE);
+
+
         // 体力が最大の時に、規定数を超えてアイテムをストックしないように制限
         if (currentHealth >= maxHealth && currentItemCount >= itemsNeededToHeal)
         {

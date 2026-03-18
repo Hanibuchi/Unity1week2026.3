@@ -6,6 +6,10 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 10;
     public int currentHealth;
 
+    [Header("Audio")]
+    public AudioClip damageSE;
+    public AudioClip dieSE;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -28,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        if (SoundManager.Instance != null && damageSE != null) SoundManager.Instance.PlaySE(damageSE);
         if (currentHealth <= 0)
         {
             Die();
@@ -35,7 +40,8 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void Die()
-    {
+    {if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
+        
         // 死亡時の処理（例としてオブジェクトを破棄）
         Destroy(gameObject);
     }
