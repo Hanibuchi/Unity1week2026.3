@@ -59,30 +59,14 @@ public abstract class EnemyController : MonoBehaviour
     {
         if (dropItemCount <= 0) return;
 
-        // Resourcesフォルダー内から"HealItem"이라는名前のプレハブを取得（必要に応じてパスを変更してください）
-        GameObject healItemPrefab = Resources.Load<GameObject>("HealItem");
-        if (healItemPrefab == null)
+        // ドロップ管理のシングルトンを利用して0.1秒間隔でドロップさせる
+        if (HealItemDropManager.Instance != null)
         {
-            Debug.LogWarning("HealItem prefab not found in Resources folder.");
-            return;
+            HealItemDropManager.Instance.DropItems(transform.position, dropItemCount, dropScatterForce);
         }
-
-        for (int i = 0; i < dropItemCount; i++)
+        else
         {
-            // アイテムを生成
-            GameObject item = Instantiate(healItemPrefab, transform.position, Quaternion.identity);
-
-            // Rigidbody2Dがあれば散らばらせる
-            Rigidbody2D itemRb = item.GetComponent<Rigidbody2D>();
-            if (itemRb != null)
-            {
-                // ランダムな方向（上方向が強め）を計算
-                Vector2 randomDir = Random.insideUnitCircle.normalized;
-                randomDir.y = Mathf.Abs(randomDir.y) + 0.5f; // 上方向に補正
-                randomDir.Normalize();
-
-                itemRb.AddForce(randomDir * dropScatterForce, ForceMode2D.Impulse);
-            }
+            Debug.LogWarning("HealItemDropManager object could not be found. Please add it to your scene.");
         }
     }
 
