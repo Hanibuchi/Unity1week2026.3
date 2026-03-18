@@ -122,6 +122,11 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
+        if (animator != null)
+        {
+            animator.SetTrigger("Damage");
+        }
+
         SetInvincibility(true);
 
         if (SoundManager.Instance != null && damageSE != null) SoundManager.Instance.PlaySE(damageSE);
