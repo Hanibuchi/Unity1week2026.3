@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2014403066195394580, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Size.y
@@ -150,13 +150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdb8e933b37c794cbac63ced67a2a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishAController
-  moveSpeed: 2
-  moveInterval: 2
-  moveDuration: 1
   destroyDelay: 2
   deathColliders:
   - {fileID: 5487954087672089968}
   - {fileID: 7796694156129408321}
+  moveSpeed: 2
+  moveInterval: 2
+  moveDuration: 1
 --- !u!61 &5487954087672089968 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
