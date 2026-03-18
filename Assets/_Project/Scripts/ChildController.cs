@@ -17,6 +17,7 @@ public class ChildController : EnemyController
 
     [Header("Audio")]
     public AudioClip attackSE;
+    public float attackScreenShakeForce = 0f;
 
     private Transform player;
 
@@ -88,6 +89,11 @@ public class ChildController : EnemyController
         if (SoundManager.Instance != null && attackSE != null)
         {
             SoundManager.Instance.PlaySE(attackSE);
+        }
+
+        if (attackScreenShakeForce > 0f && CameraController.Instance != null)
+        {
+            CameraController.Instance.ShakeScreen(attackScreenShakeForce);
         }
     }
 
