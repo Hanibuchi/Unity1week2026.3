@@ -552,7 +552,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -291030165
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2882307768427108894, guid: 9d90a00a3f395d5489547bbeb1817879, type: 3}
@@ -639,7 +639,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   currentAbilities:
-    canJetDash: 1
+    canJetDash: 0
     canAttackDown: 1
     canIncreaseAttack: 0
   jumpSE: {fileID: 0}
@@ -675,7 +675,7 @@ MonoBehaviour:
   pullSpeed: 10
   itemsNeededToHeal: 5
   currentItemCount: 0
-  damageSE: {fileID: 8300000, guid: a8272320612f9d14d932f70fdc368787, type: 3}
+  damageSE: {fileID: 8300000, guid: aaa791ca9bf58a64facc69128719af8c, type: 3}
   healItemSE: {fileID: 8300000, guid: fa66daa4f5a661c4a90ffa79c5fc73ed, type: 3}
   healSE: {fileID: 8300000, guid: 717ad8f7049df524d9d87ab69179c04c, type: 3}
   dieSE: {fileID: 8300000, guid: aca7f0d5168220b49b6310ebd5fced84, type: 3}

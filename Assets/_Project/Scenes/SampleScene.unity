@@ -2391,10 +2391,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UrashimaTaro
       objectReference: {fileID: 0}
-    - target: {fileID: 7563285360964288756, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
-      propertyPath: currentAbilities.canJetDash
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9174020439868125373, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

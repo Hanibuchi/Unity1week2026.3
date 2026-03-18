@@ -9,11 +9,11 @@ AnimatorOverrideController:
   m_Name: FishB
   m_Controller: {fileID: 9100000, guid: 110caed498bd7f64bb14effd0e0a9e21, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 6595c1cedc016044d904e6d60be5bc8f, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: bfd40fc86f4ae444b9c43c204eeccb8d, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 371d399cf5c3ba347b87146b7f26038b, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: cbe0e3b8b14b9474985a77c3cfa48cba, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: af1e3060dccf9e946afc587f7dd219fe, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fd72aded1310e524b8652520b54196b8, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 2b9b3f9a62212e443a8efb2ca3b539b3, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: ccd30ea4a63baa94b9d6dfb8062f0642, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 10cf2709963413e4096766ab4faf77bd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bfd40fc86f4ae444b9c43c204eeccb8d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 44424950661b77f40a812deaf0a4f3be, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: f938738385f443b4b8e6df8d9d12e5bb, type: 2}
