@@ -6,6 +6,7 @@ public class PlayerAbilities
 {
     public bool canJetDash;
     public bool canAttackDown;
+    public bool canIncreaseAttack;
 }
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
@@ -15,12 +16,15 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 8f;
     public float jumpForce = 15f;
 
+    [Header("Attacks Settings")]
+    public PlayerAttack[] playerAttacks;
+
     [Header("Recoil Settings")]
     public float recoilForceNormal = 5f;
     public float recoilForceUp = 5f;
     public float recoilForceDown = 8f;
     public float recoilDuration = 0.15f;
-    
+
     [Header("Attack Settings")]
     public float attackCooldown = 0.5f;
 
@@ -108,6 +112,17 @@ public class PlayerController : MonoBehaviour
     public void UpdateAbilities(PlayerAbilities newAbilities)
     {
         currentAbilities = newAbilities;
+
+        if (currentAbilities.canIncreaseAttack && playerAttacks != null)
+        {
+            foreach (var attack in playerAttacks)
+            {
+                if (attack != null)
+                {
+                    attack.IncreaseAttack();
+                }
+            }
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -126,7 +141,7 @@ public class PlayerController : MonoBehaviour
         else if (context.canceled)
         {
             isJumpButtonHeld = false;
-            
+
             if (isJetDashing)
             {
                 StopJetDash();
@@ -278,7 +293,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimations()
     {
         if (animator == null) return;
-        
+
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetBool("IsMoving", Mathf.Abs(moveInput.x) > 0.1f);
 
@@ -305,5 +320,16 @@ public class PlayerController : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
+    }
+
+    public PlayerAbilities testAbilities = new PlayerAbilities
+    {
+        canJetDash = true,
+        canAttackDown = true,
+        canIncreaseAttack = true
+    };
+    public void TestAbilityChange()
+    {
+        UpdateAbilities(testAbilities);
     }
 }

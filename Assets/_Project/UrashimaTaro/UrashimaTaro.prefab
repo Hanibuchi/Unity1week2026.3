@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4176362632249098406, guid: 5484f5a237ff19b438aff34a1252c2f2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -258,6 +258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   damage: 4
+  increasedDamage: 6
+  attackSpriteRenderer: {fileID: 7320735421328334214}
+  increasedAttackColor: {r: 0.5, g: 0.5, b: 1, a: 0.8}
   onHitEnemy:
     m_PersistentCalls:
       m_Calls:
@@ -358,7 +361,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4176362632249098406, guid: 5484f5a237ff19b438aff34a1252c2f2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -453,6 +456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   damage: 4
+  increasedDamage: 6
+  attackSpriteRenderer: {fileID: 3115179205393059583}
+  increasedAttackColor: {r: 0.5, g: 0.5, b: 1, a: 0.8}
   onHitEnemy:
     m_PersistentCalls:
       m_Calls:
@@ -615,6 +621,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 8
   jumpForce: 15
+  playerAttacks:
+  - {fileID: 6006970002414643382}
+  - {fileID: 1553443396098428030}
+  - {fileID: 907129246344946672}
   recoilForceNormal: 5
   recoilForceUp: 5
   recoilForceDown: 8
@@ -631,6 +641,11 @@ MonoBehaviour:
   currentAbilities:
     canJetDash: 1
     canAttackDown: 1
+    canIncreaseAttack: 0
+  testAbilities:
+    canJetDash: 1
+    canAttackDown: 1
+    canIncreaseAttack: 1
 --- !u!114 &4508679359314592312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,7 +930,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4176362632249098406, guid: 5484f5a237ff19b438aff34a1252c2f2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1010,6 +1025,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   damage: 4
+  increasedDamage: 6
+  attackSpriteRenderer: {fileID: 3767275676105788976}
+  increasedAttackColor: {r: 0.5, g: 0.5, b: 1, a: 0.8}
   onHitEnemy:
     m_PersistentCalls:
       m_Calls:

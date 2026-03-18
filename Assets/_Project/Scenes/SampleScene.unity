@@ -272,9 +272,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1670377901}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Test_ShowSettings
+      - m_Target: {fileID: 1827935192}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: TestAbilityChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1467,6 +1467,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1827935192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7563285360964288756, guid: 03f4464aafa236e4eb6658370bf62c5a, type: 3}
+  m_PrefabInstance: {fileID: 8012238634189793773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107848ad1f6315443a1aa9ce79322294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &2129827055
 GameObject:
   m_ObjectHideFlags: 0
