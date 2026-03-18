@@ -154,4 +154,16 @@ MonoBehaviour:
   moveInterval: 2
   moveDuration: 1
   destroyDelay: 2
-  deathColliders: []
+  deathColliders:
+  - {fileID: 5487954087672089968}
+  - {fileID: 7796694156129408321}
+--- !u!61 &5487954087672089968 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+  m_PrefabInstance: {fileID: 7803709152299479923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &7796694156129408321 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 35804661721294386, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+  m_PrefabInstance: {fileID: 7803709152299479923}
+  m_PrefabAsset: {fileID: 0}

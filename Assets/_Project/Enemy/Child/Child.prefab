@@ -566,7 +566,9 @@ MonoBehaviour:
   detectionRadius: 8
   attackSE: {fileID: 8300000, guid: 61ab37410671ccf4282a70bf1757272e, type: 3}
   destroyDelay: 2
-  deathCollider: {fileID: 2334405066827464195}
+  deathColliders:
+  - {fileID: 2334405066827464195}
+  - {fileID: 35804661721294386}
 --- !u!114 &2014403066195394580
 MonoBehaviour:
   m_ObjectHideFlags: 0

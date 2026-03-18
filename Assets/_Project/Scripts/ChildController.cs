@@ -20,7 +20,7 @@ public class ChildController : MonoBehaviour
 
     [Header("Death Settings")]
     public float destroyDelay = 2f; // 死亡後に破棄されるまでの時間
-    public Collider2D deathCollider; // 死亡時に無効化するコライダー
+    public Collider2D[] deathColliders; // 死亡時に無効化する複数のコライダー
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -164,9 +164,15 @@ public class ChildController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         
         // 必要に応じて当たり判定や物理演算を無効化
-        if (deathCollider != null)
+        if (deathColliders != null)
         {
-            deathCollider.enabled = false;
+            foreach (var col in deathColliders)
+            {
+                if (col != null)
+                {
+                    col.enabled = false;
+                }
+            }
         }
         rb.bodyType = RigidbodyType2D.Kinematic;
 
