@@ -808,6 +808,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 745094067030564161, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 832523169156223047, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 832523169156223047, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 832523169156223047, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 490
+      objectReference: {fileID: 0}
+    - target: {fileID: 832523169156223047, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -454
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151727163444503091, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151727163444503091, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151727163444503091, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 490
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151727163444503091, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -136
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634673367019279597, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634673367019279597, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634673367019279597, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 490
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634673367019279597, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -368
+      objectReference: {fileID: 0}
     - target: {fileID: 6249462901967347219, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -887,6 +939,22 @@ PrefabInstance:
     - target: {fileID: 6249462901967347219, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422761826348390285, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422761826348390285, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422761826348390285, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 490
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422761826348390285, guid: c2ce45e8c7794b94590109a55d7891b5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -252
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1787,6 +1855,7 @@ GameObject:
   - component: {fileID: 1505564957}
   - component: {fileID: 1505564956}
   - component: {fileID: 1505564958}
+  - component: {fileID: 1505564959}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -1807,6 +1876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   virtualCamera: {fileID: 1282475760}
+  targetGroup: {fileID: 1505564959}
   impulseSource: {fileID: 1505564958}
 --- !u!4 &1505564957
 Transform:
@@ -1876,6 +1946,23 @@ MonoBehaviour:
     DissipationDistance: 100
     PropagationSpeed: 343
   DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &1505564959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505564955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5eb80d8e62d9d145bb50fb783c0f731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineTargetGroup
+  PositionMode: 0
+  RotationMode: 0
+  UpdateMethod: 2
+  Targets: []
+  m_LegacyTargets: []
 --- !u!114 &1600436196 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4371986189789028485, guid: 09a18e2cb7e84d942ad8becf400588c9, type: 3}

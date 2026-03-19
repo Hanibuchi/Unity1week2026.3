@@ -56,9 +56,23 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
                 bool playerShouldFaceRight = npcFacingDir < 0;
 
                 PlayerController.Instance.SetPositionAndFacing(targetPos, playerShouldFaceRight);
+                
+                // カメラにNPCの親または自身と、プレイヤーを両方映す
+                if (CameraController.Instance != null)
+                {
+                    Transform npcTarget = transform.parent != null ? transform.parent : transform;
+                    CameraController.Instance.SetMultipleTargets(npcTarget, PlayerController.Instance.transform);
+                }
             }
 
-            DialogueManager.Instance.StartDialogue(dialogueNodes);
+            DialogueManager.Instance.StartDialogue(dialogueNodes, () =>
+            {
+                // 会話終了時にカメラターゲットをプレイヤーに戻す
+                if (CameraController.Instance != null && PlayerController.Instance != null)
+                {
+                    CameraController.Instance.SetTrackingTarget(PlayerController.Instance.transform);
+                }
+            });
         }
     }
 }

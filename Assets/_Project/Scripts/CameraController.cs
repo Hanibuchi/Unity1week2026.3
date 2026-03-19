@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
 
     [Header("Cinemachine Settings")]
     [SerializeField] private CinemachineCamera virtualCamera;
+    [SerializeField] private CinemachineTargetGroup targetGroup;
     
     [Header("Screen Shake Settings")]
     [SerializeField] private CinemachineImpulseSource impulseSource;
@@ -62,6 +63,11 @@ public class CameraController : MonoBehaviour
         {
             impulseSource = GetComponent<CinemachineImpulseSource>();
         }
+
+        if (targetGroup == null)
+        {
+            targetGroup = GetComponent<CinemachineTargetGroup>();
+        }
     }
 
     /// <summary>
@@ -73,6 +79,38 @@ public class CameraController : MonoBehaviour
         if (virtualCamera != null)
         {
             virtualCamera.Follow = target;
+        }
+    }
+
+    /// <summary>
+    /// 複数のターゲットをカメラが映すように設定する
+    /// </summary>
+    /// <param name="targets">映したいターゲットのリスト</param>
+    public void SetMultipleTargets(params Transform[] targets)
+    {
+        if (targetGroup != null)
+        {
+            // 既存のターゲットをリセット
+            targetGroup.Targets.Clear();
+
+            // 新しいターゲットを追加
+            foreach (var t in targets)
+            {
+                if (t != null)
+                {
+                    targetGroup.AddMember(t, 1f, 1f);
+                }
+            }
+
+            // カメラのFollowをTargetGroupに設定
+            if (virtualCamera != null)
+            {
+                virtualCamera.Follow = targetGroup.transform;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("CinemachineTargetGroupが設定されていません。");
         }
     }
 
