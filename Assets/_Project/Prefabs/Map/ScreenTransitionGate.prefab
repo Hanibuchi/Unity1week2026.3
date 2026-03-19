@@ -51,6 +51,7 @@ MonoBehaviour:
   nextPlayerSpawnPoint: {fileID: 5338489679611979226}
   fadeOutDuration: 0.5
   fadeInDuration: 0.5
+  transitionSE: {fileID: 8300000, guid: 41602a4d227072d4da77f5e1e6a51db8, type: 3}
 --- !u!61 &5683689963773596270
 BoxCollider2D:
   m_ObjectHideFlags: 0

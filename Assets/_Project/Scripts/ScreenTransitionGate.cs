@@ -23,6 +23,9 @@ public class ScreenTransitionGate : MonoBehaviour
     [SerializeField] private float fadeOutDuration = 0.5f;
     [Tooltip("明転にかかる時間（リアルタイム秒）")]
     [SerializeField] private float fadeInDuration = 0.5f;
+    [Space]
+    [Tooltip("遷移時に再生するSE")]
+    [SerializeField] private AudioClip transitionSE;
 
     private bool _isTransitioning = false;
 
@@ -41,6 +44,11 @@ public class ScreenTransitionGate : MonoBehaviour
     private IEnumerator TransitionRoutine(Transform playerTransform)
     {
         _isTransitioning = true;
+
+        if (transitionSE != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySE(transitionSE);
+        }
 
         // 1. ゲーム時間を停止 (TimeScale = 0)
         if (TimeScaleManager.Instance != null)
@@ -75,12 +83,12 @@ public class ScreenTransitionGate : MonoBehaviour
             playerTransform.rotation = nextPlayerSpawnPoint.rotation;
         }
 
-        // --- カメラなどを更新させるため、一瞬だけ時間を動かす ---
+        // --- カメラなどを更新させるため、少しだけ時間を動かす ---
         if (TimeScaleManager.Instance != null)
         {
             TimeScaleManager.Instance.RemoveRequest(this);
         }
-        yield return null; // 1フレーム進めて各種Update（Cinemachine等）を走らせる
+        yield return new WaitForSecondsRealtime(0.1f); // 0.1秒進めて各種Update（Cinemachine等）をしっかり走らせる
         if (TimeScaleManager.Instance != null)
         {
             TimeScaleManager.Instance.SetTimeScale(0f, (int)TimeScaleManager.TimeScalePriority.System, this);
