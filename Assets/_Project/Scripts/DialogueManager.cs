@@ -41,7 +41,6 @@ public class DialogueManager : MonoBehaviour
 
     /// <summary>
     /// セリフのシーケンスの再生を開始します。
-    /// 再生中は TimeScale を 0 にして時間を止めます。
     /// </summary>
     public void StartDialogue(List<DialogueNode> nodes, Action onComplete = null)
     {
@@ -49,9 +48,6 @@ public class DialogueManager : MonoBehaviour
 
         isPlaying = true;
         onSequenceComplete = onComplete;
-
-        // 時間を止める
-        TimeScaleManager.Instance.SetTimeScale(0f, (int)TimeScaleManager.TimeScalePriority.Menu, this);
 
         // プレイヤーの操作を無効化する
         if (PlayerController.Instance != null)
@@ -136,9 +132,6 @@ public class DialogueManager : MonoBehaviour
 
         // ダイアログUIを非表示にする
         UIManager.Instance.Hide<DialogueUI>();
-
-        // 時間の停止を解除する
-        TimeScaleManager.Instance.RemoveRequest(this);
 
         // プレイヤーの操作を有効化する
         if (PlayerController.Instance != null)
