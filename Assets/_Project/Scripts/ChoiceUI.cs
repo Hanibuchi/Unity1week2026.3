@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class ChoiceUI : MonoBehaviour
@@ -30,6 +31,13 @@ public class ChoiceUI : MonoBehaviour
 
         if (choice1Text != null) choice1Text.text = choice1;
         if (choice2Text != null) choice2Text.text = choice2;
+
+        // choice1のボタンを最初に選択された状態にする
+        if (choice1Button != null && EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(choice1Button.gameObject);
+        }
 
         // イベントリスナーを一度クリアして付け直す
         if (choice1Button != null)
