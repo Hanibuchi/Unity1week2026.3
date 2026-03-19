@@ -45,6 +45,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip healSE;
     [SerializeField] private AudioClip dieSE;
 
+    [Header("Death Effects")]
+    [SerializeField] private GameObject deathFragmentPrefab;
+    [SerializeField] private int fragmentCount = 15;
+    [SerializeField] private float fragmentForce = 10f;
+    [SerializeField] private int deathHealItemCount = 15;
+    [SerializeField] private float healItemForce = 10f;
+
     [Header("Events")]
     public UnityEvent<int, int> OnHealthChanged; // Current HP, Max HP
     public UnityEvent<int, int> OnHealItemProgressChanged; // Current Item Count, Required Items
@@ -168,9 +175,46 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
+
+        // 大量の破片を出す
+        if (deathFragmentPrefab != null)
+        {
+            for (int i = 0; i < fragmentCount; i++)
+            {
+                Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
+                GameObject fragment = Instantiate(deathFragmentPrefab, transform.position, randomRotation);
+                
+                Rigidbody2D frb = fragment.GetComponent<Rigidbody2D>();
+                if (frb != null)
+                {
+                    // ランダムな方向と力で散らす
+                    Vector2 randomDir = Random.insideUnitCircle.normalized;
+                    frb.AddForce(randomDir * fragmentForce, ForceMode2D.Impulse);
+                    frb.AddTorque(Random.Range(-fragmentForce, fragmentForce), ForceMode2D.Impulse);
+                }
+                
+                // 一定時間で破片を消去する
+                Destroy(fragment, 3f);
+            }
+        }
+
+        // 回復アイテムを大量にドロップする
+        // （Enemy側のHealItemDropManagerが配置されている想定）
+        if (HealItemDropManager.Instance != null && deathHealItemCount > 0)
+        {
+            HealItemDropManager.Instance.DropItemsAtOnce(transform.position, deathHealItemCount, healItemForce);
+        }
+
+        // ゲームステートをGameOverへ遷移
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
+        }
+
         OnDie?.Invoke();
-        // 死亡時の処理はOnDieイベントに登録して外部で制御できるようにしています。
-        // 必要に応じてここに直接記述しても問題ありません。
+
+        // プレイヤーオブジェクトを非アクティブにする
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1872,6 +1872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1603cc04ed1e34fa92a0dd803265df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  gameOverWaitTime: 1
+  systemSpeakerSprite: {fileID: -522367714226421056, guid: 877bd21a0e3281549af5fddbb7d01ab3, type: 3}
 --- !u!4 &1377339425
 Transform:
   m_ObjectHideFlags: 0

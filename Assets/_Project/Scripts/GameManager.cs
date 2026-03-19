@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -20,6 +21,10 @@ public class GameManager : MonoBehaviour
 
     // ステートが変更されたときに呼ばれるイベント
     public event Action<GameState> OnGameStateChanged;
+
+    [Header("Game Over Settings")]
+    [SerializeField] private float gameOverWaitTime = 3.0f;
+    [SerializeField] private Sprite systemSpeakerSprite;
 
     private void Awake()
     {
@@ -90,8 +95,9 @@ public class GameManager : MonoBehaviour
                 if (PlayerController.Instance != null) PlayerController.Instance.SetControlEnabled(false, PlayerController.ControlPriority.System, this);
                 break;
             case GameState.GameOver:
-                Time.timeScale = 0f;
+                Time.timeScale = 1f; // ゲームオーバー時は時間を止めない
                 if (PlayerController.Instance != null) PlayerController.Instance.SetControlEnabled(false, PlayerController.ControlPriority.System, this);
+                StartCoroutine(GameOverSequence());
                 break;
             case GameState.GameClear:
                 Time.timeScale = 0f;
@@ -123,6 +129,44 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// ゲームオーバー時の進行処理（一定時間待機→ダイアログ→ロード画面）
+    /// </summary>
+    private IEnumerator GameOverSequence()
+    {
+        // 破片などが飛び散るのを一定時間見せる
+        yield return new WaitForSeconds(gameOverWaitTime);
+
+        // ゲームオーバーダイアログの設定
+        var gameOverNode = new DialogueNode
+        {
+            speakerSprite = systemSpeakerSprite,
+            speakerName = "システム",
+            text = "死んでしまった...",
+            hasChoices = false
+        };
+
+        // ダイアログを表示し、終了後にロードメニューを開く
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.StartDialogue(new List<DialogueNode> { gameOverNode }, () =>
+            {
+                if (SaveManager.Instance != null)
+                {
+                    SaveManager.Instance.OpenLoadMenu();
+                }
+            });
+        }
+        else
+        {
+            // DialogueManagerがないフォールバック
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.OpenLoadMenu();
+            }
+        }
+    }
+
+    /// <summary>
     /// セーブデータからロードしてゲームを復帰させます
     /// </summary>
     /// <param name="slotNumber">ロードするスロット番号</param>
@@ -148,6 +192,16 @@ public class GameManager : MonoBehaviour
             var savePoint = SaveTriggerManager.Instance.GetSaveTriggerByLocationName(locationName);
             if (savePoint != null && PlayerController.Instance != null)
             {
+                // ゲームオーバーで非アクティブになっている場合を考慮してアクティブに戻す
+                PlayerController.Instance.gameObject.SetActive(true);
+                
+                // 体力などの再初期化を行う
+                var playerHealth = PlayerController.Instance.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.InitializeHealth();
+                }
+
                 // Z座標はプレイヤーのものを維持するために、XとYのみ更新します（Zズレによる消失防止）
                 Vector3 newPos = savePoint.transform.position;
                 newPos.z = PlayerController.Instance.transform.position.z;
