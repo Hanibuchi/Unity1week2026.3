@@ -1297,6 +1297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
   CurrentPlayTime: 0
   CurrentLocation: ---
+  systemSpeakerSprite: {fileID: -522367714226421056, guid: 877bd21a0e3281549af5fddbb7d01ab3, type: 3}
   testLocation: "\u30C6\u30B9\u30C8\u306E\u5834\u6240"
 --- !u!4 &1169958027
 Transform:

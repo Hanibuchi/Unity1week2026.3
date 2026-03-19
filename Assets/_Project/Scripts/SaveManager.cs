@@ -20,6 +20,10 @@ public class SaveManager : MonoBehaviour
     [Tooltip("現在のセーブ場所（UI表示用）")]
     public string CurrentLocation = "---";
 
+    [Header("Dialogue UI Settings")]
+    [Tooltip("システムメッセージ用（セーブ・ロード等）のスピーカー画像")]
+    [SerializeField] private Sprite systemSpeakerSprite;
+
     private void Awake()
     {
         if (Instance == null)
@@ -102,6 +106,7 @@ public class SaveManager : MonoBehaviour
             // データがない場合のメッセージ
             var noDataNode = new DialogueNode
             {
+                speakerSprite = systemSpeakerSprite,
                 speakerName = "システム",
                 text = $"スロット{slotNumber}にはセーブデータがありません。",
                 hasChoices = false
@@ -112,6 +117,7 @@ public class SaveManager : MonoBehaviour
 
         var loadExecuteNode = new DialogueNode
         {
+            speakerSprite = systemSpeakerSprite,
             speakerName = "システム",
             text = "ロードしました。",
             hasChoices = false,
@@ -125,6 +131,7 @@ public class SaveManager : MonoBehaviour
 
         var confirmNode = new DialogueNode
         {
+            speakerSprite = systemSpeakerSprite,
             speakerName = "システム",
             text = $"スロット{slotNumber}をロードしますか？",
             hasChoices = true,
@@ -142,6 +149,7 @@ public class SaveManager : MonoBehaviour
         // --- 実行ノード ---
         var saveExecuteNode = new DialogueNode
         {
+            speakerSprite = systemSpeakerSprite,
             speakerName = "システム",
             text = "セーブしました。",
             hasChoices = false,
@@ -159,6 +167,7 @@ public class SaveManager : MonoBehaviour
 
         var loadExecuteNode = new DialogueNode
         {
+            speakerSprite = systemSpeakerSprite,
             speakerName = "システム",
             text = "ロードしました。",
             hasChoices = false,
@@ -173,6 +182,7 @@ public class SaveManager : MonoBehaviour
         // --- 確認ノード ---
         var saveConfirmNode = new DialogueNode
         {
+            speakerSprite = systemSpeakerSprite,
             speakerName = "システム",
             text = $"スロット{slotNumber}にセーブしますか？\n(上書きされます)",
             hasChoices = true,
@@ -187,6 +197,7 @@ public class SaveManager : MonoBehaviour
         {
             loadConfirmNode = new DialogueNode
             {
+                speakerSprite = systemSpeakerSprite,
                 speakerName = "システム",
                 text = $"スロット{slotNumber}をロードしますか？",
                 hasChoices = true,
@@ -200,6 +211,7 @@ public class SaveManager : MonoBehaviour
         {
             loadConfirmNode = new DialogueNode
             {
+                speakerSprite = systemSpeakerSprite,
                 speakerName = "システム",
                 text = $"スロット{slotNumber}にはセーブデータがありません。",
                 hasChoices = false
@@ -209,6 +221,7 @@ public class SaveManager : MonoBehaviour
         // --- 最初の選択ノード ---
         var firstNode = new DialogueNode
         {
+            speakerSprite = systemSpeakerSprite,
             speakerName = "システム",
             text = $"スロット{slotNumber}が選択されました。\nセーブしますか？ロードしますか？",
             hasChoices = true,
