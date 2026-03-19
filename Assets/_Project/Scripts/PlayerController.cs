@@ -12,6 +12,8 @@ public class PlayerAbilities
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; }
+
     [Header("Movement Settings")]
     public float moveSpeed = 8f;
     public float jumpForce = 15f;
@@ -68,8 +70,20 @@ public class PlayerController : MonoBehaviour
     private bool isJetDepleted;
     private float recoilTimer;
 
+    // Control flag
+    private bool canControl = true;
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         defaultGravityScale = rb.gravityScale;
@@ -99,6 +113,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canControl)
+        {
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            return;
+        }
+
         if (isJetDashing)
         {
             rb.linearVelocity = jetDashDirection * jetDashSpeed;
@@ -132,11 +152,18 @@ public class PlayerController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!canControl)
+        {
+            moveInput = Vector2.zero;
+            return;
+        }
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (!canControl) return;
+
         if (context.started)
         {
             isJumpButtonHeld = true;
@@ -160,6 +187,8 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
+        if (!canControl) return;
+
         if (context.started && !isJetDashing && attackCooldownTimer <= 0)
         {
             if (SoundManager.Instance != null && attackSEs != null && attackSEs.Length > 0)
@@ -187,9 +216,21 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
+        if (!canControl) return;
+
         if (context.started && isGrounded && !isJetDashing)
         {
             Debug.Log("Interact triggered");
+        }
+    }
+
+    public void SetControlEnabled(bool isEnabled)
+    {
+        canControl = isEnabled;
+        if (!isEnabled)
+        {
+            moveInput = Vector2.zero;
+            isJumpButtonHeld = false;
         }
     }
 

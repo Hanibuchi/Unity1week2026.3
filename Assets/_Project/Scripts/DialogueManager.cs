@@ -53,6 +53,12 @@ public class DialogueManager : MonoBehaviour
         // 時間を止める
         TimeScaleManager.Instance.SetTimeScale(0f, (int)TimeScaleManager.TimeScalePriority.Menu, this);
 
+        // プレイヤーの操作を無効化する
+        if (PlayerController.Instance != null)
+        {
+            PlayerController.Instance.SetControlEnabled(false);
+        }
+
         StartCoroutine(PlayDialogueSequence(nodes));
     }
 
@@ -133,6 +139,12 @@ public class DialogueManager : MonoBehaviour
 
         // 時間の停止を解除する
         TimeScaleManager.Instance.RemoveRequest(this);
+
+        // プレイヤーの操作を有効化する
+        if (PlayerController.Instance != null)
+        {
+            PlayerController.Instance.SetControlEnabled(true);
+        }
 
         onSequenceComplete?.Invoke();
         onSequenceComplete = null;
