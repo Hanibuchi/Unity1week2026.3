@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class PlayerAbilities
@@ -12,6 +14,14 @@ public class PlayerAbilities
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    public enum ControlPriority
+    {
+        Default = 0,
+        Dialogue = 10,
+        UI = 20,
+        System = 100
+    }
+
     public static PlayerController Instance { get; private set; }
 
     [Header("Movement Settings")]
@@ -75,6 +85,14 @@ public class PlayerController : MonoBehaviour
 
     // Control flag
     private bool canControl = true;
+
+    private class ControlRequest
+    {
+        public bool IsEnabled;
+        public int Priority;
+        public object Owner;
+    }
+    private List<ControlRequest> controlRequests = new List<ControlRequest>();
 
     private void Awake()
     {
@@ -247,10 +265,54 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SetControlEnabled(bool isEnabled)
+    /// <summary>
+    /// 操作可能状態の変更を要求します。すでに同じownerからの要求がある場合は上書きされます。
+    /// 優先度(priority)が最も高い要求が現在の操作状態として適用されます。
+    /// </summary>
+    public void SetControlEnabled(bool isEnabled, ControlPriority priority, object owner)
     {
-        canControl = isEnabled;
-        if (!isEnabled)
+        int priorityValue = (int)priority;
+        var existingRequest = controlRequests.FirstOrDefault(r => r.Owner == owner);
+        if (existingRequest != null)
+        {
+            existingRequest.IsEnabled = isEnabled;
+            existingRequest.Priority = priorityValue;
+        }
+        else
+        {
+            controlRequests.Add(new ControlRequest { IsEnabled = isEnabled, Priority = priorityValue, Owner = owner });
+        }
+
+        ApplyHighestPriorityControl();
+    }
+
+    /// <summary>
+    /// 対象ownerの操作状態変更要求を取り消します。
+    /// </summary>
+    public void RemoveControlRequest(object owner)
+    {
+        int removedCount = controlRequests.RemoveAll(r => r.Owner == owner);
+        if (removedCount > 0 || controlRequests.Count == 0)
+        {
+            ApplyHighestPriorityControl();
+        }
+    }
+
+    private void ApplyHighestPriorityControl()
+    {
+        if (controlRequests.Count == 0)
+        {
+            canControl = true;
+            return;
+        }
+
+        // 最も優先度の高い要求を取得
+        var highestRequest = controlRequests.OrderByDescending(r => r.Priority).First();
+
+        bool wasControlEnabled = canControl;
+        canControl = highestRequest.IsEnabled;
+
+        if (wasControlEnabled && !canControl)
         {
             moveInput = Vector2.zero;
             isJumpButtonHeld = false;

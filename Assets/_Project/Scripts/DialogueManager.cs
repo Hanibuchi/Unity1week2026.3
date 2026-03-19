@@ -56,7 +56,7 @@ public class DialogueManager : MonoBehaviour
         // プレイヤーの操作を無効化する
         if (PlayerController.Instance != null)
         {
-            PlayerController.Instance.SetControlEnabled(false);
+            PlayerController.Instance.SetControlEnabled(false, PlayerController.ControlPriority.Dialogue, this);
         }
 
         StartCoroutine(PlayDialogueSequence(nodes));
@@ -143,7 +143,7 @@ public class DialogueManager : MonoBehaviour
         // プレイヤーの操作を有効化する
         if (PlayerController.Instance != null)
         {
-            PlayerController.Instance.SetControlEnabled(true);
+            PlayerController.Instance.RemoveControlRequest(this);
         }
 
         onSequenceComplete?.Invoke();
