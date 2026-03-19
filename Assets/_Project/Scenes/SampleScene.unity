@@ -4521,6 +4521,10 @@ PrefabInstance:
       value: Otohime
       objectReference: {fileID: 0}
     - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: autoStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: dialogueNodes.Array.data[0].onNodeStart.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}

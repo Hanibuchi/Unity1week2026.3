@@ -8,6 +8,8 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     [SerializeField] private List<DialogueNode> dialogueNodes;
     [Tooltip("会話時にプレイヤーが立つ位置の距離")]
     [SerializeField] private float playerStandOffset = 1.5f;
+    [Tooltip("プレイヤーが範囲に入った時に自動で会話を開始するかどうか")]
+    [SerializeField] private bool autoStart = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,6 +18,11 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
             if (PlayerController.Instance != null)
             {
                 PlayerController.Instance.SetInteractable(this);
+            }
+
+            if (autoStart)
+            {
+                Interact();
             }
         }
     }
