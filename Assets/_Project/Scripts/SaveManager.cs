@@ -7,8 +7,8 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
 
-    // UIを開いたときに「セーブ」目的か「ロード」目的かを判別するため
-    public enum Mode { Save, Load }
+    // UIを開いたときの動作モード
+    public enum Mode { LoadOnly, SaveAndLoad }
     public Mode CurrentMode { get; private set; }
 
     [Header("Game Data")]
@@ -37,12 +37,12 @@ public class SaveManager : MonoBehaviour
     }
 
     /// <summary>
-    /// セーブ画面を開きます
+    /// セーブとロードの両方が可能なメニューを開きます
     /// </summary>
     /// <param name="locationName">保存する場所の名称</param>
-    public void OpenSaveMenu(string locationName)
+    public void OpenSaveAndLoadMenu(string locationName)
     {
-        CurrentMode = Mode.Save;
+        CurrentMode = Mode.SaveAndLoad;
         CurrentLocation = locationName;
         
         if (UIManager.Instance != null)
@@ -56,11 +56,11 @@ public class SaveManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ロード画面を開きます
+    /// ロード専用のメニューを開きます
     /// </summary>
     public void OpenLoadMenu()
     {
-        CurrentMode = Mode.Load;
+        CurrentMode = Mode.LoadOnly;
         if (UIManager.Instance != null)
         {
             UIManager.Instance.Show<SaveUIView>();
@@ -77,22 +77,12 @@ public class SaveManager : MonoBehaviour
     /// <param name="slotNumber">スロット番号(1〜)</param>
     public void OnSlotSelected(int slotNumber)
     {
-        if (CurrentMode == Mode.Save)
+        if (CurrentMode == Mode.SaveAndLoad)
         {
-            // 上書きセーブの処理
-            PerformSave(slotNumber);
-
-            // セーブ完了後にUIでの表示を更新（セーブした時間の反映など）
-            if (UIManager.Instance != null)
-            {
-                var saveUIView = UIManager.Instance.GetView<SaveUIView>();
-                if (saveUIView != null)
-                {
-                    saveUIView.RefreshSlots();
-                }
-            }
+            // TODO: セーブかロードかを選択するUIや処理を呼び出す
+            Debug.Log($"スロット{slotNumber}が選択されました。セーブするかロードするかを選ぶ処理が必要です。");
         }
-        else if (CurrentMode == Mode.Load)
+        else if (CurrentMode == Mode.LoadOnly)
         {
             // データが存在する場合のみロード
             if (FlagManager.HasSaveData(slotNumber))
@@ -178,11 +168,11 @@ public class SaveManager : MonoBehaviour
     }
 
     public string testLocation = "テストの場所";
-    public void TestOpenSaveMenu()
+    public void TestOpenSaveAndLoadMenu()
     {
-        OpenSaveMenu(testLocation);
+        OpenSaveAndLoadMenu(testLocation);
     }
-    public void TestOpenLoadMenu()
+    public void TestOpenLoadOnlyMenu()
     {
         OpenLoadMenu();
     }
