@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class PlayerAbilities
@@ -12,6 +14,16 @@ public class PlayerAbilities
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    public enum ControlPriority
+    {
+        Default = 0,
+        Dialogue = 10,
+        UI = 20,
+        System = 100
+    }
+
+    public static PlayerController Instance { get; private set; }
+
     [Header("Movement Settings")]
     public float moveSpeed = 8f;
     public float jumpForce = 15f;
@@ -68,8 +80,31 @@ public class PlayerController : MonoBehaviour
     private bool isJetDepleted;
     private float recoilTimer;
 
+    // Interaction
+    private IInteractable currentInteractable;
+
+    // Control flag
+    private bool canControl = true;
+
+    private class ControlRequest
+    {
+        public bool IsEnabled;
+        public int Priority;
+        public object Owner;
+    }
+    private List<ControlRequest> controlRequests = new List<ControlRequest>();
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         defaultGravityScale = rb.gravityScale;
@@ -99,6 +134,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canControl)
+        {
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            return;
+        }
+
         if (isJetDashing)
         {
             rb.linearVelocity = jetDashDirection * jetDashSpeed;
@@ -132,11 +173,18 @@ public class PlayerController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!canControl)
+        {
+            moveInput = Vector2.zero;
+            return;
+        }
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (!canControl) return;
+
         if (context.started)
         {
             isJumpButtonHeld = true;
@@ -160,6 +208,8 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
+        if (!canControl) return;
+
         if (context.started && !isJetDashing && attackCooldownTimer <= 0)
         {
             if (SoundManager.Instance != null && attackSEs != null && attackSEs.Length > 0)
@@ -187,9 +237,94 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
+        if (!canControl) return;
+
         if (context.started && isGrounded && !isJetDashing)
         {
-            Debug.Log("Interact triggered");
+            if (currentInteractable != null)
+            {
+                currentInteractable.Interact();
+            }
+            else
+            {
+                Debug.Log("Interact triggered");
+            }
+        }
+    }
+
+    public void SetInteractable(IInteractable interactable)
+    {
+        currentInteractable = interactable;
+    }
+
+    public void RemoveInteractable(IInteractable interactable)
+    {
+        if (currentInteractable == interactable)
+        {
+            currentInteractable = null;
+        }
+    }
+
+    /// <summary>
+    /// 操作可能状態の変更を要求します。すでに同じownerからの要求がある場合は上書きされます。
+    /// 優先度(priority)が最も高い要求が現在の操作状態として適用されます。
+    /// </summary>
+    public void SetControlEnabled(bool isEnabled, ControlPriority priority, object owner)
+    {
+        int priorityValue = (int)priority;
+        var existingRequest = controlRequests.FirstOrDefault(r => r.Owner == owner);
+        if (existingRequest != null)
+        {
+            existingRequest.IsEnabled = isEnabled;
+            existingRequest.Priority = priorityValue;
+        }
+        else
+        {
+            controlRequests.Add(new ControlRequest { IsEnabled = isEnabled, Priority = priorityValue, Owner = owner });
+        }
+
+        ApplyHighestPriorityControl();
+    }
+
+    /// <summary>
+    /// 対象ownerの操作状態変更要求を取り消します。
+    /// </summary>
+    public void RemoveControlRequest(object owner)
+    {
+        int removedCount = controlRequests.RemoveAll(r => r.Owner == owner);
+        if (removedCount > 0 || controlRequests.Count == 0)
+        {
+            ApplyHighestPriorityControl();
+        }
+    }
+
+    private void ApplyHighestPriorityControl()
+    {
+        if (controlRequests.Count == 0)
+        {
+            canControl = true;
+            return;
+        }
+
+        // 最も優先度の高い要求を取得
+        var highestRequest = controlRequests.OrderByDescending(r => r.Priority).First();
+
+        bool wasControlEnabled = canControl;
+        canControl = highestRequest.IsEnabled;
+
+        if (wasControlEnabled && !canControl)
+        {
+            moveInput = Vector2.zero;
+            isJumpButtonHeld = false;
+        }
+    }
+
+    public void SetPositionAndFacing(Vector2 newPosition, bool faceRight)
+    {
+        transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+        if (isFacingRight != faceRight)
+        {
+            Flip();
         }
     }
 

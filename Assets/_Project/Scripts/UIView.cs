@@ -5,7 +5,7 @@ using UnityEngine;
 /// </summary>
 public abstract class UIView : MonoBehaviour, IUIView
 {
-    private bool _isVisible = false;
+    protected bool _isVisible = false;
     public bool IsVisible => _isVisible;
 
     /// <summary>

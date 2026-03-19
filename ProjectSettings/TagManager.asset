@@ -21,9 +21,9 @@ TagManager:
   - EnemyAttack
   - EnemySensor
   - HealItem
-  - 
-  - 
-  - 
+  - Effect
+  - CameraConfiner
+  - NPC
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 1845952073
+    locked: 0
+  - name: NPC
+    uniqueID: 456018749
     locked: 0
   - name: Player
     uniqueID: 4003937131

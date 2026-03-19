@@ -23,6 +23,12 @@ public abstract class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public virtual void OnDamage()
+    {
+        if (isDead) return;
+        animator.SetTrigger("Damage");
+    }
+
     public virtual void Die()
     {
         if (isDead) return;

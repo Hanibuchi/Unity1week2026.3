@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 35804661721294386, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 35804661721294386, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Offset.x
@@ -22,7 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 35804661721294386, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Offset.y
-      value: 0.3
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529574446513976998, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: damageAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014403066195394580, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      propertyPath: maxHealth
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Size.x
@@ -30,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Offset.x
@@ -38,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Offset.y
-      value: 0.3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4018242876233775252, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_Name
@@ -50,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 424e3db045d408746b431a79d3f2be70, type: 2}
     - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -5.8988795
       objectReference: {fileID: 0}
     - target: {fileID: 6836442949082125796, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -149,7 +157,7 @@ MonoBehaviour:
   deathColliders:
   - {fileID: 1113938272627305044}
   - {fileID: 3418176974836052581}
-  dropItemCount: 3
+  dropItemCount: 2
   dropScatterForce: 5
   moveSpeed: 2
   groundLayer:
