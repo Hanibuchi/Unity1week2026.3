@@ -45,13 +45,13 @@ public class SaveUIView : UIView
         {
             int saveNumber = i + 1;
             
-            // TODO: 実際のセーブデータ管理クラスからデータを取得する処理に置き換えてください
-            // 以下は表示テスト用のダミー処理です
-            bool hasData = (i == 0); // 例として1つ目のスロットのみデータありとする
+            // FlagManagerの静的メソッドを使ってデータ有無をチェックします
+            bool hasData = FlagManager.HasSaveData(saveNumber);
 
             if (hasData)
             {
-                // ダミーデータ（例: セーブ1、12時間30分12秒、竜宮城入口）
+                // セーブデータがあればダミーではなく実際のスロットや時間の情報を入れることもできます
+                // 今回はダミー文字列ですが、のちのち PlayerPrefsから取得したものを渡すように拡張してください
                 saveSlots[i].Setup(saveNumber, "12時間30分12秒", "竜宮城入口");
             }
             else
