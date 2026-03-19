@@ -323,7 +323,11 @@ public class SaveManager : MonoBehaviour
             CurrentLocation = PlayerPrefs.GetString($"Slot_{slotNumber}_Location", "---");
 
             Debug.Log($"スロット{slotNumber}からロード処理を実行しました。（時間:{GetFormattedPlayTime(slotNumber)} 場所:{CurrentLocation}）");
-            // ※ここで実際のシーン遷移や復帰イベントを呼び出す必要があります
+
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.LoadGameFromSave(slotNumber, CurrentLocation);
+            }
         }
     }
 

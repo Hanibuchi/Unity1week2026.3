@@ -121,4 +121,18 @@ public class GameManager : MonoBehaviour
             ChangeState(GameState.InGame);
         }
     }
+
+    /// <summary>
+    /// セーブデータからロードしてゲームを復帰させます
+    /// </summary>
+    /// <param name="slotNumber">ロードするスロット番号</param>
+    /// <param name="locationName">セーブされた場所の名称</param>
+    public void LoadGameFromSave(int slotNumber, string locationName)
+    {
+        Debug.Log($"[GameManager] スロット{slotNumber} (場所:{locationName}) のデータでゲームを再開します。");
+        
+        // TODO: ここにシーン遷移、プレイヤー座標の復元、フェードUIなどの処理を記述します。
+        
+        ChangeState(GameState.InGame);
+    }
 }
