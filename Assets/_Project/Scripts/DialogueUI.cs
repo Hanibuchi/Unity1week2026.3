@@ -24,6 +24,10 @@ public class DialogueUI : UIView
     private Coroutine typingCoroutine;
     private string currentDialogue = "";
     private bool isTyping = false;
+    private bool isWaitingForPageSkip = false;
+    private bool skipRequested = false;
+    private int currentVisibleIndex = 0;
+    private int totalCharacters = 0;
     private Action onDialogueComplete;
 
     private void Start()
@@ -50,10 +54,15 @@ public class DialogueUI : UIView
     {
         if (skipAction != null && skipAction.WasPressedThisFrame())
         {
-            // タイピング中なら一気に表示する
+            // タイピング中なら現在のページ部分を一気に表示する
             if (isTyping)
             {
-                SkipTyping();
+                skipRequested = true;
+            }
+            // ページがいっぱいで待機中なら、次のページへ進む
+            else if (isWaitingForPageSkip)
+            {
+                isWaitingForPageSkip = false;
             }
             // タイピング完了後なら次のアクション（コールバック）を実行する
             else if (onDialogueComplete != null)
@@ -97,35 +106,62 @@ public class DialogueUI : UIView
     private IEnumerator TypeDialogueCoroutine(string dialogue)
     {
         isTyping = true;
-        dialogueText.text = "";
+        isWaitingForPageSkip = false;
+        skipRequested = false;
 
-        foreach (char c in dialogue)
+        // TextMeshProのページネーション機能を有効化する
+        dialogueText.overflowMode = TextOverflowModes.Page;
+        dialogueText.text = dialogue;
+        dialogueText.ForceMeshUpdate(); // テキストの情報を計算するためにメッシュを更新
+
+        totalCharacters = dialogueText.textInfo.characterCount;
+        dialogueText.pageToDisplay = 1;
+        dialogueText.maxVisibleCharacters = 0;
+        currentVisibleIndex = 0;
+
+        while (currentVisibleIndex < totalCharacters)
         {
-            dialogueText.text += c;
+            // 現在の文字がどのページに属しているか取得 (pageNumberは0から始まるので＋1する)
+            int charPage = dialogueText.textInfo.characterInfo[currentVisibleIndex].pageNumber + 1;
 
-            // 音を鳴らす
-            if (typingSound != null && SoundManager.Instance != null)
+            // ページが変わる場合、入力待ち状態へ
+            if (charPage > dialogueText.pageToDisplay)
             {
-                SoundManager.Instance.PlaySE(typingSound);
+                isTyping = false;
+                isWaitingForPageSkip = true;
+
+                // 次へ進む入力があるまで待機
+                while (isWaitingForPageSkip)
+                {
+                    yield return null;
+                }
+
+                // 次のページへ
+                isTyping = true;
+                skipRequested = false;
+                dialogueText.pageToDisplay = charPage;
             }
 
-            yield return new WaitForSeconds(typingSpeed);
+            dialogueText.maxVisibleCharacters = currentVisibleIndex + 1;
+            currentVisibleIndex++;
+
+            // スキップ中でなければ音を鳴らして待機
+            if (!skipRequested)
+            {
+                if (typingSound != null && SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySE(typingSound);
+                }
+
+                yield return new WaitForSeconds(typingSpeed);
+            }
         }
 
+        dialogueText.maxVisibleCharacters = totalCharacters; // 最後まで表示
         isTyping = false;
+        isWaitingForPageSkip = false;
+        skipRequested = false;
         typingCoroutine = null;
-    }
-
-    private void SkipTyping()
-    {
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
-
-        dialogueText.text = currentDialogue;
-        isTyping = false;
     }
 
     public Sprite testSprite; // テスト用のキャラクタースプライト

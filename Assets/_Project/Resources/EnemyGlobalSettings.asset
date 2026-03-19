@@ -18,6 +18,6 @@ MonoBehaviour:
   minFragmentForce: 5
   maxFragmentForce: 15
   fragmentLifetime: 2
-  hitStopDuration: 0.1
+  hitStopDuration: 0.05
   hitStopTimeScale: 0.05
   hitStopPriority: 10
