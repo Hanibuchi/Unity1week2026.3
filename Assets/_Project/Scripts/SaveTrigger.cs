@@ -7,6 +7,8 @@ public class SaveTrigger : MonoBehaviour, IInteractable
     [Tooltip("このセーブポイントの場所名")]
     [SerializeField] private string locationName = "セーブポイント";
 
+    public string LocationName => locationName;
+
     [Tooltip("セーブポイントに触れた際のSE")]
     [SerializeField] private AudioClip interactSE;
 
@@ -21,8 +23,28 @@ public class SaveTrigger : MonoBehaviour, IInteractable
 
     private bool isInteracting = false;
 
+    private void OnEnable()
+    {
+        if (SaveTriggerManager.Instance != null)
+        {
+            SaveTriggerManager.Instance.Register(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (SaveTriggerManager.Instance != null)
+        {
+            SaveTriggerManager.Instance.Unregister(this);
+        }
+    }
+
     private void Start()
     {
+        if (SaveTriggerManager.Instance != null)
+        {
+            SaveTriggerManager.Instance.Register(this);
+        }
         if (indicatorObject != null)
         {
             indicatorObject.SetActive(false);

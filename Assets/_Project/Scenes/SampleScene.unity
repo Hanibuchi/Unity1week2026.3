@@ -1303,6 +1303,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d603fc592144f743927aee28387d8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveUIView
+--- !u!1 &1046063928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046063930}
+  - component: {fileID: 1046063929}
+  m_Layer: 0
+  m_Name: SaveTriggerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1046063929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046063928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6289b69cc7af4d4e806141e81ba16e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveTriggerManager
+--- !u!4 &1046063930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046063928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1144543403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6141,6 +6185,7 @@ SceneRoots:
   - {fileID: 644493892}
   - {fileID: 711290714}
   - {fileID: 33355590}
+  - {fileID: 1046063930}
   - {fileID: 1670377902}
   - {fileID: 8416226248429524817}
   - {fileID: 8720852005832315262}

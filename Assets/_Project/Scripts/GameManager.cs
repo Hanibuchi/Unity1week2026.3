@@ -143,6 +143,35 @@ public class GameManager : MonoBehaviour
 
         // TODO: ここにシーン遷移、プレイヤー座標の復元、フェードUIなどの処理を記述します。
         
+        if (SaveTriggerManager.Instance != null)
+        {
+            var savePoint = SaveTriggerManager.Instance.GetSaveTriggerByLocationName(locationName);
+            if (savePoint != null && PlayerController.Instance != null)
+            {
+                // Z座標はプレイヤーのものを維持するために、XとYのみ更新します（Zズレによる消失防止）
+                Vector3 newPos = savePoint.transform.position;
+                newPos.z = PlayerController.Instance.transform.position.z;
+                PlayerController.Instance.transform.position = newPos;
+                
+                // すでにRigidBodyの移動処理などが噛み合わない場合を考慮して速度もリセット
+                var rb = PlayerController.Instance.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector2.zero;
+                }
+
+                Debug.Log($"[GameManager] Player moved to {locationName} at {newPos}");
+            }
+            else
+            {
+                Debug.LogWarning($"[GameManager] 指定されたセーブポイント ({locationName}) が見つからないか、PlayerControllerがありません。");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[GameManager] SaveTriggerManagerが見つかりません。プレイヤー位置の復元をスキップします。");
+        }
+
         ChangeState(GameState.InGame);
     }
 }
