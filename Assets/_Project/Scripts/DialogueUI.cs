@@ -20,6 +20,10 @@ public class DialogueUI : UIView
     [Tooltip("セリフ送りをスキップするためのアクション名 (Project-wide Actionsに登録されている名前)")]
     [SerializeField] private string skipActionName = "UI/Submit";
 
+    [Header("Choices")]
+    [Tooltip("選択肢を表示するUI（DialogueUIの子オブジェクト等）")]
+    [SerializeField] private ChoiceUI choiceUI;
+
     private InputAction skipAction;
     private Coroutine typingCoroutine;
     private string currentDialogue = "";
@@ -79,6 +83,12 @@ public class DialogueUI : UIView
         if (!_isVisible)
         {
             Show();
+        }
+
+        // 念のため選択肢UIを非表示にしておく
+        if (choiceUI != null && choiceUI.gameObject.activeSelf)
+        {
+            choiceUI.gameObject.SetActive(false);
         }
 
         if (characterImage != null)
@@ -162,6 +172,20 @@ public class DialogueUI : UIView
         isWaitingForPageSkip = false;
         skipRequested = false;
         typingCoroutine = null;
+    }
+
+    public void ShowChoices(string choice1, string choice2, Action<int> onChoiceSelected)
+    {
+        if (choiceUI != null)
+        {
+            choiceUI.ShowChoices(choice1, choice2, onChoiceSelected);
+        }
+        else
+        {
+            Debug.LogWarning("[DialogueUI] ChoiceUI がアタッチされていません。");
+            // フォールバック: 強制的に選択肢1を選ぶ
+            onChoiceSelected?.Invoke(1);
+        }
     }
 
     public Sprite testSprite; // テスト用のキャラクタースプライト

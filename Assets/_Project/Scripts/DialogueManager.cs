@@ -24,9 +24,6 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
 
-    // TODO: 2択のUIへの参照も必要になります（現在は未実装と仮定）
-    // [SerializeField] private ChoiceUI choiceUI; 
-
     private bool isPlaying = false;
     private Action onSequenceComplete;
 
@@ -92,14 +89,20 @@ public class DialogueManager : MonoBehaviour
                 int selectedChoice = 0;
                 bool isChoiceSelected = false;
 
-                // TODO: ここで実際のChoiceUIを表示して選択を待機する処理を実装します。
-                // 例: choiceUI.ShowChoices(node.choice1Text, node.choice2Text, (choiceIndex) => { selectedChoice = choiceIndex; isChoiceSelected = true; });
-
-                // 仮の実装（1秒後に自動で選択肢1を選ぶ）
-                Debug.Log($"選択肢待機中: 1.{node.choice1Text} / 2.{node.choice2Text}");
-                yield return new WaitForSecondsRealtime(1f);
-                selectedChoice = 1;
-                isChoiceSelected = true;
+                if (dialogueUI != null)
+                {
+                    dialogueUI.ShowChoices(node.choice1Text, node.choice2Text, (choiceIndex) => 
+                    {
+                        selectedChoice = choiceIndex;
+                        isChoiceSelected = true;
+                    });
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueUIが見つからないため、強制的に選択肢1へ進みます");
+                    selectedChoice = 1;
+                    isChoiceSelected = true;
+                }
 
                 while (!isChoiceSelected)
                 {

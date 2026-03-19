@@ -977,14 +977,6 @@ MonoBehaviour:
       choice2Text: 
       choice1NextNodes: []
       choice2NextNodes: []
-    - speakerSprite: {fileID: 0}
-      speakerName: "\u91D1\u592A\u90CE"
-      text: "\u3044\u3044\u3078\u3093\u3058\u3060\uFF01"
-      hasChoices: 0
-      choice1Text: 
-      choice2Text: 
-      choice1NextNodes: []
-      choice2NextNodes: []
     choice2NextNodes:
     - speakerSprite: {fileID: 0}
       speakerName: "\u6B21\u90CE"
@@ -4276,6 +4268,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2080323063684167, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080323063684167, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 90879719004235341, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4356,21 +4356,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4632472186724555247, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632472186724555247, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632472186724555247, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632472186724555247, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5307233140187428032, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5307233140187428032, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 5373902084990986437, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373902084990986437, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450191564821928601, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450191564821928601, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450191564821928601, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450191564821928601, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8122344646683425002, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8122344646683425002, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
