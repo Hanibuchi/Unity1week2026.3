@@ -131,6 +131,16 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[GameManager] スロット{slotNumber} (場所:{locationName}) のデータでゲームを再開します。");
         
+        // プレイヤー能力のロードと適用
+        if (PlayerAbilityManager.Instance != null)
+        {
+            PlayerAbilityManager.Instance.LoadAndApplyAbilities();
+        }
+        else
+        {
+            Debug.LogWarning("[GameManager] PlayerAbilityManagerが見つかりません。能力のロードをスキップします。");
+        }
+
         // TODO: ここにシーン遷移、プレイヤー座標の復元、フェードUIなどの処理を記述します。
         
         ChangeState(GameState.InGame);
