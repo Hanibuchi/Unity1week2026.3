@@ -962,6 +962,9 @@ MonoBehaviour:
     choice2Text: 
     choice1NextNodes: []
     choice2NextNodes: []
+    onNodeStart:
+      m_PersistentCalls:
+        m_Calls: []
   - speakerSprite: {fileID: 0}
     speakerName: "\u91D1\u592A\u90CE"
     text: "\uFF1B\uFF4C\uFF4B\uFF53\uFF4A\uFF44\uFF46\uFF1B\uFF4C\uFF4B\uFF4A\uFF1B\uFF4C\uFF4B\uFF4A\uFF5A\uFF1B\uFF4C\uFF58\uFF44\uFF4B\uFF44\uFF46\uFF4A\u3075\u3041\uFF1B\uFF53\uFF4C\uFF4B\uFF44\uFF44\uFF46"
@@ -977,6 +980,9 @@ MonoBehaviour:
       choice2Text: 
       choice1NextNodes: []
       choice2NextNodes: []
+      onNodeStart:
+        m_PersistentCalls:
+          m_Calls: []
     choice2NextNodes:
     - speakerSprite: {fileID: 0}
       speakerName: "\u6B21\u90CE"
@@ -986,6 +992,12 @@ MonoBehaviour:
       choice2Text: 
       choice1NextNodes: []
       choice2NextNodes: []
+      onNodeStart:
+        m_PersistentCalls:
+          m_Calls: []
+    onNodeStart:
+      m_PersistentCalls:
+        m_Calls: []
   - speakerSprite: {fileID: 0}
     speakerName: "\u3053\u308C\u306F\u5B9F\u884C\u3055\u308C\u308B\u306E\u304B\uFF1F"
     text: "\u3042\uFF53\uFF44\uFF46\uFF1B\uFF4C\uFF1B\uFF4B\uFF4A\uFF53\uFF53\uFF44\uFF1B\uFF4C\uFF44\uFF4B\uFF46\uFF4A\uFF4C\uFF4B"
@@ -994,6 +1006,9 @@ MonoBehaviour:
     choice2Text: 
     choice1NextNodes: []
     choice2NextNodes: []
+    onNodeStart:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &711290714
 Transform:
   m_ObjectHideFlags: 0
@@ -1020,6 +1035,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105acdee42db7db4cb9d34f9ac2f4b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameScreen
+--- !u!114 &767138660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2127842632230249580, guid: f49669e96cb83ee44b97399a148d2a2b, type: 3}
+  m_PrefabInstance: {fileID: 1945370596}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ba9d5f2396c6c4abaeb6f9af641082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
 --- !u!1 &1282475757
 GameObject:
   m_ObjectHideFlags: 0
@@ -4493,6 +4519,34 @@ PrefabInstance:
     - target: {fileID: 123580576551566911, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_Name
       value: Otohime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].onNodeStart.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].onNodeStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].onNodeStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 767138660}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].onNodeStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].onNodeStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EnemyHealth, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].onNodeStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].onNodeStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalPosition.x

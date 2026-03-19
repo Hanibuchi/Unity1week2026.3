@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class DialogueNode
@@ -18,6 +19,9 @@ public class DialogueNode
     // 選択肢ごとの次のセリフ群（空なら終了または呼び出し元に制御を返すなど）
     public List<DialogueNode> choice1NextNodes;
     public List<DialogueNode> choice2NextNodes;
+
+    [Header("Events")]
+    public UnityEvent onNodeStart;
 }
 
 public class DialogueManager : MonoBehaviour
@@ -65,6 +69,9 @@ public class DialogueManager : MonoBehaviour
             var node = nodes[i];
             bool isWaitingForInput = true;
 
+            // ノード開始時にイベントを発火
+            node.onNodeStart?.Invoke();
+
             // DialogueUI にセリフを表示させる
             var dialogueUI = UIManager.Instance.GetView<DialogueUI>();
             if (dialogueUI != null)
@@ -93,7 +100,7 @@ public class DialogueManager : MonoBehaviour
 
                 if (dialogueUI != null)
                 {
-                    dialogueUI.ShowChoices(node.choice1Text, node.choice2Text, (choiceIndex) => 
+                    dialogueUI.ShowChoices(node.choice1Text, node.choice2Text, (choiceIndex) =>
                     {
                         selectedChoice = choiceIndex;
                         isChoiceSelected = true;
