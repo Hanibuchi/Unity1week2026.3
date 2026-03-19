@@ -552,7 +552,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -291030165
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2882307768427108894, guid: 9d90a00a3f395d5489547bbeb1817879, type: 3}
@@ -679,7 +679,11 @@ MonoBehaviour:
   damageSE: {fileID: 8300000, guid: aaa791ca9bf58a64facc69128719af8c, type: 3}
   healItemSE: {fileID: 8300000, guid: fa66daa4f5a661c4a90ffa79c5fc73ed, type: 3}
   healSE: {fileID: 8300000, guid: 717ad8f7049df524d9d87ab69179c04c, type: 3}
-  dieSE: {fileID: 8300000, guid: aca7f0d5168220b49b6310ebd5fced84, type: 3}
+  dieSE: {fileID: 8300000, guid: 9413673737dfda848aaa40129b914101, type: 3}
+  fragmentCount: 30
+  fragmentForce: 10
+  deathHealItemCount: 15
+  healItemForce: 10
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
