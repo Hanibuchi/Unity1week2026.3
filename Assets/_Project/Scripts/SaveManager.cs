@@ -98,6 +98,15 @@ public class SaveManager : MonoBehaviour
         {
             PlayerController.Instance.RemoveControlRequest(this);
         }
+
+        // タイトル画面でロードメニューを開いていた場合は、メニューを閉じた時にタイトル画面を再表示する
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState == GameManager.GameState.Title)
+        {
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.Show<TitleUI>();
+            }
+        }
     }
 
     /// <summary>

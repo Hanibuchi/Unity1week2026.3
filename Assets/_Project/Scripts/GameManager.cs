@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameState
     {
+        None = -1,
         Title,
         InGame,
         Paused,
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
         GameClear
     }
 
-    public GameState CurrentState { get; private set; }
+    public GameState CurrentState { get; private set; } = GameState.None;
 
     // ステートが変更されたときに呼ばれるイベント
     public event Action<GameState> OnGameStateChanged;
@@ -42,9 +43,10 @@ public class GameManager : MonoBehaviour
             var titleUI = UIManager.Instance.GetView<TitleUI>();
             if (titleUI != null)
             {
-                // スタートボタンが押されたらロード専用のメニューを開く
+                // スタートボタンが押されたらタイトル画面を非表示にしてロード専用のメニューを開く
                 titleUI.Initialize(() =>
                 {
+                    UIManager.Instance.Hide<TitleUI>();
                     if (SaveManager.Instance != null)
                     {
                         SaveManager.Instance.OpenLoadMenu();
