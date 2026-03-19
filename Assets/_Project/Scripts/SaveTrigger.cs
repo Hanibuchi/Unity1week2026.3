@@ -7,11 +7,19 @@ public class SaveTrigger : MonoBehaviour, IInteractable
     [Tooltip("このセーブポイントの場所名")]
     [SerializeField] private string locationName = "セーブポイント";
 
+    [Tooltip("セーブポイントに触れた際のSE")]
+    [SerializeField] private AudioClip interactSE;
+
+    [Tooltip("セーブUIが表示されるまでの待機時間（秒）")]
+    [SerializeField] private float delayBeforeUI = 1.0f;
+
     [Tooltip("プレイヤーが範囲に入った時に自動で開くかどうか")]
     [SerializeField] private bool autoStart = false;
 
     [Tooltip("プレイヤーが範囲にいる間だけ表示するオブジェクト（操作ヒントアイコンなど）")]
     [SerializeField] private GameObject indicatorObject;
+
+    private bool isInteracting = false;
 
     private void Start()
     {
@@ -60,7 +68,28 @@ public class SaveTrigger : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (isInteracting) return;
+        
         Debug.Log("SaveTrigger: Interact called");
+        StartCoroutine(InteractCoroutine());
+    }
+
+    private System.Collections.IEnumerator InteractCoroutine()
+    {
+        isInteracting = true;
+
+        if (SoundManager.Instance != null && interactSE != null)
+        {
+            SoundManager.Instance.PlaySE(interactSE);
+        }
+
+        if (PlayerHealth.Instance != null)
+        {
+            PlayerHealth.Instance.Heal(PlayerHealth.Instance.MaxHealth);
+        }
+
+        yield return new WaitForSeconds(delayBeforeUI);
+
         if (SaveManager.Instance != null)
         {
             SaveManager.Instance.OpenSaveAndLoadMenu(locationName);
@@ -69,5 +98,7 @@ public class SaveTrigger : MonoBehaviour, IInteractable
         {
             Debug.LogWarning("SaveManagerのインスタンスが見つかりません。");
         }
+
+        isInteracting = false;
     }
 }
