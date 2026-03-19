@@ -50,9 +50,10 @@ public class SaveUIView : UIView
 
             if (hasData)
             {
-                // セーブデータがあればダミーではなく実際のスロットや時間の情報を入れることもできます
-                // 今回はダミー文字列ですが、のちのち PlayerPrefsから取得したものを渡すように拡張してください
-                saveSlots[i].Setup(saveNumber, "12時間30分12秒", "竜宮城入口");
+                string playTime = SaveManager.GetFormattedPlayTime(saveNumber);
+                string locationName = SaveManager.GetSavedLocation(saveNumber);
+                
+                saveSlots[i].Setup(saveNumber, playTime, locationName);
             }
             else
             {
