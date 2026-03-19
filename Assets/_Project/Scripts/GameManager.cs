@@ -42,11 +42,13 @@ public class GameManager : MonoBehaviour
             var titleUI = UIManager.Instance.GetView<TitleUI>();
             if (titleUI != null)
             {
-                // スタートボタンが押されたらタイトル画面を隠してゲーム本編を開始する
+                // スタートボタンが押されたらロード専用のメニューを開く
                 titleUI.Initialize(() =>
                 {
-                    UIManager.Instance.Hide<TitleUI>();
-                    ChangeState(GameState.InGame);
+                    if (SaveManager.Instance != null)
+                    {
+                        SaveManager.Instance.OpenLoadMenu();
+                    }
                 });
             }
         }
