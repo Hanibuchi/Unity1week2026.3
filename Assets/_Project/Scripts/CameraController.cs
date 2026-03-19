@@ -88,6 +88,12 @@ public class CameraController : MonoBehaviour
             
             // 形状を変更した後は必ずキャッシュを破棄して再計算させる
             confiner2D.InvalidateBoundingShapeCache();
+
+            // 境界変更時にカメラが滑って移動しないよう、前回の状態を破棄してCut（瞬間移動）させる
+            if (virtualCamera != null)
+            {
+                virtualCamera.PreviousStateIsValid = false;
+            }
         }
         else
         {

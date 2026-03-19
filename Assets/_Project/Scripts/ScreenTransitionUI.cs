@@ -52,7 +52,7 @@ public class ScreenTransitionUI : UIView
 
     private System.Collections.IEnumerator DeactivateAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
         DeactivateComplete();
     }
 
