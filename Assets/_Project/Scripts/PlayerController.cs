@@ -70,6 +70,9 @@ public class PlayerController : MonoBehaviour
     private bool isJetDepleted;
     private float recoilTimer;
 
+    // Interaction
+    private IInteractable currentInteractable;
+
     // Control flag
     private bool canControl = true;
 
@@ -220,7 +223,27 @@ public class PlayerController : MonoBehaviour
 
         if (context.started && isGrounded && !isJetDashing)
         {
-            Debug.Log("Interact triggered");
+            if (currentInteractable != null)
+            {
+                currentInteractable.Interact();
+            }
+            else
+            {
+                Debug.Log("Interact triggered");
+            }
+        }
+    }
+
+    public void SetInteractable(IInteractable interactable)
+    {
+        currentInteractable = interactable;
+    }
+
+    public void RemoveInteractable(IInteractable interactable)
+    {
+        if (currentInteractable == interactable)
+        {
+            currentInteractable = null;
         }
     }
 
@@ -231,6 +254,15 @@ public class PlayerController : MonoBehaviour
         {
             moveInput = Vector2.zero;
             isJumpButtonHeld = false;
+        }
+    }
+
+    public void SetPositionAndFacing(Vector2 newPosition, bool faceRight)
+    {
+        transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+        if (isFacingRight != faceRight)
+        {
+            Flip();
         }
     }
 
