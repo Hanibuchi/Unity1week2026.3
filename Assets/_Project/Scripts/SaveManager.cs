@@ -100,11 +100,19 @@ public class SaveManager : MonoBehaviour
         }
 
         // タイトル画面でロードメニューを開いていた場合は、メニューを閉じた時にタイトル画面を再表示する
-        if (GameManager.Instance != null && GameManager.Instance.CurrentState == GameManager.GameState.Title)
+        if (GameManager.Instance != null)
         {
-            if (UIManager.Instance != null)
+            if (GameManager.Instance.CurrentState == GameManager.GameState.Title)
             {
-                UIManager.Instance.Show<TitleUI>();
+                if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.Show<TitleUI>();
+                }
+            }
+            // ゲームオーバー時にロードメニューを閉じた場合はタイトル画面へ遷移する
+            else if (GameManager.Instance.CurrentState == GameManager.GameState.GameOver)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.Title);
             }
         }
     }
