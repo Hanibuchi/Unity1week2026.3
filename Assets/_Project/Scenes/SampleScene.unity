@@ -390,8 +390,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 399531443}
-        m_TargetAssemblyTypeName: DialogueUI, Assembly-CSharp
+      - m_Target: {fileID: 711290713}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: Test
         m_Mode: 1
         m_Arguments:
@@ -916,6 +916,99 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644493890}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &711290712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 711290714}
+  - component: {fileID: 711290713}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &711290713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711290712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b47fedcea9e0854da40611baea8bbb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  testNodes:
+  - speakerSprite: {fileID: 0}
+    speakerName: "\u6843\u592A\u90CE"
+    text: "\uFF53\uFF4C\uFF44\uFF4C\uFF1B\uFF4B\uFF46\u3058\u3083\uFF4A\uFF44\uFF46\uFF1B\uFF4C\uFF5A\uFF4B\uFF4A\uFF44\uFF44\uFF46\uFF1B\uFF4C\uFF4C\uFF4B\uFF4A\uFF5A\uFF58\uFF4C\uFF1B\uFF46\uFF4B\uFF46\uFF4A\t"
+    hasChoices: 0
+    choice1Text: 
+    choice2Text: 
+    choice1NextNodes: []
+    choice2NextNodes: []
+  - speakerSprite: {fileID: 0}
+    speakerName: "\u91D1\u592A\u90CE"
+    text: "\uFF1B\uFF4C\uFF4B\uFF53\uFF4A\uFF44\uFF46\uFF1B\uFF4C\uFF4B\uFF4A\uFF1B\uFF4C\uFF4B\uFF4A\uFF5A\uFF1B\uFF4C\uFF58\uFF44\uFF4B\uFF44\uFF46\uFF4A\u3075\u3041\uFF1B\uFF53\uFF4C\uFF4B\uFF44\uFF44\uFF46"
+    hasChoices: 1
+    choice1Text: "\u306F\u3044"
+    choice2Text: "\u3044\u3044\u3048"
+    choice1NextNodes:
+    - speakerSprite: {fileID: 0}
+      speakerName: "\u91D1\u592A\u90CE"
+      text: "\u3044\u3044\u3078\u3093\u3058\u3060\uFF01"
+      hasChoices: 0
+      choice1Text: 
+      choice2Text: 
+      choice1NextNodes: []
+      choice2NextNodes: []
+    - speakerSprite: {fileID: 0}
+      speakerName: "\u91D1\u592A\u90CE"
+      text: "\u3044\u3044\u3078\u3093\u3058\u3060\uFF01"
+      hasChoices: 0
+      choice1Text: 
+      choice2Text: 
+      choice1NextNodes: []
+      choice2NextNodes: []
+    choice2NextNodes:
+    - speakerSprite: {fileID: 0}
+      speakerName: "\u6B21\u90CE"
+      text: "\u304A\u524D\u306B\u62D2\u5426\u6A29\u306F\u306A\u3044\uFF01"
+      hasChoices: 0
+      choice1Text: 
+      choice2Text: 
+      choice1NextNodes: []
+      choice2NextNodes: []
+  - speakerSprite: {fileID: 0}
+    speakerName: "\u3053\u308C\u306F\u5B9F\u884C\u3055\u308C\u308B\u306E\u304B\uFF1F"
+    text: "\u3042\uFF53\uFF44\uFF46\uFF1B\uFF4C\uFF1B\uFF4B\uFF4A\uFF53\uFF53\uFF44\uFF1B\uFF4C\uFF44\uFF4B\uFF46\uFF4A\uFF4C\uFF4B"
+    hasChoices: 0
+    choice1Text: 
+    choice2Text: 
+    choice1NextNodes: []
+    choice2NextNodes: []
+--- !u!4 &711290714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711290712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1712,6 +1805,7 @@ MonoBehaviour:
   - {fileID: 1600436196}
   - {fileID: 188788511}
   - {fileID: 1754204449}
+  - {fileID: 399531443}
 --- !u!4 &1670377902
 Transform:
   m_ObjectHideFlags: 0
@@ -4266,13 +4360,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8122344646683425002, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 5307233140187428032, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8122344646683425002, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122344646683425002, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5238,3 +5336,4 @@ SceneRoots:
   - {fileID: 2765403340376105055}
   - {fileID: 456660659}
   - {fileID: 1622237143263347569}
+  - {fileID: 711290714}

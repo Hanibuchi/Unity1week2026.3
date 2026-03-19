@@ -153,7 +153,7 @@ public class DialogueUI : UIView
                     SoundManager.Instance.PlaySE(typingSound);
                 }
 
-                yield return new WaitForSeconds(typingSpeed);
+                yield return new WaitForSecondsRealtime(typingSpeed);
             }
         }
 
