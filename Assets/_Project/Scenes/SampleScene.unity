@@ -1751,6 +1751,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342057253}
   m_CullTransparentMesh: 1
+--- !u!114 &1433651920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1775265806976442455, guid: 00afb14cc3486b84c8ae1e4573a96188, type: 3}
+  m_PrefabInstance: {fileID: 9217823720515763649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778748195bd920a47854c2bfe4c5833d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TitleUI
 --- !u!1 &1464981233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,6 +2169,7 @@ MonoBehaviour:
   - {fileID: 1754204449}
   - {fileID: 399531443}
   - {fileID: 821240090}
+  - {fileID: 1433651920}
 --- !u!4 &1670377902
 Transform:
   m_ObjectHideFlags: 0
@@ -5892,6 +5904,7 @@ SceneRoots:
   - {fileID: 6322026062971752993}
   - {fileID: 1622237143263347569}
   - {fileID: 535383049}
+  - {fileID: 9217823720515763649}
   - {fileID: 8012238634189793773}
   - {fileID: 8967373409180959747}
   - {fileID: 143935432}
@@ -5900,4 +5913,3 @@ SceneRoots:
   - {fileID: 456660659}
   - {fileID: 3060897860244519933}
   - {fileID: 1144543403}
-  - {fileID: 9217823720515763649}
