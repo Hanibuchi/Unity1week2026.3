@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,25 +24,48 @@ public class DialogueUI : UIView
     private Coroutine typingCoroutine;
     private string currentDialogue = "";
     private bool isTyping = false;
+    private Action onDialogueComplete;
 
     private void Start()
     {
         if (InputSystem.actions != null)
         {
             skipAction = InputSystem.actions.FindAction(skipActionName);
+            if (skipAction != null)
+            {
+                skipAction.Enable(); // アクションが有効化されていない可能性があるため明示的に有効化
+            }
+            else
+            {
+                Debug.LogWarning($"[DialogueUI] Action '{skipActionName}' が見つかりませんでした。Project SettingsのInput Systemを確認してください。");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[DialogueUI] InputSystem.actions が null です。Project Settings -> Input System Package -> Default Actions が設定されているか確認してください。");
         }
     }
 
     private void Update()
     {
-        // タイピング中かつスキップ入力があった場合、全テキストを一気に表示
-        if (isTyping && skipAction != null && skipAction.WasPressedThisFrame())
+        if (skipAction != null && skipAction.WasPressedThisFrame())
         {
-            SkipTyping();
+            // タイピング中なら一気に表示する
+            if (isTyping)
+            {
+                SkipTyping();
+            }
+            // タイピング完了後なら次のアクション（コールバック）を実行する
+            else if (onDialogueComplete != null)
+            {
+                var callback = onDialogueComplete;
+                onDialogueComplete = null; // 重複実行を防ぐためクリア
+                callback.Invoke();
+            }
         }
     }
 
-    public void PlayDialogue(Sprite sprite, string characterName, string dialogue)
+    public void PlayDialogue(Sprite sprite, string characterName, string dialogue, Action onComplete = null)
     {
         if (!_isVisible)
         {
@@ -60,6 +84,7 @@ public class DialogueUI : UIView
         }
 
         currentDialogue = dialogue;
+        onDialogueComplete = onComplete;
 
         if (typingCoroutine != null)
         {
@@ -103,8 +128,11 @@ public class DialogueUI : UIView
         isTyping = false;
     }
 
+    public Sprite testSprite; // テスト用のキャラクタースプライト
+    public string testName = "テストキャラ";
+    public string testDialogue = "これはテストのセリフです。あぇsjふぉいうぇっかsdlkfjははｓｋｄｆｈｐくぃえうｒｌｋｑｗｊへｒｋｊはｓｄｆはｄｊｋｓｋｊｋｚｋｘｊｃｖｌｋじゃｈｓｐぢふｈくぇえｋｆjはsldkfjhlsdkjhfkljhsdfぃうあyうぇいるhうぇr";
     public void Test()
     {
-        PlayDialogue(null, "テストキャラ", "これはテストのセリフです。");
+        PlayDialogue(testSprite, testName, testDialogue, () => Debug.Log("セリフが完了しました！"));
     }
 }
