@@ -15,6 +15,15 @@ public class PlayerHealth : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (globalSettings == null)
+        {
+            globalSettings = Resources.Load<EnemyGlobalSettings>("EnemyGlobalSettings");
+            if (globalSettings == null)
+            {
+                Debug.LogError("EnemyGlobalSettings not found in Resources folder!");
+            }
+        }
     }
 
     [Header("Health Settings")]
@@ -46,7 +55,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip dieSE;
 
     [Header("Death Effects")]
-    [SerializeField] private GameObject deathFragmentPrefab;
     [SerializeField] private int fragmentCount = 15;
     [SerializeField] private float fragmentForce = 10f;
     [SerializeField] private int deathHealItemCount = 15;
@@ -60,6 +68,8 @@ public class PlayerHealth : MonoBehaviour
 
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
+
+    private static EnemyGlobalSettings globalSettings;
 
     private void Start()
     {
@@ -177,12 +187,13 @@ public class PlayerHealth : MonoBehaviour
         if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
 
         // 大量の破片を出す
-        if (deathFragmentPrefab != null)
+        GameObject prefab = globalSettings != null ? Resources.Load<GameObject>(globalSettings.fragmentPrefabPath) : null;
+        if (prefab != null)
         {
             for (int i = 0; i < fragmentCount; i++)
             {
                 Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
-                GameObject fragment = Instantiate(deathFragmentPrefab, transform.position, randomRotation);
+                GameObject fragment = Instantiate(prefab, transform.position, randomRotation);
                 
                 Rigidbody2D frb = fragment.GetComponent<Rigidbody2D>();
                 if (frb != null)
