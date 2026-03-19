@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.Events;
 
 /// <summary>
 /// セーブシステム全体を管理し、UI（SaveUIView）とデータ書き込み（FlagManager）を仲介するクラスです。
@@ -77,29 +79,146 @@ public class SaveManager : MonoBehaviour
     /// <param name="slotNumber">スロット番号(1〜)</param>
     public void OnSlotSelected(int slotNumber)
     {
+        if (DialogueManager.Instance == null)
+        {
+            Debug.LogWarning("DialogueManagerが見つかりません。");
+            return;
+        }
+
         if (CurrentMode == Mode.SaveAndLoad)
         {
-            // TODO: セーブかロードかを選択するUIや処理を呼び出す
-            Debug.Log($"スロット{slotNumber}が選択されました。セーブするかロードするかを選ぶ処理が必要です。");
+            CreateAndStartSaveLoadDialogue(slotNumber);
         }
         else if (CurrentMode == Mode.LoadOnly)
         {
-            // データが存在する場合のみロード
-            if (FlagManager.HasSaveData(slotNumber))
-            {
-                PerformLoad(slotNumber);
-
-                // ロード完了後にUIを閉じる
-                if (UIManager.Instance != null)
-                {
-                    UIManager.Instance.Hide<SaveUIView>();
-                }
-            }
-            else
-            {
-                Debug.Log($"スロット{slotNumber}にはセーブデータがありません。");
-            }
+            CreateAndStartLoadOnlyDialogue(slotNumber);
         }
+    }
+
+    private void CreateAndStartLoadOnlyDialogue(int slotNumber)
+    {
+        if (!FlagManager.HasSaveData(slotNumber))
+        {
+            // データがない場合のメッセージ
+            var noDataNode = new DialogueNode
+            {
+                speakerName = "システム",
+                text = $"スロット{slotNumber}にはセーブデータがありません。",
+                hasChoices = false
+            };
+            DialogueManager.Instance.StartDialogue(new List<DialogueNode> { noDataNode });
+            return;
+        }
+
+        var loadExecuteNode = new DialogueNode
+        {
+            speakerName = "システム",
+            text = "ロードしました。",
+            hasChoices = false,
+            onNodeStart = new UnityEvent()
+        };
+        loadExecuteNode.onNodeStart.AddListener(() =>
+        {
+            PerformLoad(slotNumber);
+            if (UIManager.Instance != null) UIManager.Instance.Hide<SaveUIView>();
+        });
+
+        var confirmNode = new DialogueNode
+        {
+            speakerName = "システム",
+            text = $"スロット{slotNumber}のデータをロードしますか？",
+            hasChoices = true,
+            choice1Text = "はい",
+            choice2Text = "いいえ",
+            choice1NextNodes = new List<DialogueNode> { loadExecuteNode },
+            choice2NextNodes = new List<DialogueNode>() // 「いいえ」なら空リストで終了
+        };
+
+        DialogueManager.Instance.StartDialogue(new List<DialogueNode> { confirmNode });
+    }
+
+    private void CreateAndStartSaveLoadDialogue(int slotNumber)
+    {
+        // --- 実行ノード ---
+        var saveExecuteNode = new DialogueNode
+        {
+            speakerName = "システム",
+            text = "セーブしました。",
+            hasChoices = false,
+            onNodeStart = new UnityEvent()
+        };
+        saveExecuteNode.onNodeStart.AddListener(() =>
+        {
+            PerformSave(slotNumber);
+            if (UIManager.Instance != null)
+            {
+                var saveUIView = UIManager.Instance.GetView<SaveUIView>();
+                if (saveUIView != null) saveUIView.RefreshSlots();
+            }
+        });
+
+        var loadExecuteNode = new DialogueNode
+        {
+            speakerName = "システム",
+            text = "ロードしました。",
+            hasChoices = false,
+            onNodeStart = new UnityEvent()
+        };
+        loadExecuteNode.onNodeStart.AddListener(() =>
+        {
+            PerformLoad(slotNumber);
+            if (UIManager.Instance != null) UIManager.Instance.Hide<SaveUIView>();
+        });
+
+        // --- 確認ノード ---
+        var saveConfirmNode = new DialogueNode
+        {
+            speakerName = "システム",
+            text = $"スロット{slotNumber}にセーブしますか？\n(上書きされます)",
+            hasChoices = true,
+            choice1Text = "はい",
+            choice2Text = "いいえ",
+            choice1NextNodes = new List<DialogueNode> { saveExecuteNode },
+            choice2NextNodes = new List<DialogueNode>() // 「いいえ」なら空リストで終了
+        };
+
+        DialogueNode loadConfirmNode;
+        if (FlagManager.HasSaveData(slotNumber))
+        {
+            loadConfirmNode = new DialogueNode
+            {
+                speakerName = "システム",
+                text = $"スロット{slotNumber}のデータをロードしますか？",
+                hasChoices = true,
+                choice1Text = "はい",
+                choice2Text = "いいえ",
+                choice1NextNodes = new List<DialogueNode> { loadExecuteNode },
+                choice2NextNodes = new List<DialogueNode>() // 「いいえ」なら終了
+            };
+        }
+        else
+        {
+            loadConfirmNode = new DialogueNode
+            {
+                speakerName = "システム",
+                text = $"スロット{slotNumber}にはセーブデータがありません。",
+                hasChoices = false
+            };
+        }
+
+        // --- 最初の選択ノード ---
+        var firstNode = new DialogueNode
+        {
+            speakerName = "システム",
+            text = $"スロット{slotNumber}が選択されました。\nセーブしますか？ロードしますか？",
+            hasChoices = true,
+            choice1Text = "セーブ",
+            choice2Text = "ロード",
+            choice1NextNodes = new List<DialogueNode> { saveConfirmNode },
+            choice2NextNodes = new List<DialogueNode> { loadConfirmNode }
+        };
+
+        DialogueManager.Instance.StartDialogue(new List<DialogueNode> { firstNode });
     }
 
     private void PerformSave(int slotNumber)
