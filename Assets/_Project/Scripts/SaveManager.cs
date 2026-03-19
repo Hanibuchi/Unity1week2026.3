@@ -126,7 +126,7 @@ public class SaveManager : MonoBehaviour
         var confirmNode = new DialogueNode
         {
             speakerName = "システム",
-            text = $"スロット{slotNumber}のデータをロードしますか？",
+            text = $"スロット{slotNumber}をロードしますか？",
             hasChoices = true,
             choice1Text = "はい",
             choice2Text = "いいえ",
@@ -188,7 +188,7 @@ public class SaveManager : MonoBehaviour
             loadConfirmNode = new DialogueNode
             {
                 speakerName = "システム",
-                text = $"スロット{slotNumber}のデータをロードしますか？",
+                text = $"スロット{slotNumber}をロードしますか？",
                 hasChoices = true,
                 choice1Text = "はい",
                 choice2Text = "いいえ",
