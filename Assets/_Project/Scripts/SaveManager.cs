@@ -54,6 +54,10 @@ public class SaveManager : MonoBehaviour
         if (UIManager.Instance != null)
         {
             UIManager.Instance.Show<SaveUIView>();
+            if (PlayerController.Instance != null)
+            {
+                PlayerController.Instance.SetControlEnabled(false, PlayerController.ControlPriority.UI, this);
+            }
         }
         else
         {
@@ -70,10 +74,29 @@ public class SaveManager : MonoBehaviour
         if (UIManager.Instance != null)
         {
             UIManager.Instance.Show<SaveUIView>();
+            if (PlayerController.Instance != null)
+            {
+                PlayerController.Instance.SetControlEnabled(false, PlayerController.ControlPriority.UI, this);
+            }
         }
         else
         {
             Debug.LogWarning("UIManagerが存在しません。");
+        }
+    }
+
+    /// <summary>
+    /// メニューを閉じる際の処理
+    /// </summary>
+    public void CloseMenu()
+    {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.Hide<SaveUIView>();
+        }
+        if (PlayerController.Instance != null)
+        {
+            PlayerController.Instance.RemoveControlRequest(this);
         }
     }
 
@@ -127,6 +150,7 @@ public class SaveManager : MonoBehaviour
         {
             PerformLoad(slotNumber);
             if (UIManager.Instance != null) UIManager.Instance.Hide<SaveUIView>();
+            if (PlayerController.Instance != null) PlayerController.Instance.RemoveControlRequest(this);
         });
 
         var confirmNode = new DialogueNode
@@ -177,6 +201,7 @@ public class SaveManager : MonoBehaviour
         {
             PerformLoad(slotNumber);
             if (UIManager.Instance != null) UIManager.Instance.Hide<SaveUIView>();
+            if (PlayerController.Instance != null) PlayerController.Instance.RemoveControlRequest(this);
         });
 
         // --- 確認ノード ---

@@ -17,7 +17,17 @@ public class SaveUIView : UIView
     {
         if (closeButton != null)
         {
-            closeButton.onClick.AddListener(Hide);
+            closeButton.onClick.AddListener(() =>
+            {
+                if (SaveManager.Instance != null)
+                {
+                    SaveManager.Instance.CloseMenu();
+                }
+                else
+                {
+                    Hide();
+                }
+            });
         }
     }
 
