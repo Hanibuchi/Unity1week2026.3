@@ -76,4 +76,19 @@ public class SaveUIView : UIView
             mainCanvasGroup.blocksRaycasts = isInteractable;
         }
     }
+
+    /// <summary>
+    /// 指定されたスロット番号を選択状態にします
+    /// </summary>
+    public void SelectSlot(int slotNumber)
+    {
+        int index = slotNumber - 1;
+        if (saveSlots != null && index >= 0 && index < saveSlots.Count && saveSlots[index] != null)
+        {
+            if (EventSystem.current != null)
+            {
+                EventSystem.current.SetSelectedGameObject(saveSlots[index].gameObject);
+            }
+        }
+    }
 }

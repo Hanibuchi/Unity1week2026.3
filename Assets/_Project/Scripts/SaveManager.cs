@@ -106,7 +106,7 @@ public class SaveManager : MonoBehaviour
                 text = $"スロット{slotNumber}にはセーブデータがありません。",
                 hasChoices = false
             };
-            StartDialogueWithLock(new List<DialogueNode> { noDataNode });
+            StartDialogueWithLock(new List<DialogueNode> { noDataNode }, slotNumber);
             return;
         }
 
@@ -134,7 +134,7 @@ public class SaveManager : MonoBehaviour
             choice2NextNodes = new List<DialogueNode>() // 「いいえ」なら空リストで終了
         };
 
-        StartDialogueWithLock(new List<DialogueNode> { confirmNode });
+        StartDialogueWithLock(new List<DialogueNode> { confirmNode }, slotNumber);
     }
 
     private void CreateAndStartSaveLoadDialogue(int slotNumber)
@@ -218,10 +218,10 @@ public class SaveManager : MonoBehaviour
             choice2NextNodes = new List<DialogueNode> { loadConfirmNode }
         };
 
-        StartDialogueWithLock(new List<DialogueNode> { firstNode });
+        StartDialogueWithLock(new List<DialogueNode> { firstNode }, slotNumber);
     }
 
-    private void StartDialogueWithLock(List<DialogueNode> nodes)
+    private void StartDialogueWithLock(List<DialogueNode> nodes, int slotNumber)
     {
         if (UIManager.Instance != null)
         {
@@ -240,6 +240,7 @@ public class SaveManager : MonoBehaviour
                 if (saveUIView != null)
                 {
                     saveUIView.SetInteractable(true);
+                    saveUIView.SelectSlot(slotNumber);
                 }
             }
         });
