@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdca737396446141a655a9a6d9aca33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueUI
-  characterImage: {fileID: 3527788200366542777}
+  characterImage: {fileID: 1833308896619993174}
   nameText: {fileID: 6346346896818563887}
   dialogueText: {fileID: 6208131600349748203}
   typingSpeed: 0.05
