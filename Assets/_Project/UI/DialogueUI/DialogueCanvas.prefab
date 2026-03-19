@@ -566,6 +566,7 @@ GameObject:
   - component: {fileID: 683871239788320735}
   - component: {fileID: 8651936674514006353}
   - component: {fileID: 2469915840047567462}
+  - component: {fileID: 4694392767011052463}
   m_Layer: 5
   m_Name: DialogueCanvas
   m_TagString: Untagged
@@ -656,3 +657,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4694392767011052463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307233140187428032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdca737396446141a655a9a6d9aca33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueUI
+  characterImage: {fileID: 3527788200366542777}
+  nameText: {fileID: 6346346896818563887}
+  dialogueText: {fileID: 6208131600349748203}
+  typingSpeed: 0.05
+  typingSound: {fileID: 8300000, guid: a2abcd96e2e38f845a8573bbf70ff240, type: 3}
+  skipActionName: UI/Submit
