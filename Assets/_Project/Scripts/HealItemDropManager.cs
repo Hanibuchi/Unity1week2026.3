@@ -6,6 +6,7 @@ public class HealItemDropManager : MonoBehaviour
     public static HealItemDropManager Instance { get; private set; }
 
     [SerializeField] private float dropInterval = 0.1f;
+    [SerializeField] private float itemLifetime = 5.0f;
     private GameObject healItemPrefab;
 
     private void Awake()
@@ -56,6 +57,9 @@ public class HealItemDropManager : MonoBehaviour
 
                 itemRb.AddForce(randomDir * scatterForce, ForceMode2D.Impulse);
             }
+            
+            // 一定時間後にアイテムを削除する
+            Destroy(item, itemLifetime);
         }
     }
 
@@ -77,6 +81,9 @@ public class HealItemDropManager : MonoBehaviour
 
                 itemRb.AddForce(randomDir * scatterForce, ForceMode2D.Impulse);
             }
+
+            // 一定時間後にアイテムを削除する
+            Destroy(item, itemLifetime);
 
             // 指定した秒数（デフォルトは0.1秒）待機
             yield return new WaitForSeconds(dropInterval);
