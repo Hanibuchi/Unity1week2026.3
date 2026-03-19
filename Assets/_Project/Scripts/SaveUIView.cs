@@ -7,6 +7,7 @@ public class SaveUIView : UIView
 {
     [Header("UI Elements")]
     [SerializeField] private Button closeButton;
+    [SerializeField] private CanvasGroup mainCanvasGroup;
 
     [Header("Save Slots")]
     [Tooltip("インスペクタから各セーブスロットを割り当ててください")]
@@ -23,6 +24,7 @@ public class SaveUIView : UIView
     public override void Show()
     {
         base.Show();
+        SetInteractable(true);
         RefreshSlots();
 
         // 最初のスロット（セーブ1）を選択状態にする
@@ -59,6 +61,19 @@ public class SaveUIView : UIView
             {
                 saveSlots[i].SetEmpty(saveNumber);
             }
+        }
+    }
+
+    /// <summary>
+    /// UI全体の操作可否を切り替えます。
+    /// 例えばダイアログ表示中などに操作を無効化する際に使用します。
+    /// </summary>
+    public void SetInteractable(bool isInteractable)
+    {
+        if (mainCanvasGroup != null)
+        {
+            mainCanvasGroup.interactable = isInteractable;
+            mainCanvasGroup.blocksRaycasts = isInteractable;
         }
     }
 }
