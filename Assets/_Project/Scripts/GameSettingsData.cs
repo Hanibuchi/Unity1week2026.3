@@ -48,4 +48,15 @@ public class GameSettingsData : ScriptableObject
     public Sprite otohimeFaceSerious;
     public Sprite otohimeFaceDisbelief;
     public Sprite otohimeFaceCute;
+
+    [Header("Character Faces (Red Kame)")]
+    public Sprite redKameFaceNormal;
+    public Sprite redKameFaceJoy;
+    public Sprite redKameFaceAnger;
+    public Sprite redKameFaceSadness;
+    public Sprite redKameFaceConfusion;
+    public Sprite redKameFaceSurprise;
+    public Sprite redKameFaceDisgust;
+    public Sprite redKameFaceDamage;
+    public Sprite redKameFaceConfidence;
 }

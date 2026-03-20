@@ -48,3 +48,12 @@ MonoBehaviour:
   otohimeFaceSerious: {fileID: 4271708098846832752, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
   otohimeFaceDisbelief: {fileID: -5343830825105331410, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
   otohimeFaceCute: {fileID: 3237423096566260696, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  redKameFaceNormal: {fileID: 6992595120145625363, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceJoy: {fileID: -6517368155435269189, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceAnger: {fileID: 6820830186587232632, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceSadness: {fileID: -8114361547082195982, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceConfusion: {fileID: -2930180166069442789, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceSurprise: {fileID: -5389508484758126118, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceDisgust: {fileID: -1914897827798649479, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceDamage: {fileID: -5495938827994889490, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceConfidence: {fileID: -8482024607286963123, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
