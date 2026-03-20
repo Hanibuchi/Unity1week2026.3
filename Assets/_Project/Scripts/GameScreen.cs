@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -23,6 +24,10 @@ public class GameScreen : MonoBehaviour
     [Tooltip("画面ロード時にスポーンさせる敵のリスト")]
     [SerializeField] private List<EnemySpawnData> enemySpawnDataList = new List<EnemySpawnData>();
 
+    [Header("Events")]
+    public Action onScreenLoadedEvent;
+    public Action onScreenUnloadedEvent;
+
     // スポーンした敵を保持しておくリスト（画面を離れた時に破棄したい場合などに使える）
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
@@ -46,6 +51,9 @@ public class GameScreen : MonoBehaviour
 
         // 2. 敵をスポーンさせる
         SpawnEnemies();
+
+        // 3. 外部のイベントを呼び出す
+        onScreenLoadedEvent?.Invoke();
     }
 
     /// <summary>
@@ -55,6 +63,9 @@ public class GameScreen : MonoBehaviour
     {
         // 必要に応じて、スポーンした敵を破棄するなどの処理を追加
         ClearEnemies();
+
+        // 外部のイベントを呼び出す
+        onScreenUnloadedEvent?.Invoke();
     }
 
     private void SpawnEnemies()
