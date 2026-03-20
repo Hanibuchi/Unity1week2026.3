@@ -9,6 +9,11 @@ public class SaveTrigger : MonoBehaviour, IInteractable
 
     public string LocationName => locationName;
 
+    [Tooltip("このセーブポイントが属するGameScreen")]
+    [SerializeField] private GameScreen targetGameScreen;
+
+    public GameScreen TargetGameScreen => targetGameScreen;
+
     [Tooltip("セーブポイントに触れた際のSE")]
     [SerializeField] private AudioClip interactSE;
 

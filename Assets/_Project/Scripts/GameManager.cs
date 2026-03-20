@@ -214,6 +214,12 @@ public class GameManager : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                 }
 
+                // セーブポイントが属するGameScreenをロードする
+                if (savePoint.TargetGameScreen != null)
+                {
+                    savePoint.TargetGameScreen.OnScreenLoaded();
+                }
+
                 Debug.Log($"[GameManager] Player moved to {locationName} at {newPos}");
             }
             else
