@@ -6,8 +6,8 @@ using UnityEngine;
 public class FirstCoastScreenEvent : MonoBehaviour
 {
     private GameScreen gameScreen;
-    [Tooltip("未来へ来たことがあるかどうかのフラグキー")]
-    [SerializeField] private GameObject blockadeObject;
+    [Tooltip("未来へ来たことがない場合にアクティブにするオブジェクト群")]
+    [SerializeField] private GameObject[] presentActiveObjects;
 
     [Header("Background Renderers")]
     [SerializeField] private SpriteRenderer backgroundRenderer1;
@@ -20,6 +20,7 @@ public class FirstCoastScreenEvent : MonoBehaviour
     [Header("Future Sprites (hasVisitedFuture = true)")]
     [SerializeField] private Sprite futureSprite1;
     [SerializeField] private Sprite futureSprite2;
+
 
     private void Awake()
     {
@@ -52,14 +53,19 @@ public class FirstCoastScreenEvent : MonoBehaviour
 
     private void OnScreenLoaded()
     {
-        if (FlagManager.Instance != null && blockadeObject != null)
+        if (FlagManager.Instance != null && presentActiveObjects != null)
         {
             // 未来に来たことがあるかのフラグを取得（デフォルトはfalse）
             bool hasVisitedFuture = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasVisitedFuture.ToString(), false);
-
-            // 未来に来たことがない(false)場合は通せん房オブジェクトをアクティブにする
+            // 未来に来たことがない(false)場合は配列内オブジェクトをアクティブにする
             // 未来に来たことがある(true)場合は非アクティブにする
-            blockadeObject.SetActive(!hasVisitedFuture);
+            foreach (var obj in presentActiveObjects)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(!hasVisitedFuture);
+                }
+            }
         }
 
         // 背景のSpriteをフラグに応じて切り替える
