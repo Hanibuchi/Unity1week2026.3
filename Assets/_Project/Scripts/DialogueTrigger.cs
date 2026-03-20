@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     [SerializeField] private float playerStandOffset = 1.5f;
     [Tooltip("プレイヤーが範囲に入った時に自動で会話を開始するかどうか")]
     [SerializeField] private bool autoStart = false;
+
+    public Action onDialogueEnd;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -77,6 +80,9 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
                 {
                     CameraController.Instance.SetTrackingTarget(PlayerController.Instance.transform);
                 }
+
+                // 外部から渡された会話終了時の処理を実行
+                onDialogueEnd?.Invoke();
             });
         }
     }
