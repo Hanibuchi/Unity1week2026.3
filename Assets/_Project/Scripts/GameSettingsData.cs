@@ -59,4 +59,64 @@ public class GameSettingsData : ScriptableObject
     public Sprite redKameFaceDisgust;
     public Sprite redKameFaceDamage;
     public Sprite redKameFaceConfidence;
+
+    [Header("Pet Icons")]
+    public Sprite petIconNormal;
+    public Sprite petIconJoy;
+
+    [Header("Scientist Icons")]
+    public Sprite scientistFaceNormal;
+    public Sprite scientistFaceJoy;
+    public Sprite scientistFaceAnger;
+    public Sprite scientistFaceSadness;
+    public Sprite scientistFaceConfusion;
+    public Sprite scientistFaceSurprise;
+    public Sprite scientistFaceDisgust;
+    public Sprite scientistFaceDamage;
+    public Sprite scientistFaceConfidence;
+
+    [Header("Character Faces (Modern People A)")]
+    public Sprite modernPeopleAFaceNormal;
+    public Sprite modernPeopleAFaceJoy;
+    public Sprite modernPeopleAFaceFlustered;
+    public Sprite modernPeopleAFaceSadness;
+    public Sprite modernPeopleAFaceWorry;
+    public Sprite modernPeopleAFaceSurprise;
+    public Sprite modernPeopleAFaceSerious;
+
+    [Header("Character Faces (Modern People B)")]
+    public Sprite modernPeopleBFaceNormal;
+    public Sprite modernPeopleBFaceJoy;
+    public Sprite modernPeopleBFaceFlustered;
+    public Sprite modernPeopleBFaceSadness;
+    public Sprite modernPeopleBFaceWorry;
+    public Sprite modernPeopleBFaceSurprise;
+    public Sprite modernPeopleBFaceSerious;
+
+    [Header("Character Faces (Modern People C)")]
+    public Sprite modernPeopleCFaceNormal;
+    public Sprite modernPeopleCFaceJoy;
+    public Sprite modernPeopleCFaceFlustered;
+    public Sprite modernPeopleCFaceSadness;
+    public Sprite modernPeopleCFaceWorry;
+    public Sprite modernPeopleCFaceSurprise;
+    public Sprite modernPeopleCFaceSerious;
+
+    [Header("Character Faces (Modern People D)")]
+    public Sprite modernPeopleDFaceNormal;
+    public Sprite modernPeopleDFaceJoy;
+    public Sprite modernPeopleDFaceFlustered;
+    public Sprite modernPeopleDFaceSadness;
+    public Sprite modernPeopleDFaceWorry;
+    public Sprite modernPeopleDFaceSurprise;
+    public Sprite modernPeopleDFaceSerious;
+
+    [Header("Character Faces (Modern People E)")]
+    public Sprite modernPeopleEFaceNormal;
+    public Sprite modernPeopleEFaceJoy;
+    public Sprite modernPeopleEFaceFlustered;
+    public Sprite modernPeopleEFaceSadness;
+    public Sprite modernPeopleEFaceWorry;
+    public Sprite modernPeopleEFaceSurprise;
+    public Sprite modernPeopleEFaceSerious;
 }
