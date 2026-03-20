@@ -23,6 +23,7 @@ MonoBehaviour:
   taroFaceDisgust: {fileID: -4730897342921998385, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
   taroFaceDamage: {fileID: -6075183031453291970, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
   taroFaceConfidence: {fileID: -6373264484776070808, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceSerious: {fileID: 9181738896386585654, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
   childFaceConfidence: {fileID: 1517166437612333377, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
   childFaceSurprise: {fileID: 4229814639890824125, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
   childFaceDamage: {fileID: 8112001554782534201, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
@@ -35,3 +36,15 @@ MonoBehaviour:
   kameFaceDisgust: {fileID: -8486927094050392308, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
   kameFaceDamage: {fileID: -4014690897213794791, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
   kameFaceConfidence: {fileID: 4569574973455645033, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  otohimeFaceNormal: {fileID: 2571795894405695802, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceJoy: {fileID: -1595391849315462512, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceAnger: {fileID: -4217262754163807755, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceSadness: {fileID: 3430192909664037407, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceConfusion: {fileID: -3202968330043960948, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceSurprise: {fileID: 8389234435686506274, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceDisgust: {fileID: 461069686639208736, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceDamage: {fileID: -5828906475217516178, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceConfidence: {fileID: 8777720321289326319, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceSerious: {fileID: 4271708098846832752, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceDisbelief: {fileID: -5343830825105331410, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceCute: {fileID: 3237423096566260696, guid: 2805ee50a7722f04db14491808023bdb, type: 3}

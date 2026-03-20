@@ -17,6 +17,7 @@ public class GameSettingsData : ScriptableObject
     public Sprite taroFaceDisgust;
     public Sprite taroFaceDamage;
     public Sprite taroFaceConfidence;
+    public Sprite taroFaceSerious;
 
     [Header("Character Faces (Children)")]
     public Sprite childFaceConfidence;
@@ -33,4 +34,18 @@ public class GameSettingsData : ScriptableObject
     public Sprite kameFaceDisgust;
     public Sprite kameFaceDamage;
     public Sprite kameFaceConfidence;
+
+    [Header("Character Faces (Otohime)")]
+    public Sprite otohimeFaceNormal;
+    public Sprite otohimeFaceJoy;
+    public Sprite otohimeFaceAnger;
+    public Sprite otohimeFaceSadness;
+    public Sprite otohimeFaceConfusion;
+    public Sprite otohimeFaceSurprise;
+    public Sprite otohimeFaceDisgust;
+    public Sprite otohimeFaceDamage;
+    public Sprite otohimeFaceConfidence;
+    public Sprite otohimeFaceSerious;
+    public Sprite otohimeFaceDisbelief;
+    public Sprite otohimeFaceCute;
 }
