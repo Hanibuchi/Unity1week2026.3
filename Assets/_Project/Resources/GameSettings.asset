@@ -14,3 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameSettingsData
   uiSelectSound: {fileID: 8300000, guid: f9dc2288261cec74f962ff1f7a8877c9, type: 3}
   uiDecideSound: {fileID: 8300000, guid: e1f6766620199604389d92020d8e740d, type: 3}
+  taroFaceNormal: {fileID: 6259428629967259519, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceJoy: {fileID: -5154733373883138722, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceAnger: {fileID: -3665702278254401242, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceSadness: {fileID: 230648033586997190, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceConfusion: {fileID: 3728049508138850164, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceSurprise: {fileID: 491978217679988412, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceDisgust: {fileID: -4730897342921998385, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceDamage: {fileID: -6075183031453291970, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceConfidence: {fileID: -6373264484776070808, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  childFaceConfidence: {fileID: 1517166437612333377, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
+  childFaceSurprise: {fileID: 4229814639890824125, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
+  childFaceDamage: {fileID: 8112001554782534201, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
+  kameFaceNormal: {fileID: -4365204489684151380, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceJoy: {fileID: -5439008906135758942, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceAnger: {fileID: 1642211103116424736, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceSadness: {fileID: -3071645603610447900, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceConfusion: {fileID: -4449017477680482609, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceSurprise: {fileID: -3990566905473521325, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceDisgust: {fileID: -8486927094050392308, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceDamage: {fileID: -4014690897213794791, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceConfidence: {fileID: 4569574973455645033, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}

@@ -16,6 +16,16 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
 
     public Action onDialogueEnd;
 
+    public void SetAdjustPlayerPosition(bool value)
+    {
+        adjustPlayerPosition = value;
+    }
+
+    public void SetDialogueNodes(List<DialogueNode> nodes)
+    {
+        dialogueNodes = nodes;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -84,6 +94,10 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
                 // 外部から渡された会話終了時の処理を実行
                 onDialogueEnd?.Invoke();
             });
+        }
+        else
+        {
+            Debug.LogWarning("DialogueTrigger: DialogueManagerが見つからないか、dialogueNodesが設定されていません。");
         }
     }
 }
