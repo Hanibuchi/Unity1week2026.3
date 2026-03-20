@@ -7,6 +7,12 @@ using System.Collections.Generic;
 /// </summary>
 public class FlagManager : MonoBehaviour
 {
+    public enum FlagKey
+    {
+        HasVisitedFuture,
+        // 必要に応じてフラグをここに追加
+    }
+
     public static FlagManager Instance { get; private set; }
 
     // 現在のフラグを保持する辞書
@@ -26,6 +32,11 @@ public class FlagManager : MonoBehaviour
         }
     }
 
+    public bool testFlagValue = true;
+    public void TestSetFlag(string key)
+    {
+        SetFlag(key, testFlagValue);
+    }
     /// <summary>
     /// フラグを設定します
     /// </summary>
