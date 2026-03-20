@@ -98,4 +98,13 @@ public class GameScreen : MonoBehaviour
         }
         spawnedEnemies.Clear();
     }
+
+    private void OnDrawGizmos()
+    {
+        if (cameraBoundingShape != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireCube(cameraBoundingShape.bounds.center, cameraBoundingShape.bounds.size);
+        }
+    }
 }
