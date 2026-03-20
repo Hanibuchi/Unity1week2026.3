@@ -100,7 +100,7 @@ public class TurtleBullyingEvent : MonoBehaviour
             },
             new DialogueNode
             {
-                speakerName = "たろう",
+                speakerName = "うらしまたろう",
                 text = "やれやれ、行っちまっただ。……おーい、カメさん。怪我はねぇか？怖かったっぺな、もう大丈夫だ。",
                 speakerSprite =  settings.taroFaceNormal
             },
@@ -112,7 +112,7 @@ public class TurtleBullyingEvent : MonoBehaviour
             },
             new DialogueNode
             {
-                speakerName = "たろう",
+                speakerName = "うらしまたろう",
                 text = "うわぁぁ！？カメがしゃべっただ！おら、ついに暑さでおかしくなったんか！？",
                 speakerSprite = settings.taroFaceSurprise
             },
@@ -124,7 +124,7 @@ public class TurtleBullyingEvent : MonoBehaviour
             },
             new DialogueNode
             {
-                speakerName = "たろう",
+                speakerName = "うらしまたろう",
                 text = "りゅうぐうじょう……？おら、難しいことはわがんね。でも、困ってるやつがいんなら、助けねばなんねぇだ！",
                 speakerSprite = settings.taroFaceConfusion
             },
@@ -136,7 +136,7 @@ public class TurtleBullyingEvent : MonoBehaviour
             },
             new DialogueNode
             {
-                speakerName = "たろう",
+                speakerName = "うらしまたろう",
                 text = "海の底に城があるんだべか！そこに行けば、お腹いっぱい美味しいものが食べられるだか？",
                 speakerSprite = settings.taroFaceSurprise
             },
@@ -148,7 +148,7 @@ public class TurtleBullyingEvent : MonoBehaviour
             },
             new DialogueNode
             {
-                speakerName = "たろう",
+                speakerName = "うらしまたろう",
                 text = "んだか！なら、おら行ってみるだ！カメさん、よろしく頼むっぺ！",
                 speakerSprite = settings.taroFaceConfidence
             }
