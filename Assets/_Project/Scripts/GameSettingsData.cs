@@ -127,4 +127,9 @@ public class GameSettingsData : ScriptableObject
     public Sprite attackDownSprite;
     [Tooltip("攻撃力アップのアイテム画像")]
     public Sprite increaseAttackSprite;
+
+    [Tooltip("殺虫剤のアイテム画像")]
+    public Sprite insecticideSprite;
+    [Tooltip("ワクチンのアイテム画像")]
+    public Sprite vaccineSprite;
 }

@@ -106,3 +106,5 @@ MonoBehaviour:
   jetDashSprite: {fileID: 6296350222299792503, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
   attackDownSprite: {fileID: 7562677769168342683, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
   increaseAttackSprite: {fileID: 3827136672426700466, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
+  insecticideSprite: {fileID: 2101287344137813679, guid: 1659c8e0047aa7a4281dda340888962c, type: 3}
+  vaccineSprite: {fileID: 5006185027451739633, guid: 828a623906be0c84e8f4c2ba411866b8, type: 3}
