@@ -183,7 +183,7 @@ public class WildTurtleEvent : MonoBehaviour
                     var itemGetCanvas = UIManager.Instance?.GetView<ItemGetCanvas>();
                     if (itemGetCanvas != null)
                     {
-                        itemGetCanvas.ShowItem(settings.increaseAttackSprite, "大海の籠手", "装備すると攻撃力が大幅に上昇する。特定のタイルを破壊できるようになる。");
+                        itemGetCanvas.ShowItem(settings.increaseAttackSprite, "大海の籠手", "装備すると攻撃力が大幅に上昇する。特定のオブジェクトを破壊できるようになる。");
                     }
                 }
             }
