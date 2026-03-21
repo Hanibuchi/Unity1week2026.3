@@ -37,7 +37,6 @@ public class FlagManager : MonoBehaviour
         FoodWarehouseMissionFinished, // 食料倉庫ミッション達成
 
         VaccineMissionStarted, // ワクチンミッション開始
-
         VaccineMissionRewardAvailable, // ワクチンミッション完了
         VaccineMissionFinished, // ワクチンミッション達成
 
