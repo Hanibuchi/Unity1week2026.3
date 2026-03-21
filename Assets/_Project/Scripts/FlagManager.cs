@@ -29,6 +29,8 @@ public class FlagManager : MonoBehaviour
         HasJetDash,   // ジェットダッシュを持っているか
         HasAttackDown,   // 攻撃ダウンを持っているか
         HasIncreaseAttack,   // 攻撃力アップを持っているか
+
+        HasTalkedToScientist, // 科学者と話したか
     }
 
     public static FlagManager Instance { get; private set; }
