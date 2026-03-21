@@ -8,17 +8,24 @@ public class ReturnToTheGroundEvent : MonoBehaviour
     [SerializeField] private ScreenTransitionGate screenTransitionGate;
 
     [Header("ダイアログ開始までの遅延秒数")]
-    [SerializeField] private float dialogueStartDelay = 1.0f;
-
-    [Header("地上への画面遷移ゲート")]
-    [SerializeField] private ScreenTransitionGate groundTransitionGate;
+    [SerializeField] private float dialogueStartDelay = 0.1f;
+    
+    [Header("地上イベント")]
+    [SerializeField] private GroundEvent groundEvent;
 
     private DialogueTrigger dialogueTrigger;
-
     private void Awake()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
         SetupDialogue();
+        if (dialogueTrigger != null)
+        {
+            dialogueTrigger.onDialogueEnd += OnDialogueEnd;
+        }
+        else
+        {
+            Debug.LogWarning("ReturnToTheGroundEvent: DialogueTriggerコンポーネントが見つかりません。");
+        }
     }
 
     /// <summary>
@@ -62,6 +69,19 @@ public class ReturnToTheGroundEvent : MonoBehaviour
             dialogueTrigger.Interact();
         }
         // yield break;
+    }
+
+    private void OnDialogueEnd()
+    {
+        if (groundEvent != null)
+        {
+            groundEvent.StartEvent();
+            Debug.Log("ReturnToTheGroundEvent: GroundEvent.StartEvent()を呼び出しました。");
+        }
+        else
+        {
+            Debug.LogWarning("ReturnToTheGroundEvent: GroundEventがアサインされていません。");
+        }
     }
 
     private void SetupDialogue()
