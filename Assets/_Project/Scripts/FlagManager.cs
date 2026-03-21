@@ -32,12 +32,16 @@ public class FlagManager : MonoBehaviour
 
         HasTalkedToScientist, // 科学者と話したか
 
+        FoodWarehouseMissionStarted, // 食料倉庫ミッション開始
         FoodWarehouseMissionRewardAvailable, // 食料倉庫ミッション完了
         FoodWarehouseMissionFinished, // 食料倉庫ミッション達成
+
+        VaccineMissionStarted, // ワクチンミッション開始
 
         VaccineMissionRewardAvailable, // ワクチンミッション完了
         VaccineMissionFinished, // ワクチンミッション達成
 
+        ChemicalPlantMissionStarted, // 化学工場ミッション開始
         ChemicalPlantMissionRewardAvailable, // 化学工場ミッション完了
         ChemicalPlantMissionFinished, // 化学工場ミッション達成
     }
