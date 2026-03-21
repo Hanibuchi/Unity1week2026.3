@@ -9,6 +9,9 @@ public class BanquetEvent : MonoBehaviour
 
     [Header("ダイアログ開始までの遅延秒数")]
     [SerializeField] private float dialogueStartDelay = 1.0f;
+    
+    [Header("宴室への画面遷移ゲート")]
+    [SerializeField] private ScreenTransitionGate banquetRoomTransitionGate;
 
     private DialogueTrigger dialogueTrigger;
 
@@ -42,6 +45,37 @@ public class BanquetEvent : MonoBehaviour
 
         // 一定時間後にダイアログ開始
         StartCoroutine(StartDialogueAfterDelay());
+
+        // ダイアログ終了時に宴終了フラグを立てる
+        if (dialogueTrigger != null && FlagManager.Instance != null)
+        {
+            dialogueTrigger.onDialogueEnd += SetBanquetEndedFlag;
+        }
+
+    }
+
+    private void SetBanquetEndedFlag()
+    {
+        if (FlagManager.Instance != null)
+        {
+            FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasBanquetEnded.ToString(), true);
+            Debug.Log("BanquetEvent: HasBanquetEndedフラグをtrueに設定しました。");
+        }
+        // 一度だけ実行されるように解除
+        if (dialogueTrigger != null)
+        {
+            dialogueTrigger.onDialogueEnd -= SetBanquetEndedFlag;
+        }
+
+        // 宴室への遷移を実行
+        if (banquetRoomTransitionGate != null && PlayerController.Instance != null)
+        {
+            banquetRoomTransitionGate.StartTransition(PlayerController.Instance.transform);
+        }
+        else
+        {
+            Debug.LogWarning("BanquetEvent: 宴室へのScreenTransitionGateまたはPlayerController.Instanceが設定されていません。");
+        }
     }
 
     private System.Collections.IEnumerator StartDialogueAfterDelay()

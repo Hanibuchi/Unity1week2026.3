@@ -92,6 +92,17 @@ public class ScreenTransitionGate : MonoBehaviour
         {
             playerTransform.position = nextPlayerSpawnPoint.position;
             playerTransform.rotation = nextPlayerSpawnPoint.rotation;
+
+            // ルートオブジェクトのRigidbody2Dのvelocityを0にリセット
+            Rigidbody2D rb = playerTransform.GetComponent<Rigidbody2D>();
+            if (rb == null && playerTransform.root != null)
+            {
+                rb = playerTransform.root.GetComponent<Rigidbody2D>();
+            }
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
         }
 
         // --- カメラなどを更新させるため、少しだけ時間を動かす ---

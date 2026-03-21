@@ -12,6 +12,8 @@ public class UnderTheSeaEvent : MonoBehaviour
 
     [Header("ダイアログ開始までの遅延秒数")]
     [SerializeField] private float dialogueStartDelay = 1.0f;
+    [Header("宴イベント（次のイベント）")]
+    [SerializeField] private BanquetEvent banquetEvent;
 
     private DialogueTrigger dialogueTrigger;
 
@@ -55,7 +57,30 @@ public class UnderTheSeaEvent : MonoBehaviour
 
         // 一定時間後にダイアログ開始
         StartCoroutine(StartDialogueAfterDelay());
+
+        // ダイアログ終了時に宴イベントを開始するコールバックを設定（少し待機してから開始）
+        if (dialogueTrigger != null && banquetEvent != null)
+        {
+            dialogueTrigger.onDialogueEnd += () =>
+            {
+                StartCoroutine(StartBanquetEventWithDelay());
+            };
+        }
+
     }
+
+    [Header("宴イベント開始までの遅延秒数")]
+    [SerializeField] private float nextEventDelay = 1f;
+
+    private System.Collections.IEnumerator StartBanquetEventWithDelay()
+    {
+        yield return new WaitForSeconds(nextEventDelay);
+        if (banquetEvent != null)
+        {
+            banquetEvent.StartEvent();
+        }
+    }
+    
 
     private System.Collections.IEnumerator StartDialogueAfterDelay()
     {
