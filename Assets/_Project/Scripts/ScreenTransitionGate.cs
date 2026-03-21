@@ -41,6 +41,17 @@ public class ScreenTransitionGate : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 外部から遷移を発生させるメソッド
+    /// </summary>
+    public void StartTransition(Transform playerTransform)
+    {
+        if (!_isTransitioning)
+        {
+            StartCoroutine(TransitionRoutine(playerTransform));
+        }
+    }
+
     private IEnumerator TransitionRoutine(Transform playerTransform)
     {
         _isTransitioning = true;
