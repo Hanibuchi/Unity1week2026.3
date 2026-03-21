@@ -1929,7 +1929,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1889505709689619302, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
   m_PrefabInstance: {fileID: 2004504614}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2004504618}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 105acdee42db7db4cb9d34f9ac2f4b8b, type: 3}
@@ -4108,6 +4108,116 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &647889441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2004504615}
+    m_Modifications:
+    - target: {fileID: 123580576551566911, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_Name
+      value: Scientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773610172634911844, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3191487229801253599, guid: b752fdf355bfa724597faf71566bf126, type: 3}
+    - target: {fileID: 4465169091382144360, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: autoStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227088837990701362, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227088837990701362, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_Size.y
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227088837990701362, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_Offset.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227088837990701362, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_Offset.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 123580576551566911, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 647889443}
+  m_SourcePrefab: {fileID: 100100000, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+--- !u!1 &647889442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 123580576551566911, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+  m_PrefabInstance: {fileID: 647889441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &647889443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647889442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5738fed3d972d7e4ab79ec8f96128ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirstTalkWithScientistEvent
+--- !u!4 &647889444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+  m_PrefabInstance: {fileID: 647889441}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &680337999
 GameObject:
   m_ObjectHideFlags: 0
@@ -34233,10 +34343,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5740929825471235944, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1988534172}
+    - targetCorrespondingSourceObject: {fileID: 5740929825471235944, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 647889444}
     - targetCorrespondingSourceObject: {fileID: 4496972848519796097, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1306334544}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5235338100370424190, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2004504619}
   m_SourcePrefab: {fileID: 100100000, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
 --- !u!4 &2004504615 stripped
 Transform:
@@ -34253,6 +34369,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 17074992962588998, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
   m_PrefabInstance: {fileID: 2004504614}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2004504618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5235338100370424190, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+  m_PrefabInstance: {fileID: 2004504614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2004504619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004504618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec865e73f33efd5438cd4a2793c63c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CenterScreenEvent
+  scientistObject: {fileID: 647889442}
 --- !u!1 &2007970508
 GameObject:
   m_ObjectHideFlags: 0
