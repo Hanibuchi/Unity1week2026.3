@@ -8,6 +8,8 @@ public class PetRoomScreenEvent : MonoBehaviour
     [Tooltip("ペットのGameObject")]
     [SerializeField] private GameObject petObject;
 
+    [Tooltip("HasJetDashがtrueのとき非アクティブにするGameObject")]
+    [SerializeField] private GameObject jetDashHideObject;
 
     private GameScreen gameScreen;
 
@@ -46,23 +48,32 @@ public class PetRoomScreenEvent : MonoBehaviour
     }
 
     /// <summary>
-    /// ペットの表示状態をフラグに応じて切り替える
+    /// ペットの表示状態やJetDashHideObjectの状態をフラグに応じて切り替える
     /// </summary>
     private void UpdatePetObjectActive()
     {
         if (petObject == null)
         {
             Debug.LogWarning("[PetRoomScreenEvent] petObjectが設定されていません。");
-            return;
         }
         bool rewardAvailable = false;
         bool missionFinished = false;
+        bool hasJetDash = false;
         if (FlagManager.Instance != null)
         {
             rewardAvailable = FlagManager.Instance.GetFlag(FlagManager.FlagKey.PetMissionRewardAvailable.ToString(), false);
             missionFinished = FlagManager.Instance.GetFlag(FlagManager.FlagKey.PetMissionFinished.ToString(), false);
+            hasJetDash = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasJetDash.ToString(), false);
         }
         // いずれかのフラグが立っていれば非アクティブ、それ以外はアクティブ
-        petObject.SetActive(!(rewardAvailable || missionFinished));
+        if (petObject != null)
+        {
+            petObject.SetActive(!(rewardAvailable || missionFinished));
+        }
+        // HasJetDashがtrueならjetDashHideObjectを非アクティブ
+        if (jetDashHideObject != null)
+        {
+            jetDashHideObject.SetActive(!hasJetDash);
+        }
     }
 }

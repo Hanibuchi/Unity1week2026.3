@@ -70,6 +70,7 @@ public class PetMissionCompleteEvent : MonoBehaviour
                     {
                         itemGetCanvas.ShowItem(settings.petIconJoy, "熱帯魚", "おとひめのペット。おとひめといつも一緒に寝ている。");
                     }
+                    gameObject.SetActive(false);
                 }
             }
         };
