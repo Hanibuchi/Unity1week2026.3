@@ -17,6 +17,7 @@ public class FlagManager : MonoBehaviour
         PetMissionFinished,    // ペットミッション達成
 
         // 暴走ウミガメミッション
+        WildTurtleMissionStarted, // 暴走ウミガメミッション受諾
         WildTurtleMissionRewardAvailable, // 暴走ウミガメミッション完了
         WildTurtleMissionFinished,  // 暴走ウミガメミッション達成
 
