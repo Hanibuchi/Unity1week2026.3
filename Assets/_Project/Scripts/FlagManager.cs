@@ -31,6 +31,15 @@ public class FlagManager : MonoBehaviour
         HasIncreaseAttack,   // 攻撃力アップを持っているか
 
         HasTalkedToScientist, // 科学者と話したか
+
+        FoodWarehouseMissionRewardAvailable, // 食料倉庫ミッション完了
+        FoodWarehouseMissionFinished, // 食料倉庫ミッション達成
+
+        VaccineMissionRewardAvailable, // ワクチンミッション完了
+        VaccineMissionFinished, // ワクチンミッション達成
+
+        ChemicalPlantMissionRewardAvailable, // 化学工場ミッション完了
+        ChemicalPlantMissionFinished, // 化学工場ミッション達成
     }
 
     public static FlagManager Instance { get; private set; }
