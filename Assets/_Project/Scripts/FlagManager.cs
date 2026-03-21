@@ -22,6 +22,7 @@ public class FlagManager : MonoBehaviour
         WildTurtleMissionFinished,  // 暴走ウミガメミッション達成
 
         // 食材確保ミッション
+        IngredientMissionStarted,   // 食材確保ミッション開始
         IngredientMissionRewardAvailable, // 食材確保ミッション完了
         IngredientMissionFinished,   // 食材確保ミッション達成
 

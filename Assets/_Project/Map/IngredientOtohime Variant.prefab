@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2115875823732917406
+--- !u!1001 &9105293164762795779
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,19 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 123580576551566911, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_Name
-      value: WildTurtleOtohime Variant
+      value: IngredientOtohime Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6819368671142407626, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -256
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -62,23 +66,23 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 123580576551566911, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3377460579211037119}
+      addedObject: {fileID: 2089691765354988487}
   m_SourcePrefab: {fileID: 100100000, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
---- !u!1 &2083497812561918625 stripped
+--- !u!1 &9217588627620819260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 123580576551566911, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
-  m_PrefabInstance: {fileID: 2115875823732917406}
+  m_PrefabInstance: {fileID: 9105293164762795779}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3377460579211037119
+--- !u!114 &2089691765354988487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083497812561918625}
+  m_GameObject: {fileID: 9217588627620819260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4000ce15a58abc41b73239ce1b6bb91, type: 3}
+  m_Script: {fileID: 11500000, guid: a7590af3badab934ebd4967d251bc5a3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WildTurtleEvent
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientEvent
   gameScreen: {fileID: 0}
