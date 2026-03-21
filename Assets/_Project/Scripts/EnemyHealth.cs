@@ -48,7 +48,7 @@ public class EnemyHealth : MonoBehaviour
         TakeDamage(damageAmount, transform.position);
     }
 
-    public void TakeDamage(int damageAmount, Vector3 hitPosition)
+    public virtual void TakeDamage(int damageAmount, Vector3 hitPosition)
     {
         currentHealth -= damageAmount;
         if (SoundManager.Instance != null && damageSE != null) SoundManager.Instance.PlaySE(damageSE);

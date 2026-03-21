@@ -2839,6 +2839,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 838249876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &386396271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5235338100370424190, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+  m_PrefabInstance: {fileID: 1214778411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &399531443 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4694392767011052463, guid: b5d20c555fd08d840a6c1c188f98d2b1, type: 3}
@@ -6415,6 +6420,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &937291627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937291628}
+  m_Layer: 0
+  m_Name: RubbleSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &937291628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937291627}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6, y: -4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1214778412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &959918840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29579,12 +29615,18 @@ PrefabInstance:
     - {fileID: 7456176316314258442, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5740929825471235944, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 937291628}
+    - targetCorrespondingSourceObject: {fileID: 5740929825471235944, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1180024385}
     - targetCorrespondingSourceObject: {fileID: 4496972848519796097, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 474546591}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5235338100370424190, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214778416}
   m_SourcePrefab: {fileID: 100100000, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
 --- !u!4 &1214778412 stripped
 Transform:
@@ -29606,12 +29648,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1889505709689619302, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
   m_PrefabInstance: {fileID: 1214778411}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 386396271}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 105acdee42db7db4cb9d34f9ac2f4b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameScreen
+--- !u!114 &1214778416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386396271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c899ded5b6e1349abbda74c496b9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodWarehouseScreenEvent
+  rubblePrefab: {fileID: 8101597108147683815, guid: b1a9455e3a2565e45b6b252e3f909dd2, type: 3}
+  rubbleSpawnPoint: {fileID: 937291628}
 --- !u!1001 &1236771098
 PrefabInstance:
   m_ObjectHideFlags: 0
