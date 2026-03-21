@@ -7,6 +7,9 @@ public class TurtleBullyingEvent : MonoBehaviour
     [SerializeField] private GameObject prefabToSpawn;
     [SerializeField] private Transform[] spawnPoints;
 
+    [Header("次の海イベント")]
+    [SerializeField] private UnderTheSeaEvent underTheSeaEvent;
+
     private DialogueTrigger dialogueTrigger;
 
     private void Awake()
@@ -30,6 +33,10 @@ public class TurtleBullyingEvent : MonoBehaviour
 
     private void OnDialogueEnded()
     {
+        if (dialogueTrigger != null)
+        {
+            dialogueTrigger.onDialogueEnd -= OnDialogueEnded;
+        }
         List<GameObject> spawnedEnemies = new List<GameObject>();
 
         // プレハブをスポーン
@@ -155,7 +162,22 @@ public class TurtleBullyingEvent : MonoBehaviour
         };
         dialogueTrigger.SetDialogueNodes(nodes);
         dialogueTrigger.SetAdjustPlayerPosition(true);
+        dialogueTrigger.onDialogueEnd += OnAfterKameDialogueEnd;
         dialogueTrigger.Interact();
+
+    // カメとの会話終了後の処理
+    void OnAfterKameDialogueEnd()
+    {
+        dialogueTrigger.onDialogueEnd -= OnAfterKameDialogueEnd;
+        if (underTheSeaEvent != null)
+        {
+            underTheSeaEvent.StartEvent();
+        }
+        else
+        {
+            Debug.LogWarning("TurtleBullyingEvent: underTheSeaEventが設定されていません。");
+        }
+    }
     }
 
 
