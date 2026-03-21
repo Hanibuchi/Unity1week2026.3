@@ -174,7 +174,13 @@ public class GameManager : MonoBehaviour
     public void LoadGameFromSave(int slotNumber, string locationName)
     {
         Debug.Log($"[GameManager] スロット{slotNumber} (場所:{locationName}) のデータでゲームを再開します。");
-        
+
+        // 魚カウンターのリセット
+        if (FishCountManager.Instance != null)
+        {
+            FishCountManager.Instance.ResetCount();
+        }
+
         // プレイヤー能力のロードと適用
         if (PlayerAbilityManager.Instance != null)
         {
@@ -186,7 +192,7 @@ public class GameManager : MonoBehaviour
         }
 
         // TODO: ここにシーン遷移、プレイヤー座標の復元、フェードUIなどの処理を記述します。
-        
+
         if (SaveTriggerManager.Instance != null)
         {
             var savePoint = SaveTriggerManager.Instance.GetSaveTriggerByLocationName(locationName);
@@ -194,7 +200,7 @@ public class GameManager : MonoBehaviour
             {
                 // ゲームオーバーで非アクティブになっている場合を考慮してアクティブに戻す
                 PlayerController.Instance.gameObject.SetActive(true);
-                
+
                 // 体力などの再初期化を行う
                 var playerHealth = PlayerController.Instance.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
@@ -206,7 +212,7 @@ public class GameManager : MonoBehaviour
                 Vector3 newPos = savePoint.transform.position;
                 newPos.z = PlayerController.Instance.transform.position.z;
                 PlayerController.Instance.transform.position = newPos;
-                
+
                 // すでにRigidBodyの移動処理などが噛み合わない場合を考慮して速度もリセット
                 var rb = PlayerController.Instance.GetComponent<Rigidbody2D>();
                 if (rb != null)
