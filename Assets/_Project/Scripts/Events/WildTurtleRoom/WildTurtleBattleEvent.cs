@@ -86,29 +86,39 @@ public class WildTurtleBattleEvent : MonoBehaviour
         FlagManager.Instance?.SetFlag(FlagManager.FlagKey.WildTurtleMissionRewardAvailable.ToString(), true);
         // 逃げていく会話を表示
         ShowWildTurtleEscapeDialogue();
+        // GameScreenを再読み込み
+        if (targetGameScreen != null)
+        {
+            targetGameScreen.OnScreenLoaded();
+        }
+
+        if (lockObject != null)
+        {
+            lockObject.SetActive(false);
+        }
     }
 
     private void ShowWildTurtleEscapeDialogue()
     {
-        var settings = CommonGameSettings.Settings ?? Resources.Load<GameSettingsData>("GameSettings");
-        if (dialogueTrigger == null || settings == null) return;
-        var nodes = new List<DialogueNode>
-        {
-            new DialogueNode
-            {
-                speakerName = "巨大ウミガメ",
-                text = "くっ……今日はこのくらいにしてやる！覚えてろよ！",
-                speakerSprite = settings.redKameFaceSurprise
-            },
-            new DialogueNode
-            {
-                speakerName = "うらしまたろう",
-                text = "あいつ、逃げていっただな……。また来るかもしれねぇ。",
-                speakerSprite = settings.taroFaceNormal
-            }
-        };
-        dialogueTrigger.SetDialogueNodes(nodes);
-        dialogueTrigger.Interact();
+        // var settings = CommonGameSettings.Settings ?? Resources.Load<GameSettingsData>("GameSettings");
+        // if (dialogueTrigger == null || settings == null) return;
+        // var nodes = new List<DialogueNode>
+        // {
+        //     new DialogueNode
+        //     {
+        //         speakerName = "巨大ウミガメ",
+        //         text = "くっ……今日はこのくらいにしてやる！覚えてろよ！",
+        //         speakerSprite = settings.redKameFaceSurprise
+        //     },
+        //     new DialogueNode
+        //     {
+        //         speakerName = "うらしまたろう",
+        //         text = "あいつ、逃げていっただな……。また来るかもしれねぇ。",
+        //         speakerSprite = settings.taroFaceNormal
+        //     }
+        // };
+        // dialogueTrigger.SetDialogueNodes(nodes);
+        // dialogueTrigger.Interact();
     }
 
     private void SetupDialogue()

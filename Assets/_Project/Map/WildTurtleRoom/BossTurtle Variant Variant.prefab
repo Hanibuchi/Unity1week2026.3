@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2342165361112433549, guid: 20a9bc2f99f624048bc761c6a896c12b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -152.85674
+      value: -153.97775
       objectReference: {fileID: 0}
     - target: {fileID: 2342165361112433549, guid: 20a9bc2f99f624048bc761c6a896c12b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.27548885
+      value: -2.5282924
       objectReference: {fileID: 0}
     - target: {fileID: 2342165361112433549, guid: 20a9bc2f99f624048bc761c6a896c12b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54,11 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8076469134213663007, guid: 20a9bc2f99f624048bc761c6a896c12b, type: 3}
       propertyPath: maxHeight
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8076469134213663007, guid: 20a9bc2f99f624048bc761c6a896c12b, type: 3}
       propertyPath: minHeight
       value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076469134213663007, guid: 20a9bc2f99f624048bc761c6a896c12b, type: 3}
+      propertyPath: fixedHorizontalHeight
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8076469134213663007, guid: 20a9bc2f99f624048bc761c6a896c12b, type: 3}
       propertyPath: 'startXPositions.Array.data[0]'
@@ -66,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8076469134213663007, guid: 20a9bc2f99f624048bc761c6a896c12b, type: 3}
       propertyPath: 'startXPositions.Array.data[1]'
-      value: -140
+      value: -150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
