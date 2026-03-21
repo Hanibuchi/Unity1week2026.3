@@ -9,6 +9,7 @@ public class FishCountManager : MonoBehaviour
 
     private int _fishCount = 0;
     public int FishCount => _fishCount;
+    [SerializeField] private GameScreen gameScreen;
 
     private void Awake()
     {
@@ -29,6 +30,13 @@ public class FishCountManager : MonoBehaviour
     public void AddFish(int count)
     {
         _fishCount += count;
+
+        // 20以上になったらフラグを立てる
+        if (_fishCount >= 20 && FlagManager.Instance != null)
+        {
+            FlagManager.Instance.SetFlag(FlagManager.FlagKey.IngredientMissionRewardAvailable.ToString(), true);
+            gameScreen?.OnScreenLoaded();
+        }
     }
 
     /// <summary>
