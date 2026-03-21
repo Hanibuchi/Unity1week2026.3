@@ -6685,7 +6685,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundEvent
   screenTransitionGate: {fileID: 317270646}
-  dialogueStartDelay: 0.1
+  sePlayDelay: 0.5
+  dialogueStartDelayAfterSE: 3
+  seClip: {fileID: 8300000, guid: 7598b9bdbcda65f41b648fd6efdde5a3, type: 3}
 --- !u!4 &1068326496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 17074992962588998, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}

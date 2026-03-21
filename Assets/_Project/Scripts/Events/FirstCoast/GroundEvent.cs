@@ -7,8 +7,14 @@ public class GroundEvent : MonoBehaviour
     [Header("画面遷移ゲート")]
     [SerializeField] private ScreenTransitionGate screenTransitionGate;
 
-    [Header("ダイアログ開始までの遅延秒数")]
-    [SerializeField] private float dialogueStartDelay = 0.1f;
+    [Header("SE再生までの遅延秒数")]
+    [SerializeField] private float sePlayDelay = 0.5f;
+
+    [Header("SE再生後、ダイアログ開始までの遅延秒数")]
+    [SerializeField] private float dialogueStartDelayAfterSE = 1.0f;
+
+    [Header("再生するSEクリップ")]
+    [SerializeField] private AudioClip seClip;
 
     private DialogueTrigger dialogueTrigger;
 
@@ -46,12 +52,34 @@ public class GroundEvent : MonoBehaviour
 
     private System.Collections.IEnumerator StartDialogueAfterDelay()
     {
-        yield return new WaitForSeconds(dialogueStartDelay);
+        // SE再生まで待機
+        yield return new WaitForSeconds(sePlayDelay);
+
+        // SE再生
+        if (seClip != null)
+        {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySE(seClip);
+            }
+            else
+            {
+                Debug.LogWarning("GroundEvent: SoundManager.Instanceが見つかりません。SE再生できません。");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("GroundEvent: seClipが設定されていません。");
+        }
+
+        // SE再生後さらに待機
+        yield return new WaitForSeconds(dialogueStartDelayAfterSE);
+
+        // ダイアログ開始
         if (dialogueTrigger != null)
         {
             dialogueTrigger.Interact();
         }
-        // yield break;
     }
 
     private void SetupDialogue()
