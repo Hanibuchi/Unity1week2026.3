@@ -83,7 +83,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
                 // カメラの対象を変更しない場合はスキップ
                 if (!doNotChangeCameraTarget && CameraController.Instance != null)
                 {
-                    Transform npcTarget = transform.parent != null ? transform.parent : transform;
+                    Transform npcTarget = transform;
                     CameraController.Instance.SetMultipleTargets(npcTarget, PlayerController.Instance.transform);
                 }
             }

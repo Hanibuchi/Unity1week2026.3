@@ -10,6 +10,7 @@ public class FlagManager : MonoBehaviour
     public enum FlagKey
     {
         HasVisitedFuture,
+        HasBanquetEnded, // 宴が終わったかどうか
         // 必要に応じてフラグをここに追加
     }
 
