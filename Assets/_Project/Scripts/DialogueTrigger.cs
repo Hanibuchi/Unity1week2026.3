@@ -14,6 +14,14 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     [SerializeField] private bool autoStart = false;
     [Tooltip("会話中にカメラの対象を変更しない場合はtrue")]
     [SerializeField] private bool doNotChangeCameraTarget = false;
+
+
+    
+    [Header("Markオブジェクト（会話中に非表示）")]
+    [SerializeField] private GameObject markObject;
+    private bool? markObjectWasActive = null;
+
+    
     public void SetDoNotChangeCameraTarget(bool value)
     {
         doNotChangeCameraTarget = value;
@@ -61,6 +69,12 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     public void Interact()
     {
         Debug.Log("DialogueTrigger: Interact called");
+        if (markObject != null)
+        {
+            // 元の状態を保存し、非アクティブ化
+            markObjectWasActive = markObject.activeSelf;
+            markObject.SetActive(false);
+        }
         if (DialogueManager.Instance != null && dialogueNodes != null && dialogueNodes.Count > 0)
         {
             if (PlayerController.Instance != null)
@@ -96,6 +110,13 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
                     CameraController.Instance.SetTrackingTarget(PlayerController.Instance.transform);
                 }
 
+                // Markオブジェクトの状態を元に戻す
+                if (markObject != null && markObjectWasActive.HasValue)
+                {
+                    markObject.SetActive(markObjectWasActive.Value);
+                    markObjectWasActive = null;
+                }
+
                 // 外部から渡された会話終了時の処理を実行
                 onDialogueEnd?.Invoke();
             });
@@ -103,6 +124,12 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         else
         {
             Debug.LogWarning("DialogueTrigger: DialogueManagerが見つからないか、dialogueNodesが設定されていません。");
+            // 会話が始まらなかった場合もMarkオブジェクトの状態を戻す
+            if (markObject != null && markObjectWasActive.HasValue)
+            {
+                markObject.SetActive(markObjectWasActive.Value);
+                markObjectWasActive = null;
+            }
         }
     }
 }
