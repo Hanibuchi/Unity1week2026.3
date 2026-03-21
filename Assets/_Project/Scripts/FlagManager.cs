@@ -22,7 +22,11 @@ public class FlagManager : MonoBehaviour
 
         // 食材確保ミッション
         IngredientMissionRewardAvailable, // 食材確保ミッション完了
-        IngredientMissionFinished   // 食材確保ミッション達成
+        IngredientMissionFinished,   // 食材確保ミッション達成
+
+        HasJetDash,   // ジェットダッシュを持っているか
+        HasAttackDown,   // 攻撃ダウンを持っているか
+        HasIncreaseAttack,   // 攻撃力アップを持っているか
     }
 
     public static FlagManager Instance { get; private set; }

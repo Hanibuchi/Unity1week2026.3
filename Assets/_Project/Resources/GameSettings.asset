@@ -103,3 +103,6 @@ MonoBehaviour:
   modernPeopleEFaceWorry: {fileID: 6275462640114158120, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
   modernPeopleEFaceSurprise: {fileID: -114209822600264398, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
   modernPeopleEFaceSerious: {fileID: -8515225920999422891, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  jetDashSprite: {fileID: 6296350222299792503, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
+  attackDownSprite: {fileID: 7562677769168342683, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
+  increaseAttackSprite: {fileID: 3827136672426700466, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}

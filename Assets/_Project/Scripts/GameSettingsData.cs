@@ -119,4 +119,12 @@ public class GameSettingsData : ScriptableObject
     public Sprite modernPeopleEFaceWorry;
     public Sprite modernPeopleEFaceSurprise;
     public Sprite modernPeopleEFaceSerious;
+
+    [Header("Item Sprites")]
+    [Tooltip("イカ墨ジェットのアイテム画像")]
+    public Sprite jetDashSprite;
+    [Tooltip("攻撃ダウンのアイテム画像")]
+    public Sprite attackDownSprite;
+    [Tooltip("攻撃力アップのアイテム画像")]
+    public Sprite increaseAttackSprite;
 }

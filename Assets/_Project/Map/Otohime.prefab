@@ -121,6 +121,7 @@ MonoBehaviour:
   playerStandOffset: 2
   autoStart: 0
   doNotChangeCameraTarget: 0
+  markObject: {fileID: 6819368671142407626}
 --- !u!1 &846166865200347595
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,9 +32,9 @@ public class PlayerAbilityManager : MonoBehaviour
     {
         if (FlagManager.Instance != null)
         {
-            currentAbilities.canJetDash = FlagManager.Instance.GetFlag("HasJetDash");
-            currentAbilities.canAttackDown = FlagManager.Instance.GetFlag("HasAttackDown");
-            currentAbilities.canIncreaseAttack = FlagManager.Instance.GetFlag("HasIncreaseAttack");
+            currentAbilities.canJetDash = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasJetDash.ToString());
+            currentAbilities.canAttackDown = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasAttackDown.ToString());
+            currentAbilities.canIncreaseAttack = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasIncreaseAttack.ToString());
         }
         else
         {
