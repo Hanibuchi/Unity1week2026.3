@@ -13,16 +13,16 @@ public class FlagManager : MonoBehaviour
         HasBanquetEnded, // 宴が終わったかどうか
 
         // ペットミッション
-        PetMissionCompleted,   // ペットミッション完了
-        PetMissionAchieved,    // ペットミッション達成
+        PetMissionRewardAvailable,   // ペットミッション完了
+        PetMissionFinished,    // ペットミッション達成
 
         // 暴走ウミガメミッション
-        WildTurtleMissionCompleted, // 暴走ウミガメミッション完了
-        WildTurtleMissionAchieved,  // 暴走ウミガメミッション達成
+        WildTurtleMissionRewardAvailable, // 暴走ウミガメミッション完了
+        WildTurtleMissionFinished,  // 暴走ウミガメミッション達成
 
         // 食材確保ミッション
-        IngredientMissionCompleted, // 食材確保ミッション完了
-        IngredientMissionAchieved   // 食材確保ミッション達成
+        IngredientMissionRewardAvailable, // 食材確保ミッション完了
+        IngredientMissionFinished   // 食材確保ミッション達成
     }
 
     public static FlagManager Instance { get; private set; }
