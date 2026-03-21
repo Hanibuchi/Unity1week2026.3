@@ -5,11 +5,21 @@ using UnityEngine;
 public class WayBackTurtleEvent : MonoBehaviour
 {
     private DialogueTrigger dialogueTrigger;
+    [Header("地上に戻るイベント")]
+    [SerializeField] private ReturnToTheGroundEvent returnToTheGroundEvent;
 
     private void Awake()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
         SetupDialogue();
+        if (dialogueTrigger != null)
+        {
+            dialogueTrigger.onDialogueEnd += OnDialogueEnd;
+        }
+        else
+        {
+            Debug.LogWarning("WayBackTurtleEvent: DialogueTriggerコンポーネントが見つかりません。");
+        }
     }
 
     private void SetupDialogue()
@@ -20,6 +30,7 @@ public class WayBackTurtleEvent : MonoBehaviour
             Debug.LogWarning("WayBackTurtleEvent: GameSettingsが見つかりません。");
             return;
         }
+        returnToTheGround = false;
 
         var nodes = new List<DialogueNode>
         {
@@ -61,7 +72,11 @@ public class WayBackTurtleEvent : MonoBehaviour
                                 speakerName = "うらしまたろう",
                                 text = "おとひめ様の料理が食べられなくなるのは寂しいけど……。おらには、待ってる人がいるんだ。やっぱり帰るだ！",
                                 speakerSprite = settings.taroFaceNormal,
-                                hasChoices = false
+                                hasChoices = false,
+                                OnNodeStart = () =>
+                                {
+                                    returnToTheGround = true;
+                                }
                             }
                         },
                         choice2NextNodes = new List<DialogueNode>
@@ -97,6 +112,24 @@ public class WayBackTurtleEvent : MonoBehaviour
         else
         {
             Debug.LogWarning("WayBackTurtleEvent: DialogueTriggerコンポーネントが見つかりません。");
+        }
+    }
+    bool returnToTheGround = false;
+
+    void OnDialogueEnd()
+    {
+        if (returnToTheGround)
+
+        {
+            // プレイヤーが「村に帰る」を選んで会話が終わったら、地上に戻るイベントを開始する
+            if (returnToTheGroundEvent != null)
+            {
+                returnToTheGroundEvent.StartEvent();
+            }
+            else
+            {
+                Debug.LogWarning("WayBackTurtleEvent: ReturnToTheGroundEventがアサインされていません。");
+            }
         }
     }
 }

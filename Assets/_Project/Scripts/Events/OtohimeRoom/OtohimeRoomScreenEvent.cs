@@ -11,6 +11,8 @@ public class OtohimeRoomScreenEvent : MonoBehaviour
     [SerializeField] private GameObject banquetEvent;
     [Tooltip("宴が終わった後にアクティブにする乙姫オブジェクト")]
     [SerializeField] private GameObject otohimeObject;
+    [Tooltip("地上に戻るイベントオブジェクト")]
+    [SerializeField] private GameObject returnToTheGroundEvent;
 
     private void Awake()
     {
@@ -49,6 +51,8 @@ public class OtohimeRoomScreenEvent : MonoBehaviour
             bool hasBanquetEnded = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasBanquetEnded.ToString(), false);
             bool petMissionRewardAvailable = FlagManager.Instance.GetFlag(FlagManager.FlagKey.PetMissionRewardAvailable.ToString(), false);
             bool petMissionFinished = FlagManager.Instance.GetFlag(FlagManager.FlagKey.PetMissionFinished.ToString(), false);
+            bool hasVisitedFuture = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasVisitedFuture.ToString(), false);
+
             if (banquetEvent != null)
             {
                 // 宴が終わっていない(false)場合はアクティブ、終わっている(true)場合は非アクティブ
@@ -192,6 +196,12 @@ public class OtohimeRoomScreenEvent : MonoBehaviour
                         dialogueTrigger.SetDialogueNodes(nodes);
                     }
                 }
+            }
+
+            // returnToTheGroundEventのアクティブ制御
+            if (returnToTheGroundEvent != null)
+            {
+                returnToTheGroundEvent.SetActive(hasVisitedFuture);
             }
         }
     }

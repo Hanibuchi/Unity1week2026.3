@@ -9,7 +9,7 @@ public class BanquetEvent : MonoBehaviour
 
     [Header("ダイアログ開始までの遅延秒数")]
     [SerializeField] private float dialogueStartDelay = 1.0f;
-    
+
     [Header("宴室への画面遷移ゲート")]
     [SerializeField] private ScreenTransitionGate banquetRoomTransitionGate;
 
@@ -80,11 +80,12 @@ public class BanquetEvent : MonoBehaviour
 
     private System.Collections.IEnumerator StartDialogueAfterDelay()
     {
-        yield return new WaitForSeconds(dialogueStartDelay);
+        // yield return new WaitForSeconds(dialogueStartDelay);
         if (dialogueTrigger != null)
         {
             dialogueTrigger.Interact();
         }
+        yield break;
     }
 
     private void SetupDialogue()
