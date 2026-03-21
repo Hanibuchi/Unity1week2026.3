@@ -8,7 +8,8 @@ public class EnemySpawnData
     [Tooltip("スポーンさせる敵のプレハブ")]
     public GameObject enemyPrefab;
     [Tooltip("スポーンする位置の基準。子オブジェクトを持たせている場合は、それらすべての子オブジェクトの位置にスポーンさせます。")]
-    public Transform spawnPoint;
+
+    public List<Transform> spawnPoints;
 }
 
 /// <summary>
@@ -36,6 +37,8 @@ public class GameScreen : MonoBehaviour
     /// </summary>
     public void OnScreenLoaded()
     {
+        // すでにスポーン済みの敵がいれば一度消す
+        ClearEnemies();
         // 1. カメラの映す範囲をこの画面用のColliderに設定する
         if (cameraBoundingShape != null)
         {
@@ -72,20 +75,15 @@ public class GameScreen : MonoBehaviour
     {
         foreach (var data in enemySpawnDataList)
         {
-            if (data.enemyPrefab != null && data.spawnPoint != null)
+            if (data.enemyPrefab != null && data.spawnPoints != null)
             {
                 // 子オブジェクトを持つ場合は、その子オブジェクトすべてをスポーン位置として扱う
-                if (data.spawnPoint.childCount > 0)
+                if (data.spawnPoints.Count > 0)
                 {
-                    foreach (Transform child in data.spawnPoint)
+                    foreach (Transform spawnPoint in data.spawnPoints)
                     {
-                        InstantiateEnemy(data.enemyPrefab, child);
+                        InstantiateEnemy(data.enemyPrefab, spawnPoint);
                     }
-                }
-                else
-                {
-                    // 子オブジェクトがない場合は、指定されたTransform自体をスポーン位置とする
-                    InstantiateEnemy(data.enemyPrefab, data.spawnPoint);
                 }
             }
         }

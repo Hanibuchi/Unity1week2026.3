@@ -6,8 +6,7 @@ using UnityEngine;
 public class AddFishOnDestroy : MonoBehaviour
 {
     [SerializeField] private int addCount = 1;
-
-    private void OnDestroy()
+    public void AddFish()
     {
         if (FishCountManager.Instance != null)
         {

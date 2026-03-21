@@ -94,10 +94,10 @@ public class EnemyHealth : MonoBehaviour
                 // ランダムな角度で
                 Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
                 GameObject fragment = Instantiate(prefab, position, randomRotation);
-                
+
                 // 一定時間後に削除
                 Destroy(fragment, globalSettings.fragmentLifetime);
-                
+
                 Rigidbody2D rb = fragment.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
@@ -105,7 +105,7 @@ public class EnemyHealth : MonoBehaviour
                     Vector2 randomDirection = Random.insideUnitCircle.normalized;
                     // ランダムな強さで
                     float randomForce = Random.Range(globalSettings.minFragmentForce, globalSettings.maxFragmentForce);
-                    
+
                     rb.AddForce(randomDirection * randomForce, ForceMode2D.Impulse);
                     rb.AddTorque(Random.Range(-randomForce, randomForce), ForceMode2D.Impulse);
                 }
@@ -130,6 +130,9 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
+
+        if (TryGetComponent<AddFishOnDestroy>(out var addFish))
+            addFish.AddFish();
 
         // EnemyControllerがあればアニメーション等の死亡処理を任せる
         EnemyController enemyController = GetComponent<EnemyController>();
