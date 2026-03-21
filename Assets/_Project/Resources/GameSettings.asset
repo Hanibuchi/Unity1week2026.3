@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: dd48833b7cad69e4c98a624085490865, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: Assembly-CSharp::GameSettingsData
   uiSelectSound: {fileID: 8300000, guid: f9dc2288261cec74f962ff1f7a8877c9, type: 3}
