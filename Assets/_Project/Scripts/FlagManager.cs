@@ -11,7 +11,18 @@ public class FlagManager : MonoBehaviour
     {
         HasVisitedFuture,
         HasBanquetEnded, // 宴が終わったかどうか
-        // 必要に応じてフラグをここに追加
+
+        // ペットミッション
+        PetMissionCompleted,   // ペットミッション完了
+        PetMissionAchieved,    // ペットミッション達成
+
+        // 暴走ウミガメミッション
+        WildTurtleMissionCompleted, // 暴走ウミガメミッション完了
+        WildTurtleMissionAchieved,  // 暴走ウミガメミッション達成
+
+        // 食材確保ミッション
+        IngredientMissionCompleted, // 食材確保ミッション完了
+        IngredientMissionAchieved   // 食材確保ミッション達成
     }
 
     public static FlagManager Instance { get; private set; }
