@@ -3003,6 +3003,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 253601180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &474521252 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2773610172634911844, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+  m_PrefabInstance: {fileID: 1180024384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &474546590
 GameObject:
   m_ObjectHideFlags: 0
@@ -29169,6 +29174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodWarehouseMissionEvent
   gameScreen: {fileID: 1214778415}
+  targetSpriteRenderer: {fileID: 474521252}
+  spriteWhenFinished: {fileID: -1728894230878555332, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  spriteWhenNotFinished: {fileID: -3225352827967888007, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
 --- !u!1 &1196980878
 GameObject:
   m_ObjectHideFlags: 0

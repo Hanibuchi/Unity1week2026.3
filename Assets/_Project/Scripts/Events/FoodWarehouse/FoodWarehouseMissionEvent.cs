@@ -8,6 +8,10 @@ public class FoodWarehouseMissionEvent : MonoBehaviour
     [Tooltip("このイベントが紐づくGameScreen。未設定なら自身から取得")]
     [SerializeField] private GameScreen gameScreen;
 
+    [Header("状態によって切り替えるSpriteRenderer")]
+    [SerializeField] private SpriteRenderer targetSpriteRenderer;
+    [SerializeField] private Sprite spriteWhenFinished;
+    [SerializeField] private Sprite spriteWhenNotFinished;
     private void Awake()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
@@ -47,6 +51,17 @@ public class FoodWarehouseMissionEvent : MonoBehaviour
         {
             Debug.LogWarning("FoodWarehouseMissionEvent: GameSettingsが見つかりません。");
             return;
+        }
+
+        // missionFinished状態に応じてSpriteを切り替え
+        bool missionFinished = false;
+        if (FlagManager.Instance != null)
+        {
+            missionFinished = FlagManager.Instance.GetFlag(FlagManager.FlagKey.FoodWarehouseMissionFinished.ToString(), false);
+        }
+        if (targetSpriteRenderer != null)
+        {
+            targetSpriteRenderer.sprite = missionFinished ? spriteWhenFinished : spriteWhenNotFinished;
         }
 
         // ミッション開始ダイアログ
@@ -227,12 +242,10 @@ public class FoodWarehouseMissionEvent : MonoBehaviour
         if (dialogueTrigger != null)
         {
             // 進行度フラグを参照して会話を切り替え
-            bool missionFinished = false;
             bool missionRewardAvailable = false;
             bool missionStarted = false;
             if (FlagManager.Instance != null)
             {
-                missionFinished = FlagManager.Instance.GetFlag(FlagManager.FlagKey.FoodWarehouseMissionFinished.ToString(), false);
                 missionRewardAvailable = FlagManager.Instance.GetFlag(FlagManager.FlagKey.FoodWarehouseMissionRewardAvailable.ToString(), false);
                 missionStarted = FlagManager.Instance.GetFlag(FlagManager.FlagKey.FoodWarehouseMissionStarted.ToString(), false);
             }
@@ -253,6 +266,7 @@ public class FoodWarehouseMissionEvent : MonoBehaviour
                 dialogueTrigger.onDialogueEnd = () =>
                 {
                     FlagManager.Instance?.SetFlag(FlagManager.FlagKey.FoodWarehouseMissionFinished.ToString(), true);
+                    gameScreen?.OnScreenLoaded();
                 };
             }
             else if (missionStarted)
