@@ -4033,7 +4033,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1354774378}
     m_Modifications:
     - target: {fileID: 123580576551566911, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_Name
@@ -4073,11 +4073,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -223.5
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -31.5
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4089,15 +4089,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4137,6 +4137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PetMissionCompleteEvent
   gameScreen: {fileID: 0}
+--- !u!4 &910693605 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8186175863845010515, guid: 14a6ce4c566db694a9eac4dfeef989e0, type: 3}
+  m_PrefabInstance: {fileID: 910693600}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &927463477
 GameObject:
   m_ObjectHideFlags: 0
@@ -5780,15 +5785,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5740929825471235944, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 910693605}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5235338100370424190, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1370890248}
   m_SourcePrefab: {fileID: 100100000, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
 --- !u!114 &1354774377 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1889505709689619302, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
   m_PrefabInstance: {fileID: 1354774376}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1370890247}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 105acdee42db7db4cb9d34f9ac2f4b8b, type: 3}
@@ -5890,6 +5901,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1370890247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5235338100370424190, guid: e3db8f75c0b62434ab327d305b149bec, type: 3}
+  m_PrefabInstance: {fileID: 1354774376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1370890248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370890247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7894f7a824f2dd4b8c7b9d7001e490a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PetRoomScreenEvent
+  petObject: {fileID: 910693601}
 --- !u!1 &1377339423
 GameObject:
   m_ObjectHideFlags: 0
@@ -59946,4 +59975,3 @@ SceneRoots:
   - {fileID: 813829755}
   - {fileID: 1241272960}
   - {fileID: 830593347}
-  - {fileID: 910693600}
