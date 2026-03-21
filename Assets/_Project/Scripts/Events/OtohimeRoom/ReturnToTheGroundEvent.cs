@@ -33,12 +33,6 @@ public class ReturnToTheGroundEvent : MonoBehaviour
     /// </summary>
     public void StartEvent()
     {
-        // HasVisitedFutureフラグを立てる
-        if (FlagManager.Instance != null)
-        {
-            FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasVisitedFuture.ToString(), true);
-            Debug.Log("ReturnToTheGroundEvent: HasVisitedFutureフラグをtrueに設定しました。");
-        }
 
         // 画面遷移をトリガー
         if (screenTransitionGate != null)

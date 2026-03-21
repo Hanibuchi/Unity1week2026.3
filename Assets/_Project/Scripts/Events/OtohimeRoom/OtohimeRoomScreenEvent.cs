@@ -13,6 +13,7 @@ public class OtohimeRoomScreenEvent : MonoBehaviour
     [SerializeField] private GameObject otohimeObject;
     [Tooltip("地上に戻るイベントオブジェクト")]
     [SerializeField] private GameObject returnToTheGroundEvent;
+    [SerializeField] private GameObject playerBlock;
 
     private void Awake()
     {
@@ -104,7 +105,8 @@ public class OtohimeRoomScreenEvent : MonoBehaviour
                             }
                         };
                         // 会話終了時に乙姫を非アクティブ化し、PetMissionFinishedフラグを立てる
-                        dialogueTrigger.onDialogueEnd = () => {
+                        dialogueTrigger.onDialogueEnd = () =>
+                        {
                             otohimeObject.SetActive(false);
                             FlagManager.Instance?.SetFlag(FlagManager.FlagKey.PetMissionFinished.ToString(), true);
                         };
@@ -202,6 +204,10 @@ public class OtohimeRoomScreenEvent : MonoBehaviour
             if (returnToTheGroundEvent != null)
             {
                 returnToTheGroundEvent.SetActive(hasVisitedFuture);
+            }
+            if (playerBlock != null)
+            {
+                playerBlock.SetActive(hasVisitedFuture);
             }
         }
     }

@@ -76,6 +76,13 @@ public class WayBackTurtleEvent : MonoBehaviour
                                 OnNodeStart = () =>
                                 {
                                     returnToTheGround = true;
+                                    
+                                    // HasVisitedFutureフラグを立てる
+                                    if (FlagManager.Instance != null)
+                                    {
+                                        FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasVisitedFuture.ToString(), true);
+                                        Debug.Log("ReturnToTheGroundEvent: HasVisitedFutureフラグをtrueに設定しました。");
+                                    }
                                 }
                             }
                         },
@@ -119,17 +126,22 @@ public class WayBackTurtleEvent : MonoBehaviour
     void OnDialogueEnd()
     {
         if (returnToTheGround)
-
         {
-            // プレイヤーが「村に帰る」を選んで会話が終わったら、地上に戻るイベントを開始する
-            if (returnToTheGroundEvent != null)
-            {
-                returnToTheGroundEvent.StartEvent();
-            }
-            else
-            {
-                Debug.LogWarning("WayBackTurtleEvent: ReturnToTheGroundEventがアサインされていません。");
-            }
+            // 0.1秒待ってから地上に戻るイベントを開始する
+            StartCoroutine(StartReturnToTheGroundEventWithDelay());
+        }
+    }
+
+    private System.Collections.IEnumerator StartReturnToTheGroundEventWithDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (returnToTheGroundEvent != null)
+        {
+            returnToTheGroundEvent.StartEvent();
+        }
+        else
+        {
+            Debug.LogWarning("WayBackTurtleEvent: ReturnToTheGroundEventがアサインされていません。");
         }
     }
 }
