@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
         CurrentState = newState;
         Debug.Log($"[GameManager] State changed to: {CurrentState}");
-        
+
         OnGameStateChanged?.Invoke(CurrentState);
 
         switch (newState)
@@ -164,8 +164,11 @@ public class GameManager : MonoBehaviour
                 SaveManager.Instance.OpenLoadMenu();
             }
         }
+        
+        wildTurtleGameScreen.OnScreenUnloaded(); 
     }
 
+    [SerializeField] private GameScreen wildTurtleGameScreen;
     /// <summary>
     /// セーブデータからロードしてゲームを復帰させます
     /// </summary>

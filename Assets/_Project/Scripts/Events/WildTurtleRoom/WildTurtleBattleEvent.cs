@@ -19,6 +19,8 @@ public class WildTurtleBattleEvent : MonoBehaviour
 
     private DialogueTrigger dialogueTrigger;
     private GameObject spawnedWildTurtle;
+    // バトル中断フラグ
+    private bool isBattleAborted = false;
 
 
     private void Awake()
@@ -28,11 +30,23 @@ public class WildTurtleBattleEvent : MonoBehaviour
         if (targetGameScreen != null)
         {
             targetGameScreen.onScreenLoadedEvent += RegisterDialogueEndHandler;
+            targetGameScreen.onScreenUnloadedEvent += OnScreenUnloaded;
         }
         else
         {
             Debug.LogWarning("WildTurtleEvent: targetGameScreenが設定されていません。");
         }
+    }
+
+    void OnScreenUnloaded()
+    {
+        if (lockObject != null)
+        {
+            lockObject.SetActive(false);
+        }
+        // バトル中断フラグを立ててからDestroy
+        isBattleAborted = true;
+        Destroy(spawnedWildTurtle);
     }
 
     private void RegisterDialogueEndHandler()
@@ -63,6 +77,7 @@ public class WildTurtleBattleEvent : MonoBehaviour
         {
             SoundManager.Instance.PlaySE(bossBattleStartSE);
         }
+        isBattleAborted = false;
         // ワイルドウミガメを生成
         if (wildTurtlePrefab != null && wildTurtleSpawnPoint != null)
         {
@@ -82,6 +97,11 @@ public class WildTurtleBattleEvent : MonoBehaviour
 
     private void OnWildTurtleDefeated()
     {
+        // バトル中断時は何もしない
+        if (isBattleAborted)
+        {
+            return;
+        }
         // フラグを立てる
         FlagManager.Instance?.SetFlag(FlagManager.FlagKey.WildTurtleMissionRewardAvailable.ToString(), true);
         // 逃げていく会話を表示
