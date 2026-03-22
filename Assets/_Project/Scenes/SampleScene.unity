@@ -71048,9 +71048,9 @@ MonoBehaviour:
   presentActiveObjects: []
   backgroundRenderer1: {fileID: 274840022}
   backgroundRenderer2: {fileID: 1660584318}
-  presentSprite1: {fileID: -5870544241233794961, guid: 7d891e2834f988f4da84b4380250efef, type: 3}
+  presentSprite1: {fileID: 6666690078342967921, guid: 033f5bec499f29f44b22d2ceed5ec6f7, type: 3}
   presentSprite2: {fileID: 6666690078342967921, guid: 033f5bec499f29f44b22d2ceed5ec6f7, type: 3}
-  futureSprite1: {fileID: -4154765527624541201, guid: 34f321b9867865c4387609886b6acbbd, type: 3}
+  futureSprite1: {fileID: -875494425724082042, guid: 1fb6b940b94803f43860f51253041fb1, type: 3}
   futureSprite2: {fileID: -875494425724082042, guid: 1fb6b940b94803f43860f51253041fb1, type: 3}
 --- !u!114 &1614791546 stripped
 MonoBehaviour:
