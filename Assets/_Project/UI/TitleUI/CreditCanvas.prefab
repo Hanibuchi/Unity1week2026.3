@@ -217,10 +217,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "## UI\r\n- Violet Themed UI / Giniel Villacote\r\n\r\n## Font\r\n- Klee
-    / The Klee Project Authors\r\n\r\n## Sound\r\n- \u9B54\u738B\u9B42\r\n- \u52B9\u679C\u97F3\u30E9\u30DC\r\n-
-    FREE Casual Game SFX Pack / Dustyroom\r\n\r\n## Graphics\r\n- 2D Platformer Tileset
-    / Danil Chernyaev\r\n"
+  m_text: "## Graphics\r\n- AI Generated Images / Nano Banana 2 (Google Gemini)\r\n-
+    2D Platformer Tileset / Danil Chernyaev\r\n\r\n## Sound\r\n- \u9B54\u738B\u9B42\r\n-
+    \u52B9\u679C\u97F3\u30E9\u30DC\r\n- FREE Casual Game SFX Pack / Dustyroom\r\n\r\n##
+    UI\r\n- Violet Themed UI / Giniel Villacote\r\n\r\n## Font\r\n- Klee / The Klee
+    Project Authors"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb33889334a8ed04e8331899a48d37b4, type: 2}
   m_sharedMaterial: {fileID: -2933369161182027513, guid: fb33889334a8ed04e8331899a48d37b4, type: 2}
@@ -1277,7 +1278,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8022010249151930964}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.4795818
+  m_Size: 0.4262938
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
