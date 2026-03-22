@@ -9,7 +9,7 @@ public class ReturnToTheGroundEvent : MonoBehaviour
 
     [Header("ダイアログ開始までの遅延秒数")]
     [SerializeField] private float dialogueStartDelay = 0.1f;
-    
+
     [Header("地上イベント")]
     [SerializeField] private GroundEvent groundEvent;
 
@@ -28,12 +28,18 @@ public class ReturnToTheGroundEvent : MonoBehaviour
         }
     }
 
+    void SetActive()
+    {
+        // returnToTheGroundEventのアクティブ制御
+        bool hasVisitedFuture = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasVisitedFuture.ToString(), false);
+        gameObject.SetActive(hasVisitedFuture);
+    }
+
     /// <summary>
     /// 地上に戻るイベントをスタートさせる（画面遷移とダイアログ開始）
     /// </summary>
     public void StartEvent()
     {
-
         // 画面遷移をトリガー
         if (screenTransitionGate != null)
         {
@@ -50,7 +56,7 @@ public class ReturnToTheGroundEvent : MonoBehaviour
         {
             Debug.LogWarning("ReturnToTheGroundEvent: screenTransitionGateが設定されていません。");
         }
-
+        SetActive();
         // 一定時間後にダイアログ開始
         StartCoroutine(StartDialogueAfterDelay());
     }

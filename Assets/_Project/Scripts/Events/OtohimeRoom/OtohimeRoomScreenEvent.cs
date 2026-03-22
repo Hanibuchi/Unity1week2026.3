@@ -200,11 +200,6 @@ public class OtohimeRoomScreenEvent : MonoBehaviour
                 }
             }
 
-            // returnToTheGroundEventのアクティブ制御
-            if (returnToTheGroundEvent != null)
-            {
-                returnToTheGroundEvent.SetActive(hasVisitedFuture);
-            }
             if (playerBlock != null)
             {
                 playerBlock.SetActive(hasVisitedFuture);
