@@ -43,15 +43,12 @@ public class FishRoomScreenEvent : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        // シーン再有効化時にも状態を更新
-        UpdateFishUIActive();
-    }
-
     private void OnScreenLoaded()
     {
-        UpdateFishUIActive();
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.Show<FishCountUI>();
+        }
     }
 
     /// <summary>
