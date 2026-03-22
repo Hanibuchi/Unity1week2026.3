@@ -55,21 +55,28 @@ public class PlayerAbilityManager : MonoBehaviour
         {
             case "JetDash":
                 currentAbilities.canJetDash = true;
+                if (FlagManager.Instance != null)
+                {
+                    FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasJetDash.ToString(), true);
+                }
                 break;
             case "AttackDown":
                 currentAbilities.canAttackDown = true;
+                if (FlagManager.Instance != null)
+                {
+                    FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasAttackDown.ToString(), true);
+                }
                 break;
             case "IncreaseAttack":
                 currentAbilities.canIncreaseAttack = true;
+                if (FlagManager.Instance != null)
+                {
+                    FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasIncreaseAttack.ToString(), true);
+                }
                 break;
             default:
                 Debug.LogWarning($"[PlayerAbilityManager] 不明なアビリティ名が指定されました: {abilityName}");
                 return;
-        }
-
-        if (FlagManager.Instance != null)
-        {
-            FlagManager.Instance.SetFlag($"Has{abilityName}", true);
         }
 
         ApplyAbilitiesToPlayer();
