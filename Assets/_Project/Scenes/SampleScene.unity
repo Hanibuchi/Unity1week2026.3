@@ -67136,6 +67136,10 @@ PrefabInstance:
       value: Turtle Bullying Event
       objectReference: {fileID: 0}
     - target: {fileID: 2563199593306275562, guid: f52680ed4cb1bad46853daf5adad2b4b, type: 3}
+      propertyPath: targetGameScreen
+      value: 
+      objectReference: {fileID: 762798902}
+    - target: {fileID: 2563199593306275562, guid: f52680ed4cb1bad46853daf5adad2b4b, type: 3}
       propertyPath: underTheSeaEvent
       value: 
       objectReference: {fileID: 133256346}
@@ -67187,11 +67191,6 @@ PrefabInstance:
 --- !u!4 &1200466980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4336226853696178547, guid: f52680ed4cb1bad46853daf5adad2b4b, type: 3}
-  m_PrefabInstance: {fileID: 1200466979}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1200466981 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2343149022238561465, guid: f52680ed4cb1bad46853daf5adad2b4b, type: 3}
   m_PrefabInstance: {fileID: 1200466979}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1214778411
@@ -71830,7 +71829,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FirstCoastScreenEvent
   presentActiveObjects:
   - {fileID: 2049442508}
-  - {fileID: 1200466981}
   - {fileID: 1567283926}
   backgroundRenderer1: {fileID: 26827313}
   backgroundRenderer2: {fileID: 1531254489}

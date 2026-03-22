@@ -12,24 +12,75 @@ public class TurtleBullyingEvent : MonoBehaviour
 
     private DialogueTrigger dialogueTrigger;
 
+    [SerializeField] private GameScreen targetGameScreen;
+
     private void Awake()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
         SetupDialogue();
 
+        targetGameScreen.onScreenLoadedEvent += OnScreenLoaded;
+        targetGameScreen.onScreenUnloadedEvent += OnScreenUnloaded;
+    }
+
+    void OnScreenLoaded()
+    {
+        Debug.Log("TurtleBullyingEvent: OnScreenLoaded called.");
+        bool hasVisitedFuture = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasVisitedFuture.ToString(), false);
+        gameObject.SetActive(!hasVisitedFuture);
+
         if (dialogueTrigger != null)
         {
-            dialogueTrigger.onDialogueEnd += OnDialogueEnded;
+            dialogueTrigger.onDialogueEnd = OnDialogueEnded;
+        }
+
+        var anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.SetTrigger("Start");
         }
     }
 
-    private void OnDestroy()
+    void OnScreenUnloaded()
     {
-        if (dialogueTrigger != null)
+        ClearEnemies();
+    }
+
+    void ClearEnemies()
+    {
+        if (spawnedEnemies != null)
         {
-            dialogueTrigger.onDialogueEnd -= OnDialogueEnded;
+            foreach (var enemy in spawnedEnemies)
+            {
+                if (enemy != null)
+                {
+                    Destroy(enemy);
+                }
+            }
+            spawnedEnemies.Clear();
+            enemiesDefeated = 0;
         }
     }
+    int enemiesDefeated = 0;
+    public void OnChildEnemyDeath()
+    {
+        enemiesDefeated++;
+        if (spawnedEnemies != null && enemiesDefeated >= spawnedEnemies.Count)
+        {
+            // 全ての子敵が倒されたときの処理
+            var animator = GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetTrigger("ButtleEnd");
+            }
+            else
+            {
+                Debug.LogWarning("TurtleBullyingEvent: Animatorコンポーネントが見つかりません。");
+            }
+            ShowAfterBattleDialogue();
+        }
+    }
+    List<GameObject> spawnedEnemies = new();
 
     private void OnDialogueEnded()
     {
@@ -37,8 +88,8 @@ public class TurtleBullyingEvent : MonoBehaviour
         {
             dialogueTrigger.onDialogueEnd -= OnDialogueEnded;
         }
-        List<GameObject> spawnedEnemies = new List<GameObject>();
 
+        ClearEnemies();
         // プレハブをスポーン
         if (prefabToSpawn != null && spawnPoints != null)
         {
@@ -47,31 +98,11 @@ public class TurtleBullyingEvent : MonoBehaviour
                 if (point != null)
                 {
                     var enemy = Instantiate(prefabToSpawn, point.position, point.rotation);
+                    var tracker = enemy.AddComponent<ChildTracker>();
+                    tracker.SetTurtleBullyingEvent(this);
                     spawnedEnemies.Add(enemy);
                 }
             }
-        }
-
-        // 敵の全滅を監視するトラッカーを生成して仕掛ける
-        if (spawnedEnemies.Count > 0)
-        {
-            var tracker = GroupDestroyTracker.Create(spawnedEnemies);
-            tracker.onAllDestroyed.AddListener(() =>
-            {
-                // 敵全滅時にアニメーションのトリガーを設定
-                var animator = GetComponent<Animator>();
-                if (animator != null)
-                {
-                    animator.SetTrigger("ButtleEnd");
-                }
-                else
-                {
-                    Debug.LogWarning("TurtleBullyingEvent: Animatorコンポーネントが見つかりません。");
-                }
-
-                // 敵全滅時にダイアログを表示
-                ShowAfterBattleDialogue();
-            });
         }
 
         // 会話終了時にアニメーションのトリガーを設定する
@@ -162,22 +193,22 @@ public class TurtleBullyingEvent : MonoBehaviour
         };
         dialogueTrigger.SetDialogueNodes(nodes);
         dialogueTrigger.SetAdjustPlayerPosition(true);
-        dialogueTrigger.onDialogueEnd += OnAfterKameDialogueEnd;
+        dialogueTrigger.onDialogueEnd = OnAfterKameDialogueEnd;
         dialogueTrigger.Interact();
 
-    // カメとの会話終了後の処理
-    void OnAfterKameDialogueEnd()
-    {
-        dialogueTrigger.onDialogueEnd -= OnAfterKameDialogueEnd;
-        if (underTheSeaEvent != null)
+        // カメとの会話終了後の処理
+        void OnAfterKameDialogueEnd()
         {
-            underTheSeaEvent.StartEvent();
+            dialogueTrigger.onDialogueEnd -= OnAfterKameDialogueEnd;
+            if (underTheSeaEvent != null)
+            {
+                underTheSeaEvent.StartEvent();
+            }
+            else
+            {
+                Debug.LogWarning("TurtleBullyingEvent: underTheSeaEventが設定されていません。");
+            }
         }
-        else
-        {
-            Debug.LogWarning("TurtleBullyingEvent: underTheSeaEventが設定されていません。");
-        }
-    }
     }
 
 

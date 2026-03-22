@@ -53,6 +53,7 @@ public class FirstCoastScreenEvent : MonoBehaviour
 
     private void OnScreenLoaded()
     {
+        Debug.Log("FirstCoastScreenEvent: OnScreenLoaded called.");
         if (FlagManager.Instance != null && presentActiveObjects != null)
         {
             // 未来に来たことがあるかのフラグを取得（デフォルトはfalse）
