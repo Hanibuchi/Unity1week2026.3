@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u7ADC\u5BAE\u57CE\u304B\u3089\u623B\u308B\u3068\u6B7B\u306E\u7070\u304C\u964D\u3063\u3066\u3044\u305F\u3002"
+  m_text: "\u7ADC\u5BAE\u57CE\u304B\u3089\u623B\u308B\u3068\u6B7B\u306E\u7070\u304C\u964D\u3063\u3066\u3044\u305F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb33889334a8ed04e8331899a48d37b4, type: 2}
   m_sharedMaterial: {fileID: -2933369161182027513, guid: fb33889334a8ed04e8331899a48d37b4, type: 2}
