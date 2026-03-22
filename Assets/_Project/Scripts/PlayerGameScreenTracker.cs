@@ -8,7 +8,7 @@ public class PlayerGameScreenTracker : MonoBehaviour
 {
     public static PlayerGameScreenTracker Instance { get; private set; }
 
-    private GameScreen lastTouchedGameScreen;
+    [SerializeField] GameScreen lastTouchedGameScreen;
 
     private void Awake()
     {
@@ -28,10 +28,11 @@ public class PlayerGameScreenTracker : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        // Debug.Log($"PlayerGameScreenTracker: Trigger entered with {other.gameObject.name}");
         // 2Dの場合はCollider2D、3Dの場合はCollider
-        var gameScreen = other.GetComponent<GameScreen>();
+        var gameScreen = other.GetComponentInParent<GameScreen>();
         if (gameScreen != null)
         {
             lastTouchedGameScreen = gameScreen;
