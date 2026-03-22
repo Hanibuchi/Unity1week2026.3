@@ -153,7 +153,7 @@ MonoBehaviour:
   locationName: "\u30BB\u30FC\u30D6\u30DD\u30A4\u30F3\u30C8"
   targetGameScreen: {fileID: 0}
   interactSE: {fileID: 8300000, guid: ab70e842dda0e1d4db718f1739acb5d2, type: 3}
-  delayBeforeUI: 1
+  delayBeforeUI: 0.5
   autoStart: 0
   indicatorObject: {fileID: 8001056016421193044}
 --- !u!1 &8001056016421193044 stripped
