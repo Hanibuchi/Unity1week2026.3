@@ -470,6 +470,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+        /// <summary>
+    /// 特殊アクション（ジェットダッシュなど）を強制的に解除する。
+    /// </summary>
+    public void ForceCancelSpecialActions()
+    {
+        if (isJetDashing)
+        {
+            StopJetDash();
+        }
+        // 他に今後追加される特殊アクションがあればここで解除処理を追加
+    }
+
     public PlayerAbilities testAbilities = new PlayerAbilities
     {
         canJetDash = true,

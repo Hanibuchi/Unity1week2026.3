@@ -63,6 +63,7 @@ public class DialogueManager : MonoBehaviour
         if (PlayerController.Instance != null)
         {
             PlayerController.Instance.SetControlEnabled(false, PlayerController.ControlPriority.Dialogue, this);
+            PlayerController.Instance.ForceCancelSpecialActions();
         }
 
         StartCoroutine(PlayDialogueSequence(nodes));
