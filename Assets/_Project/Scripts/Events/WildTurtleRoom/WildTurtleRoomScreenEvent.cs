@@ -25,20 +25,6 @@ public class WildTurtleRoomScreenEvent : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        if (gameScreen != null)
-        {
-            gameScreen.onScreenLoadedEvent -= OnScreenLoaded;
-        }
-    }
-
-    private void OnEnable()
-    {
-        // シーン再有効化時にも状態を更新
-        UpdateBattleEventActive();
-    }
-
     private void OnScreenLoaded()
     {
         UpdateBattleEventActive();

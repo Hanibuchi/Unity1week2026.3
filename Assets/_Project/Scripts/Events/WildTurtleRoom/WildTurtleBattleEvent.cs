@@ -57,14 +57,6 @@ public class WildTurtleBattleEvent : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        if (dialogueTrigger != null)
-        {
-            dialogueTrigger.onDialogueEnd -= OnDialogueEnded;
-        }
-    }
-
     private void OnDialogueEnded()
     {
         // プレイヤーを閉じ込めるオブジェクトをアクティブ化

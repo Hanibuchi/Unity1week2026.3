@@ -143,6 +143,11 @@ public class GameManager : MonoBehaviour
         {
             lastGameScreen.OnScreenUnloaded();
         }
+        else if (wildTurtleGameScreen != null)
+        {
+            // フォールバックとして従来のGameScreenをアンロード
+            wildTurtleGameScreen.OnScreenUnloaded();
+        }
 
         // ゲームオーバーダイアログの設定
         var gameOverNode = new DialogueNode
