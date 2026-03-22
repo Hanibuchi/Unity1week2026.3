@@ -65,7 +65,7 @@ public class IngredientEvent : MonoBehaviour
             new DialogueNode
             {
                 speakerName = "おとひめ",
-                text = "実は、宴に欠かせない海鮮が足りなくなってしまったの。この先にいる魚たちからとれるんだけど、最近凶暴な魚が増えて大変なのよ。誰か、食材を集めてきてくれないかしら……。",
+                text = "実は、宴に欠かせない海鮮が足りなくなってしまったの。この先にいる魚たちからとれるんだけど、最近凶暴な魚が増えて大変なのよ。誰か、食材を20個集めてきてくれないかしら……。",
                 speakerSprite = settings.otohimeFaceSadness,
                 hasChoices = true,
                 choice1Text = "おらが取ってくるだ！",
@@ -86,7 +86,7 @@ public class IngredientEvent : MonoBehaviour
                                     new DialogueNode
                                     {
                                         speakerName = "おとひめ",
-                                        text = "ふふ、食いしん坊な太郎さんならそう言ってくれると思ったわ。期待しているわね。魚はこの先にいるわ。気をつけて行ってきてね。",
+                                        text = "ふふ、食いしん坊な太郎さんならそう言ってくれると思ったわ。期待しているわね。魚はこの先にいるわ。20個手に入れたらまた声をかけて。気をつけて行ってきてね。",
                                         speakerSprite = settings.otohimeFaceJoy
                                     }
                                 };
@@ -113,7 +113,7 @@ public class IngredientEvent : MonoBehaviour
             new DialogueNode
             {
                 speakerName = "おとひめ",
-                text = "ふふ、食いしん坊な太郎さんならそう言ってくれると思ったわ。期待しているわね。",
+                text = "ふふ、食いしん坊な太郎さんならそう言ってくれると思ったわ。20個手に入れたらまた声をかけて。期待しているわね。",
                 speakerSprite = settings.otohimeFaceJoy
             }
         };
@@ -200,7 +200,8 @@ public class IngredientEvent : MonoBehaviour
             else if (missionRewardAvailable)
             {
                 dialogueTrigger.SetDialogueNodes(missionClearNodes);
-                dialogueTrigger.onDialogueEnd = () => {
+                dialogueTrigger.onDialogueEnd = () =>
+                {
                     FlagManager.Instance?.SetFlag(FlagManager.FlagKey.IngredientMissionFinished.ToString(), true);
                 };
             }
