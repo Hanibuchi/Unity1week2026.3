@@ -31,11 +31,16 @@ public class FishCountManager : MonoBehaviour
     {
         _fishCount += count;
 
-        // 20以上になったらフラグを立てる
+        // 20以上になった瞬間のみフラグを立てる
         if (_fishCount >= 20 && FlagManager.Instance != null)
         {
-            FlagManager.Instance.SetFlag(FlagManager.FlagKey.IngredientMissionRewardAvailable.ToString(), true);
-            gameScreen?.OnScreenLoaded();
+            // 既にフラグが立っていなければ実行
+            var flagKey = FlagManager.FlagKey.IngredientMissionRewardAvailable.ToString();
+            if (!FlagManager.Instance.GetFlag(flagKey))
+            {
+                FlagManager.Instance.SetFlag(flagKey, true);
+                gameScreen?.OnScreenLoaded();
+            }
         }
     }
 
