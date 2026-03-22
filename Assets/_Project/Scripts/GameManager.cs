@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using unityroom.Api;
 
 public class GameManager : MonoBehaviour
 {
@@ -237,6 +238,11 @@ public class GameManager : MonoBehaviour
 
         if (foodWarehouse && vaccine && chemicalPlant)
         {
+            if (SaveManager.Instance != null)
+            {
+                var time = SaveManager.Instance.CurrentPlayTime;
+                UnityroomApiClient.Instance.SendScore(1, time, ScoreboardWriteMode.HighScoreAsc);
+            }
             // すべて達成時のエンディングダイアログ
             var settings = CommonGameSettings.Settings ?? Resources.Load<GameSettingsData>("GameSettings");
             if (settings == null)

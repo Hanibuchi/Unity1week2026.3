@@ -61,6 +61,7 @@
   <Project Path="Unity.2D.PixelPerfect.Editor.csproj" />
   <Project Path="Unity.Recorder.csproj" />
   <Project Path="Unity.Multiplayer.Center.Common.csproj" />
+  <Project Path="unityroom.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
   <Project Path="Unity.2D.Tilemap.Extras.csproj" />
