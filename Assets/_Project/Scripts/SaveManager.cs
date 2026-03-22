@@ -114,6 +114,10 @@ public class SaveManager : MonoBehaviour
             {
                 GameManager.Instance.ChangeState(GameManager.GameState.Title);
             }
+            else if (GameManager.Instance.CurrentState == GameManager.GameState.GameClear)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.Title);
+            }
         }
     }
 
