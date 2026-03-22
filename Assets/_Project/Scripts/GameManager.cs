@@ -136,6 +136,18 @@ public class GameManager : MonoBehaviour
         // 破片などが飛び散るのを一定時間見せる
         yield return new WaitForSeconds(gameOverWaitTime);
 
+        // プレイヤーが最後に触れたGameScreenをアンロード
+        var lastGameScreen = PlayerGameScreenTracker.Instance != null ? PlayerGameScreenTracker.Instance.GetLastTouchedGameScreen() : null;
+        if (lastGameScreen != null)
+        {
+            lastGameScreen.OnScreenUnloaded();
+        }
+        else if (wildTurtleGameScreen != null)
+        {
+            // フォールバックとして従来のGameScreenをアンロード
+            wildTurtleGameScreen.OnScreenUnloaded();
+        }
+
         // ゲームオーバーダイアログの設定
         var gameOverNode = new DialogueNode
         {
@@ -164,8 +176,6 @@ public class GameManager : MonoBehaviour
                 SaveManager.Instance.OpenLoadMenu();
             }
         }
-        
-        wildTurtleGameScreen.OnScreenUnloaded(); 
     }
 
     [SerializeField] private GameScreen wildTurtleGameScreen;

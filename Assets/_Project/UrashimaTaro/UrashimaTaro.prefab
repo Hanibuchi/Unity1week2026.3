@@ -579,6 +579,7 @@ GameObject:
   - component: {fileID: 9155595953895323866}
   - component: {fileID: 7198171999523822038}
   - component: {fileID: 2168438448348271505}
+  - component: {fileID: 5107858658295864166}
   m_Layer: 11
   m_Name: UrashimaTaro
   m_TagString: Player
@@ -859,6 +860,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5107858658295864166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637291647498165453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626db19d117c82d46af237ca93fefb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGameScreenTracker
 --- !u!1 &5134760475810846056
 GameObject:
   m_ObjectHideFlags: 0
