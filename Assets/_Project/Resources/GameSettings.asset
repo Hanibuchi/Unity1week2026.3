@@ -24,6 +24,7 @@ MonoBehaviour:
   taroFaceDamage: {fileID: -6075183031453291970, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
   taroFaceConfidence: {fileID: -6373264484776070808, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
   taroFaceSerious: {fileID: 9181738896386585654, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceOld: {fileID: -4964881423477717381, guid: 7cc9959bb97c16e4280181af52a55829, type: 3}
   childFaceConfidence: {fileID: 1517166437612333377, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
   childFaceSurprise: {fileID: 4229814639890824125, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
   childFaceDamage: {fileID: 8112001554782534201, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}

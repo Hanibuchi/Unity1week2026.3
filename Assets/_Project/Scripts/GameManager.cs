@@ -143,11 +143,6 @@ public class GameManager : MonoBehaviour
         {
             lastGameScreen.OnScreenUnloaded();
         }
-        else if (wildTurtleGameScreen != null)
-        {
-            // フォールバックとして従来のGameScreenをアンロード
-            wildTurtleGameScreen.OnScreenUnloaded();
-        }
 
         // ゲームオーバーダイアログの設定
         var gameOverNode = new DialogueNode
@@ -186,32 +181,141 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private IEnumerator GameClearSequence()
     {
-        // ここでエンディング演出やダイアログを表示する処理を追加
-        Debug.Log("[GameManager] GameClearSequence started.");
+        // EndingUIを表示
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.Show<EndingUI>();
+        }
 
-        // 例: 2秒待機（演出用）
+        // 2秒待機（演出用）
         yield return new WaitForSecondsRealtime(2.0f);
 
-        // 例: エンディングダイアログを表示
-        var gameClearNode = new DialogueNode
+
+        // プレイヤーが最後に触れたGameScreenをアンロード
+        var lastGameScreen = PlayerGameScreenTracker.Instance != null ? PlayerGameScreenTracker.Instance.GetLastTouchedGameScreen() : null;
+        if (lastGameScreen != null)
         {
-            speakerSprite = systemSpeakerSprite,
-            speakerName = "システム",
-            text = "ゲームクリア！おめでとうございます。",
-            hasChoices = false
+            lastGameScreen.OnScreenUnloaded();
+        }
+
+        // フラグの状態を取得
+        bool foodWarehouse = false;
+        bool vaccine = false;
+        bool chemicalPlant = false;
+        if (FlagManager.Instance != null)
+        {
+            foodWarehouse = FlagManager.Instance.GetFlag(FlagManager.FlagKey.FoodWarehouseMissionFinished.ToString());
+            vaccine = FlagManager.Instance.GetFlag(FlagManager.FlagKey.VaccineMissionFinished.ToString());
+            chemicalPlant = FlagManager.Instance.GetFlag(FlagManager.FlagKey.ChemicalPlantMissionFinished.ToString());
+        }
+
+        // ダイアログ終了後にロードメニューを開くコールバック
+        Action onDialogueEnd = () =>
+        {
+            Debug.Log("[GameManager] エンディングダイアログ終了");
+            StartCoroutine(HandleEndingUICloseAndLoadMenu());
         };
 
-        if (DialogueManager.Instance != null)
+        // EndingUIを非表示・ロードメニューを開く処理を遅延実行するコルーチン
+        IEnumerator HandleEndingUICloseAndLoadMenu()
         {
-            DialogueManager.Instance.StartDialogue(new List<DialogueNode> { gameClearNode }, () =>
+            yield return new WaitForSecondsRealtime(2.0f); // 2秒待機（必要に応じて調整）
+            if (UIManager.Instance != null)
             {
-                // 例: タイトル画面に戻すなどの処理をここに追加可能
-                Debug.Log("[GameManager] エンディングダイアログ終了");
-            });
+                UIManager.Instance.Hide<EndingUI>();
+            }
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.OpenLoadMenu();
+            }
+        }
+
+        if (foodWarehouse && vaccine && chemicalPlant)
+        {
+            // すべて達成
+            var gameClearNode = new DialogueNode
+            {
+                speakerSprite = systemSpeakerSprite,
+                speakerName = "システム",
+                text = "全てのミッションを達成し、真のエンディングを迎えました！おめでとうございます。",
+                hasChoices = false
+            };
+            if (DialogueManager.Instance != null)
+            {
+                DialogueManager.Instance.StartDialogue(new List<DialogueNode> { gameClearNode }, onDialogueEnd);
+            }
+            else
+            {
+                Debug.Log("[GameManager] DialogueManagerが見つかりません。エンディングダイアログをスキップします。");
+                onDialogueEnd();
+            }
         }
         else
         {
-            Debug.Log("[GameManager] DialogueManagerが見つかりません。エンディングダイアログをスキップします。");
+            // いずれか未達成時のエンディング（複数ノードで演出、アイコン付き）
+            var settings = CommonGameSettings.Settings ?? Resources.Load<GameSettingsData>("GameSettings");
+            Sprite taroFace = settings != null ? settings.taroFaceSadness : null;
+            Sprite narrationFace = null;
+            var nodes = new List<DialogueNode>
+            {
+                new DialogueNode
+                {
+                    speakerName = "",
+                    speakerSprite = narrationFace,
+                    text = "数週間後。"
+                },
+                new DialogueNode
+                {
+                    speakerName = "うらしまたろう",
+                    speakerSprite = taroFace,
+                    text = "おとひめ様……おら、もう、動けねぇだ……"
+                },
+                new DialogueNode
+                {
+                    speakerName = "うらしまたろう",
+                    speakerSprite = taroFace,
+                    text = "おとひめ様……言ってたっぺな……。『絶望』か『希望』を選んだ時に……開けろって……"
+                },
+                new DialogueNode
+                {
+                    speakerName = "うらしまたろう",
+                    speakerSprite = taroFace,
+                    text = "おらには……もう『希望』なんて……わがんねぇだ。これでおしまいにするっぺ……"
+                },
+                new DialogueNode
+                {
+                    speakerName = "",
+                    speakerSprite = narrationFace,
+                    text = "パカッ、と乾いた音を立てて開いた箱から、禍々しいほどの煙が舞う。\n鏡に映る暇もなく、その肌は枯れ木のように乾き、髪は真っ白に染まった。"
+                },
+                new DialogueNode
+                {
+                    speakerName = "うらしまたろう",
+                    speakerSprite = settings != null ? settings.taroFaceOld : null,
+                    text = "あぁ……海が……懐かしい……だ……"
+                },
+                new DialogueNode
+                {
+                    speakerName = "",
+                    speakerSprite = narrationFace,
+                    text = "浦島太郎の旅は、誰も救えぬまま静かに幕を閉じた。"
+                },
+                new DialogueNode
+                {
+                    speakerName = "",
+                    speakerSprite = narrationFace,
+                    text = "エンディング１：人類絶滅"
+                },
+            };
+            if (DialogueManager.Instance != null)
+            {
+                DialogueManager.Instance.StartDialogue(nodes, onDialogueEnd);
+            }
+            else
+            {
+                Debug.Log("[GameManager] DialogueManagerが見つかりません。エンディングダイアログをスキップします。");
+                onDialogueEnd();
+            }
         }
     }
     /// <summary>

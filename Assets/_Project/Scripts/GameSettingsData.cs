@@ -18,6 +18,7 @@ public class GameSettingsData : ScriptableObject
     public Sprite taroFaceDamage;
     public Sprite taroFaceConfidence;
     public Sprite taroFaceSerious;
+    public Sprite taroFaceOld;
 
     [Header("Character Faces (Children)")]
     public Sprite childFaceConfidence;
