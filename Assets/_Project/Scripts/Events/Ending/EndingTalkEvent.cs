@@ -6,14 +6,7 @@ public class EndingTalkEvent : MonoBehaviour
 {
     private DialogueTrigger dialogueTrigger;
 
-    /// <summary>
-    /// 2回の質問に両方「はい」と答えた時、会話の最後で呼ばれる
-    /// </summary>
-    private void EndAccepted()
-    {
-        Debug.Log("EndingTalkEvent: 両方はいで会話終了時に呼ばれました。");
-        // TODO: ここにエンディング演出や遷移処理などを追加
-    }
+    bool accept = false;
 
     private void Awake()
     {
@@ -36,7 +29,8 @@ public class EndingTalkEvent : MonoBehaviour
             {
                 speakerName = "科学者",
                 text = "……おお、お前さんか。まだこの乾いた大地を彷徨っておったのか 。",
-                speakerSprite = settings.scientistFaceNormal
+                speakerSprite = settings.scientistFaceNormal,
+                OnNodeStart = () => {accept = false;}
             },
             new DialogueNode
             {
@@ -85,7 +79,10 @@ public class EndingTalkEvent : MonoBehaviour
                                 speakerName = "科学者",
                                 text = "……そうか。ならば、もう何も言うまい。",
                                 speakerSprite = settings.scientistFaceNormal,
-                                OnNodeStart = EndAccepted // ここでメソッドを呼ぶ
+                                OnNodeStart = () =>
+                                {
+                                    accept = true;
+                                }
                             }
                         },
                         choice2Text = "いいえ",
@@ -116,11 +113,26 @@ public class EndingTalkEvent : MonoBehaviour
         Debug.Log("EndingTalkEvent: Setting up dialogue with " + nodes.Count + " nodes.");
         if (dialogueTrigger != null)
         {
+            dialogueTrigger.onDialogueEnd = () => { if (accept) EndAccepted(); };
             dialogueTrigger.SetDialogueNodes(nodes);
         }
         else
         {
             Debug.LogWarning("EndingTalkEvent: DialogueTriggerコンポーネントが見つかりません。");
+        }
+    }
+
+
+    /// <summary>
+    /// 2回の質問に両方「はい」と答えた時、会話の最後で呼ばれる
+    /// </summary>
+    private void EndAccepted()
+    {
+        Debug.Log("EndingTalkEvent: 両方はいで会話終了時に呼ばれました。");
+        // GameManagerのGameClear状態へ遷移
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ChangeState(GameManager.GameState.GameClear);
         }
     }
 }

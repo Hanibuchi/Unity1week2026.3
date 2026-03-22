@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
             case GameState.GameClear:
                 Time.timeScale = 0f;
                 if (PlayerController.Instance != null) PlayerController.Instance.SetControlEnabled(false, PlayerController.ControlPriority.System, this);
+                StartCoroutine(GameClearSequence());
                 break;
         }
     }
@@ -179,6 +180,40 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private GameScreen wildTurtleGameScreen;
+
+    /// <summary>
+    /// ゲームクリア時の進行処理（エンディング演出やダイアログなど）
+    /// </summary>
+    private IEnumerator GameClearSequence()
+    {
+        // ここでエンディング演出やダイアログを表示する処理を追加
+        Debug.Log("[GameManager] GameClearSequence started.");
+
+        // 例: 2秒待機（演出用）
+        yield return new WaitForSecondsRealtime(2.0f);
+
+        // 例: エンディングダイアログを表示
+        var gameClearNode = new DialogueNode
+        {
+            speakerSprite = systemSpeakerSprite,
+            speakerName = "システム",
+            text = "ゲームクリア！おめでとうございます。",
+            hasChoices = false
+        };
+
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.StartDialogue(new List<DialogueNode> { gameClearNode }, () =>
+            {
+                // 例: タイトル画面に戻すなどの処理をここに追加可能
+                Debug.Log("[GameManager] エンディングダイアログ終了");
+            });
+        }
+        else
+        {
+            Debug.Log("[GameManager] DialogueManagerが見つかりません。エンディングダイアログをスキップします。");
+        }
+    }
     /// <summary>
     /// セーブデータからロードしてゲームを復帰させます
     /// </summary>
