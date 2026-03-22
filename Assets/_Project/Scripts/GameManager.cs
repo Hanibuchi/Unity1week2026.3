@@ -232,17 +232,42 @@ public class GameManager : MonoBehaviour
 
         if (foodWarehouse && vaccine && chemicalPlant)
         {
-            // すべて達成
-            var gameClearNode = new DialogueNode
+            // すべて達成時のエンディングダイアログ
+            var settings = CommonGameSettings.Settings ?? Resources.Load<GameSettingsData>("GameSettings");
+            if (settings == null)
             {
-                speakerSprite = systemSpeakerSprite,
-                speakerName = "システム",
-                text = "全てのミッションを達成し、真のエンディングを迎えました！おめでとうございます。",
-                hasChoices = false
+                Debug.LogError("[GameManager] GameSettingsDataが見つかりません。エンディングダイアログをスキップします。");
+                onDialogueEnd();
+                yield break;
+            }
+            var nodes = new List<DialogueNode>
+            {
+                new DialogueNode { speakerName = "", speakerSprite = null, text = "十数年後" },
+                new DialogueNode { speakerName = "うらしまたろう", speakerSprite = settings.taroFaceNormal, text = "はぁ……はぁ……。おら、やれることは全部やっただ。" },
+                new DialogueNode { speakerName = "科学者", speakerSprite = settings.scientistFaceJoy, text = "……見事じゃ、太郎。おぬしの持ってきた物資と勇気が、絶望に沈んでいた人々に火を灯した。この地には再び、緑が芽吹く兆しが見える。" },
+                new DialogueNode { speakerName = "現代人A", speakerSprite = settings.modernPeopleAFaceJoy, text = "ありがとう、太郎さん！あなたのおかげで、私たちは明日を信じることができるわ。" },
+                new DialogueNode { speakerName = "現代人E", speakerSprite = settings.modernPeopleEFaceJoy, text = "あなたが食糧庫までの道をあけてくれなかったら、私たちは今頃みんなかったら、私たちは今頃みんな飢え死にしていたわ 。本当にありがとう。" },
+                new DialogueNode { speakerName = "現代人D", speakerSprite = settings.modernPeopleDFaceJoy, text = "私の足では届かなかった医療機関へ、危険を顧みず飛び込み、ワクチンを届けてくれた…… 。おかげで、多くの命が救われたんだ。" },
+                new DialogueNode { speakerName = "現代人B", speakerSprite = settings.modernPeopleBFaceJoy, text = "へっ、大したもんだ。あの虫のたまり場に向かって飛んでいった時は肝を冷やしたがな 。おかげでプラントの殺虫剤が手に入り、この街に平穏が戻ったぜ。" },
+                new DialogueNode { speakerName = "現代人C", speakerSprite = settings.modernPeopleCFaceJoy, text = "お腹が空いて、もうダメだと思ってたけど…… 。太郎さんが来てくれてから、みんなの顔に笑顔が戻ったの 。本当に、ありがとう！" },
+                new DialogueNode { speakerName = "うらしまたろう", speakerSprite = settings.taroFaceJoy, text = "おとひめ様……カメさん……。おら、みんなの笑顔が見れて、胸がいっぱいだぁ。\nでも……おらの役目はここまでのようだ。体中が、なんだか熱くて……重てぇだ。" },
+                new DialogueNode { speakerName = "", speakerSprite = null, text = "太郎の体は、放射能の影響か、あるいは時間の歪みか、限界を迎えている。太郎は懐から玉手箱を取り出す" },
+                new DialogueNode { speakerName = "うらしまたろう", speakerSprite = settings.taroFaceSerious, text = "おとひめ様……言ってたっぺな……。『絶望』か、『希望』を選んだ時に……開けろって。\nおら、今ならわかるだ。みんなと笑い合える明日が、おらの『希望』だっぺ！" },
+                new DialogueNode { speakerName = "", speakerSprite = null, text = "（パカッ、と清らかな音を立てて開いた箱から、眩いほどの黄金の光と煙が溢れ出す）" },
+                new DialogueNode { speakerName = "うらしまたろう", speakerSprite = settings.taroFaceSurprise, text = "うわぁ……！なんだべ、この光……あったけぇ……。" },
+                new DialogueNode { speakerName = "", speakerSprite = null, text = "数世紀後" },
+                new DialogueNode { speakerName = "外交官", speakerSprite = settings.futureTaroFaceNormal, text = "……以上が、我が地球連邦からの公式な和平提案です。海底に潜み、我々を見守り続けてくださった「先住者」の皆様。これ以上の対立は無意味です。" },
+                new DialogueNode { speakerName = "乙姫", speakerSprite = settings.otohimeFaceCute, text = "立派なものね。かつて自らの過ちで滅びかけた種族が、私たちと肩を並べるほどの文明を築き上げるなんて。" },
+                new DialogueNode { speakerName = "カメ", speakerSprite = settings.kameFaceNormal, text = "乙姫様、彼のDNAパターンを照合しました。……間違いありません。あの「浦島太郎」の直系の子孫です。" },
+                new DialogueNode { speakerName = "乙姫", speakerSprite = settings.otohimeFaceJoy, text = "そう。……道理で、その真っ直ぐな瞳に見覚えがあると思ったわ。\nねえ、外交官さん。あなたの先祖が残した玉手箱の話、知ってる？" },
+                new DialogueNode { speakerName = "外交官", speakerSprite = settings.futureTaroFaceNormal, text = "ええ、家伝として伝わっています。その箱から出た光が、当時の人々の遺伝子損傷を修復し、地球の浄化を早めた……という伝説ですね。" },
+                new DialogueNode { speakerName = "乙姫", speakerSprite = settings.otohimeFaceCute, text = "あれ中には、私たちが捨てようとしていた「人間への期待」が入っていたの。いいわ、地球の統治はあなたたちに任せましょう。その代わり、私たちともっと仲良くしてくれるかしら？" },
+                new DialogueNode { speakerName = "外交官", speakerSprite = settings.futureTaroFaceJoy, text = "はい！おら...いや、私にできることなら、喜んで！" },
+                new DialogueNode { speakerName = "", speakerSprite = null, text = "エンディング２：希望の玉手箱" },
             };
             if (DialogueManager.Instance != null)
             {
-                DialogueManager.Instance.StartDialogue(new List<DialogueNode> { gameClearNode }, onDialogueEnd);
+                DialogueManager.Instance.StartDialogue(nodes, onDialogueEnd);
             }
             else
             {

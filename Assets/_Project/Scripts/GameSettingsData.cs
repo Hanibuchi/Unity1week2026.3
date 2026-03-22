@@ -20,6 +20,9 @@ public class GameSettingsData : ScriptableObject
     public Sprite taroFaceSerious;
     public Sprite taroFaceOld;
 
+    public Sprite futureTaroFaceNormal;
+    public Sprite futureTaroFaceJoy;
+
     [Header("Character Faces (Children)")]
     public Sprite childFaceConfidence;
     public Sprite childFaceSurprise;
@@ -133,4 +136,6 @@ public class GameSettingsData : ScriptableObject
     public Sprite insecticideSprite;
     [Tooltip("ワクチンのアイテム画像")]
     public Sprite vaccineSprite;
+
+
 }
