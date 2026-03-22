@@ -369,6 +369,7 @@ public class GameManager : MonoBehaviour
             FishCountManager.Instance.ResetCount();
         }
 
+
         // プレイヤー能力のロードと適用
         if (PlayerAbilityManager.Instance != null)
         {
@@ -380,6 +381,7 @@ public class GameManager : MonoBehaviour
         }
 
         // TODO: ここにシーン遷移、プレイヤー座標の復元、フェードUIなどの処理を記述します。
+        SetCameraBackgroundColorByFutureFlag();
 
         if (SaveTriggerManager.Instance != null)
         {
@@ -427,5 +429,21 @@ public class GameManager : MonoBehaviour
         }
 
         ChangeState(GameState.InGame);
+    }
+
+    public void SetCameraBackgroundColorByFutureFlag()
+    {
+        // カメラの背景色をHasVisitedFutureフラグに応じて変更
+        var mainCamera = Camera.main;
+        if (mainCamera != null)
+        {
+            // GameSettingsDataの取得
+            var settings = CommonGameSettings.Settings ?? Resources.Load<GameSettingsData>("GameSettings");
+            if (settings != null && FlagManager.Instance != null)
+            {
+                bool hasVisitedFuture = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasVisitedFuture.ToString());
+                mainCamera.backgroundColor = hasVisitedFuture ? settings.futureSkyColor : settings.oldSkyColor;
+            }
+        }
     }
 }

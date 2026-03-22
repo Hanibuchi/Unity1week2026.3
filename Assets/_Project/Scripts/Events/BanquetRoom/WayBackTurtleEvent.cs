@@ -82,6 +82,8 @@ public class WayBackTurtleEvent : MonoBehaviour
                                     {
                                         FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasVisitedFuture.ToString(), true);
                                         Debug.Log("ReturnToTheGroundEvent: HasVisitedFutureフラグをtrueに設定しました。");
+
+                                        GameManager.Instance.SetCameraBackgroundColorByFutureFlag();
                                     }
                                 }
                             }

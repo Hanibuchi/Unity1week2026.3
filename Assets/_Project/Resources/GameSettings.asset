@@ -111,3 +111,5 @@ MonoBehaviour:
   increaseAttackSprite: {fileID: 3827136672426700466, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
   insecticideSprite: {fileID: 2101287344137813679, guid: 1659c8e0047aa7a4281dda340888962c, type: 3}
   vaccineSprite: {fileID: 5006185027451739633, guid: 828a623906be0c84e8f4c2ba411866b8, type: 3}
+  oldSkyColor: {r: 0.15686275, g: 0.6627451, b: 0.83921576, a: 1}
+  futureSkyColor: {r: 0.8000001, g: 0.63529414, b: 0.34117648, a: 1}

@@ -137,5 +137,6 @@ public class GameSettingsData : ScriptableObject
     [Tooltip("ワクチンのアイテム画像")]
     public Sprite vaccineSprite;
 
-
+    public Color oldSkyColor = Color.aliceBlue;
+    public Color futureSkyColor = Color.cyan;
 }
