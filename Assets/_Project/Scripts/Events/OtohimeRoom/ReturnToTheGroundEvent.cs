@@ -12,6 +12,7 @@ public class ReturnToTheGroundEvent : MonoBehaviour
 
     [Header("地上イベント")]
     [SerializeField] private GroundEvent groundEvent;
+    [SerializeField] GameScreen gameScreen;
 
     private DialogueTrigger dialogueTrigger;
     private void Awake()
@@ -25,6 +26,10 @@ public class ReturnToTheGroundEvent : MonoBehaviour
         else
         {
             Debug.LogWarning("ReturnToTheGroundEvent: DialogueTriggerコンポーネントが見つかりません。");
+        }
+        if (gameScreen != null)
+        {
+            gameScreen.onScreenLoadedEvent += SetActive;
         }
     }
 

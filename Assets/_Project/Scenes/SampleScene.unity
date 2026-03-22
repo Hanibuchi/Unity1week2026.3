@@ -4958,6 +4958,7 @@ MonoBehaviour:
   screenTransitionGate: {fileID: 1309324240}
   dialogueStartDelay: 0.1
   groundEvent: {fileID: 1067911694}
+  gameScreen: {fileID: 1754013086}
 --- !u!114 &680338002
 MonoBehaviour:
   m_ObjectHideFlags: 0
