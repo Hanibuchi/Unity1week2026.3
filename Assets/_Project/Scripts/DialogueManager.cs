@@ -54,7 +54,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void StartDialogue(List<DialogueNode> nodes, Action onComplete = null)
     {
-        if (isPlaying || nodes == null || nodes.Count == 0) return;
+        if (isPlaying || nodes == null) return;
 
         isPlaying = true;
         onSequenceComplete = onComplete;
