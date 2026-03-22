@@ -9,6 +9,11 @@ public class WallActivatorOnPlayerSense : MonoBehaviour
     [Header("敵（子オブジェクト）")]
     [SerializeField] private GameObject enemyChild;
 
+    [Header("壁出現時に鳴らすSE")]
+    [SerializeField] private AudioClip appearSE;
+
+    [SerializeField] private AudioClip enemyDestroySE;
+
     private bool playerInRange = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +23,10 @@ public class WallActivatorOnPlayerSense : MonoBehaviour
             playerInRange = true;
             if (wallA != null) wallA.SetActive(true);
             if (wallB != null) wallB.SetActive(true);
+            if (SoundManager.Instance != null && appearSE != null)
+            {
+                SoundManager.Instance.PlaySE(appearSE);
+            }
         }
     }
 
@@ -37,6 +46,10 @@ public class WallActivatorOnPlayerSense : MonoBehaviour
             if (wallA != null) wallA.SetActive(false);
             if (wallB != null) wallB.SetActive(false);
             if (wallB != null) gameObject.SetActive(false);
+            if (SoundManager.Instance != null && enemyDestroySE != null)
+            {
+                SoundManager.Instance.PlaySE(enemyDestroySE);
+            }
             playerInRange = false; // 一度だけ実行
         }
     }

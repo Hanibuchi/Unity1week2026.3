@@ -327,6 +327,8 @@ MonoBehaviour:
   wallA: {fileID: 7404774151166881020}
   wallB: {fileID: 3900568324274389911}
   enemyChild: {fileID: 7165736127430944296}
+  appearSE: {fileID: 8300000, guid: 38010ee5e4c4e6b4a8d4a1ca0535281c, type: 3}
+  enemyDestroySE: {fileID: 8300000, guid: 83cd313e2b4ef844cad0275e9419781c, type: 3}
 --- !u!61 &6151376650288349615
 BoxCollider2D:
   m_ObjectHideFlags: 0
