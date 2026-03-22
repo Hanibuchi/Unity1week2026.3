@@ -170,6 +170,7 @@ public class WildTurtleEvent : MonoBehaviour
                 speakerSprite = settings.taroFaceSurprise,
                 OnNodeStart = () =>
                 {
+                    FlagManager.Instance?.SetFlag(FlagManager.FlagKey.WildTurtleMissionFinished.ToString(), true);
                     // アビリティ解放
                     if (PlayerAbilityManager.Instance != null)
                     {
@@ -218,10 +219,6 @@ public class WildTurtleEvent : MonoBehaviour
             {
                 // 報酬受け取り会話
                 dialogueTrigger.SetDialogueNodes(missionClearNodes);
-                // 報酬受け取り後にフラグを立てる
-                dialogueTrigger.onDialogueEnd = () => {
-                    FlagManager.Instance?.SetFlag(FlagManager.FlagKey.WildTurtleMissionFinished.ToString(), true);
-                };
             }
             else if (missionStarted)
             {

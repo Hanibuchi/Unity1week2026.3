@@ -152,6 +152,7 @@ public class IngredientEvent : MonoBehaviour
                 speakerSprite = settings.taroFaceSurprise,
                 OnNodeStart = () =>
                 {
+                    FlagManager.Instance?.SetFlag(FlagManager.FlagKey.IngredientMissionFinished.ToString(), true);
                     if (PlayerAbilityManager.Instance != null)
                     {
                         PlayerAbilityManager.Instance.UnlockAbility("AttackDown");
@@ -200,10 +201,6 @@ public class IngredientEvent : MonoBehaviour
             else if (missionRewardAvailable)
             {
                 dialogueTrigger.SetDialogueNodes(missionClearNodes);
-                dialogueTrigger.onDialogueEnd = () =>
-                {
-                    FlagManager.Instance?.SetFlag(FlagManager.FlagKey.IngredientMissionFinished.ToString(), true);
-                };
             }
             else if (missionStarted)
             {
