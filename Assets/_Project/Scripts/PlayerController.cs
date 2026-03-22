@@ -159,13 +159,26 @@ public class PlayerController : MonoBehaviour
     {
         currentAbilities = newAbilities;
 
-        if (currentAbilities.canIncreaseAttack && playerAttacks != null)
+        if (playerAttacks != null)
         {
-            foreach (var attack in playerAttacks)
+            if (currentAbilities.canIncreaseAttack)
             {
-                if (attack != null)
+                foreach (var attack in playerAttacks)
                 {
-                    attack.IncreaseAttack();
+                    if (attack != null)
+                    {
+                        attack.IncreaseAttack();
+                    }
+                }
+            }
+            else
+            {
+                foreach (var attack in playerAttacks)
+                {
+                    if (attack != null)
+                    {
+                        attack.ResetAttack();
+                    }
                 }
             }
         }
@@ -388,8 +401,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void StartJetDash()
-    {if (SoundManager.Instance != null && jetDashSE != null) SoundManager.Instance.PlaySE(jetDashSE);
-        
+    {
+        if (SoundManager.Instance != null && jetDashSE != null) SoundManager.Instance.PlaySE(jetDashSE);
+
         isJetDashing = true;
         jetDashDirection = moveInput.normalized;
         rb.gravityScale = 0f;
@@ -470,7 +484,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-        /// <summary>
+    /// <summary>
     /// 特殊アクション（ジェットダッシュなど）を強制的に解除する。
     /// </summary>
     public void ForceCancelSpecialActions()

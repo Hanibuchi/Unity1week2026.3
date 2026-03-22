@@ -6,10 +6,12 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack Settings")]
     public int damage = 4;
+    public int normalDamage = 4;
     public int increasedDamage = 6;
 
     [Header("Sprite Reference")]
     public SpriteRenderer attackSpriteRenderer;
+    public Color normalAttackColor = Color.white;
     public Color increasedAttackColor = Color.blue;
 
     [Header("Events on Hit")]
@@ -22,6 +24,15 @@ public class PlayerAttack : MonoBehaviour
         if (attackSpriteRenderer != null)
         {
             attackSpriteRenderer.color = increasedAttackColor;
+        }
+    }
+
+    public void ResetAttack()
+    {
+        damage = normalDamage;
+        if (attackSpriteRenderer != null)
+        {
+            attackSpriteRenderer.color = normalAttackColor;
         }
     }
 

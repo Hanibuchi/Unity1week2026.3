@@ -151,6 +151,21 @@ public class FlagManager : MonoBehaviour
         public Serialization(List<T> target) { this.target = target; }
     }
 
+    /// <summary>
+    /// 現在保持している全てのフラグとその値をDebug.Logで表示するデバッグ用メソッド
+    /// </summary>
+    public void DebugPrintAllFlags()
+    {
+        Debug.Log("[FlagManager] --- 全フラグ表示 ---");
+        foreach (var kvp in currentFlags)
+        {
+            Debug.Log($"[FlagManager] {kvp.Key}: {kvp.Value}");
+        }
+        Debug.Log("[FlagManager] --- ここまで ---");
+    }
+
+    
+
     // public string testKey = "TestFlag";
     // public int testSlot = 1;
     // public void TestSet()
