@@ -100,11 +100,23 @@ public class SaveManager : MonoBehaviour
         }
 
         // タイトル画面でロードメニューを開いていた場合は、メニューを閉じた時にタイトル画面を再表示する
-        if (GameManager.Instance != null && GameManager.Instance.CurrentState == GameManager.GameState.Title)
+        if (GameManager.Instance != null)
         {
-            if (UIManager.Instance != null)
+            if (GameManager.Instance.CurrentState == GameManager.GameState.Title)
             {
-                UIManager.Instance.Show<TitleUI>();
+                if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.Show<TitleUI>();
+                }
+            }
+            // ゲームオーバー時にロードメニューを閉じた場合はタイトル画面へ遷移する
+            else if (GameManager.Instance.CurrentState == GameManager.GameState.GameOver)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.Title);
+            }
+            else if (GameManager.Instance.CurrentState == GameManager.GameState.GameClear)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.Title);
             }
         }
     }
@@ -135,15 +147,34 @@ public class SaveManager : MonoBehaviour
     {
         if (!FlagManager.HasSaveData(slotNumber))
         {
-            // データがない場合のメッセージ
-            var noDataNode = new DialogueNode
+            var newGameExecuteNode = new DialogueNode
             {
                 speakerSprite = systemSpeakerSprite,
                 speakerName = "システム",
-                text = $"スロット{slotNumber}にはセーブデータがありません。",
-                hasChoices = false
+                text = "新しくゲームを始めました。",
+                hasChoices = false,
+                onNodeStart = new UnityEvent()
             };
-            StartDialogueWithLock(new List<DialogueNode> { noDataNode }, slotNumber);
+            newGameExecuteNode.onNodeStart.AddListener(() =>
+            {
+                PerformNewGame(slotNumber);
+                if (UIManager.Instance != null) UIManager.Instance.Hide<SaveUIView>();
+                if (PlayerController.Instance != null) PlayerController.Instance.RemoveControlRequest(this);
+            });
+
+            var newGameConfirmNode = new DialogueNode
+            {
+                speakerSprite = systemSpeakerSprite,
+                speakerName = "システム",
+                text = $"スロット{slotNumber}にはセーブデータがありません。\n新しくゲームを始めますか？",
+                hasChoices = true,
+                choice1Text = "はい",
+                choice2Text = "いいえ",
+                choice1NextNodes = new List<DialogueNode> { newGameExecuteNode },
+                choice2NextNodes = new List<DialogueNode>()
+            };
+
+            StartDialogueWithLock(new List<DialogueNode> { newGameConfirmNode }, slotNumber);
             return;
         }
 
@@ -243,12 +274,31 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
+            var newGameExecuteNode = new DialogueNode
+            {
+                speakerSprite = systemSpeakerSprite,
+                speakerName = "システム",
+                text = "新しくゲームを始めました。",
+                hasChoices = false,
+                onNodeStart = new UnityEvent()
+            };
+            newGameExecuteNode.onNodeStart.AddListener(() =>
+            {
+                PerformNewGame(slotNumber);
+                if (UIManager.Instance != null) UIManager.Instance.Hide<SaveUIView>();
+                if (PlayerController.Instance != null) PlayerController.Instance.RemoveControlRequest(this);
+            });
+
             loadConfirmNode = new DialogueNode
             {
                 speakerSprite = systemSpeakerSprite,
                 speakerName = "システム",
-                text = $"スロット{slotNumber}にはセーブデータがありません。",
-                hasChoices = false
+                text = $"スロット{slotNumber}にはセーブデータがありません。\n新しくゲームを始めますか？",
+                hasChoices = true,
+                choice1Text = "はい",
+                choice2Text = "いいえ",
+                choice1NextNodes = new List<DialogueNode> { newGameExecuteNode },
+                choice2NextNodes = new List<DialogueNode>()
             };
         }
 
@@ -328,6 +378,32 @@ public class SaveManager : MonoBehaviour
             {
                 GameManager.Instance.LoadGameFromSave(slotNumber, CurrentLocation);
             }
+        }
+    }
+
+    private void PerformNewGame(int slotNumber)
+    {
+        // 既存のセーブデータを確実に消去する（初期化）
+        PlayerPrefs.DeleteKey($"Slot_{slotNumber}_HasData");
+        PlayerPrefs.DeleteKey($"Slot_{slotNumber}_PlayTime");
+        PlayerPrefs.DeleteKey($"Slot_{slotNumber}_Location");
+        PlayerPrefs.DeleteKey($"Slot_{slotNumber}_FlagKeys");
+
+        // メモリ上の値を初期化
+        CurrentPlayTime = 0f;
+        CurrentLocation = "---";
+
+        if (FlagManager.Instance != null)
+        {
+            // データが消去された状態からロードを実行して実質クリア状態にする
+            FlagManager.Instance.Load(slotNumber);
+        }
+
+        Debug.Log($"スロット{slotNumber}から新しくゲームを開始します。");
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadGameFromSave(slotNumber, CurrentLocation);
         }
     }
 

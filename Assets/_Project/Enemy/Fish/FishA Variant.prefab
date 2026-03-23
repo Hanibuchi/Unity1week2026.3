@@ -132,6 +132,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8987081354514988871, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
       insertIndex: 1
       addedObject: {fileID: 3651545214082275330}
+    - targetCorrespondingSourceObject: {fileID: 8987081354514988871, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8705405422925665005}
   m_SourcePrefab: {fileID: 100100000, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}
 --- !u!1 &1221846317389614132 stripped
 GameObject:
@@ -159,6 +162,19 @@ MonoBehaviour:
   moveSpeed: 2
   moveInterval: 1
   moveDuration: 1
+--- !u!114 &8705405422925665005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221846317389614132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b651fa7e257234b84b86fdf24767f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AddFishOnDestroy
+  addCount: 1
 --- !u!61 &5487954087672089968 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 2334405066827464195, guid: 72cb04c9f545c034897cd0f5bfec8ebf, type: 3}

@@ -552,7 +552,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -291030165
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2882307768427108894, guid: 9d90a00a3f395d5489547bbeb1817879, type: 3}
@@ -579,6 +579,7 @@ GameObject:
   - component: {fileID: 9155595953895323866}
   - component: {fileID: 7198171999523822038}
   - component: {fileID: 2168438448348271505}
+  - component: {fileID: 5107858658295864166}
   m_Layer: 11
   m_Name: UrashimaTaro
   m_TagString: Player
@@ -679,7 +680,11 @@ MonoBehaviour:
   damageSE: {fileID: 8300000, guid: aaa791ca9bf58a64facc69128719af8c, type: 3}
   healItemSE: {fileID: 8300000, guid: fa66daa4f5a661c4a90ffa79c5fc73ed, type: 3}
   healSE: {fileID: 8300000, guid: 717ad8f7049df524d9d87ab69179c04c, type: 3}
-  dieSE: {fileID: 8300000, guid: aca7f0d5168220b49b6310ebd5fced84, type: 3}
+  dieSE: {fileID: 8300000, guid: 9413673737dfda848aaa40129b914101, type: 3}
+  fragmentCount: 30
+  fragmentForce: 10
+  deathHealItemCount: 15
+  healItemForce: 10
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -855,6 +860,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5107858658295864166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637291647498165453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626db19d117c82d46af237ca93fefb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGameScreenTracker
 --- !u!1 &5134760475810846056
 GameObject:
   m_ObjectHideFlags: 0

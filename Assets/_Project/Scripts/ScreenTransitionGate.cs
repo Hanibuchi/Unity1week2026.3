@@ -41,6 +41,17 @@ public class ScreenTransitionGate : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 外部から遷移を発生させるメソッド
+    /// </summary>
+    public void StartTransition(Transform playerTransform)
+    {
+        if (!_isTransitioning)
+        {
+            StartCoroutine(TransitionRoutine(playerTransform));
+        }
+    }
+
     private IEnumerator TransitionRoutine(Transform playerTransform)
     {
         _isTransitioning = true;
@@ -81,6 +92,17 @@ public class ScreenTransitionGate : MonoBehaviour
         {
             playerTransform.position = nextPlayerSpawnPoint.position;
             playerTransform.rotation = nextPlayerSpawnPoint.rotation;
+
+            // ルートオブジェクトのRigidbody2Dのvelocityを0にリセット
+            Rigidbody2D rb = playerTransform.GetComponent<Rigidbody2D>();
+            if (rb == null && playerTransform.root != null)
+            {
+                rb = playerTransform.root.GetComponent<Rigidbody2D>();
+            }
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
         }
 
         // --- カメラなどを更新させるため、少しだけ時間を動かす ---

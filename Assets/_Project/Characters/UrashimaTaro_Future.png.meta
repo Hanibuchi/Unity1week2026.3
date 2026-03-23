@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 49e037d263afab44fb7fd183369af68f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1605810860945863924
+    second: UrashimaTaro_Future_0
+  - first:
+      213: 1385770889641455643
+    second: UrashimaTaro_Future_1
+  - first:
+      213: -4400436291233183879
+    second: UrashimaTaro_Future_2
+  - first:
+      213: -726724588769114763
+    second: UrashimaTaro_Future_3
+  - first:
+      213: -1513276169699101849
+    second: UrashimaTaro_Future_4
+  - first:
+      213: -5614523986566191719
+    second: UrashimaTaro_Future_5
+  - first:
+      213: 6243028793130714217
+    second: UrashimaTaro_Future_6
+  - first:
+      213: -4492657821250019953
+    second: UrashimaTaro_Future_7
+  - first:
+      213: -796174151871350266
+    second: UrashimaTaro_Future_8
+  - first:
+      213: -6186173423040465
+    second: UrashimaTaro_Future_9
+  - first:
+      213: 1792332804832772607
+    second: UrashimaTaro_Future_10
+  - first:
+      213: 4818571505528634575
+    second: UrashimaTaro_Future_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 722
+        width: 218
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0b8bd8a78307b9e0800000000000000
+      internalID: -1605810860945863924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_1
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 714
+        width: 217
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b10f721384f3b3310800000000000000
+      internalID: 1385770889641455643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_2
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 712
+        width: 223
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9770f44f1828ee2c0800000000000000
+      internalID: -4400436291233183879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_3
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 724
+        width: 218
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57500ec36d72ae5f0800000000000000
+      internalID: -726724588769114763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_4
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 410
+        width: 215
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76375026753cffae0800000000000000
+      internalID: -1513276169699101849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_5
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 413
+        width: 219
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 995efc56e243512b0800000000000000
+      internalID: -5614523986566191719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_6
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 417
+        width: 215
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96487114c91b3a650800000000000000
+      internalID: 6243028793130714217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_7
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 410
+        width: 221
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8d1303c38fd6a1c0800000000000000
+      internalID: -4492657821250019953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_8
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 97
+        width: 221
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60a3c52c3db63f4f0800000000000000
+      internalID: -796174151871350266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_9
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 106
+        width: 210
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f28c99245b50aeff0800000000000000
+      internalID: -6186173423040465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_10
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 111
+        width: 221
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff146579035afd810800000000000000
+      internalID: 1792332804832772607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UrashimaTaro_Future_11
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 31
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc7adf11410fd240800000000000000
+      internalID: 4818571505528634575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UrashimaTaro_Future_0: -1605810860945863924
+      UrashimaTaro_Future_1: 1385770889641455643
+      UrashimaTaro_Future_10: 1792332804832772607
+      UrashimaTaro_Future_11: 4818571505528634575
+      UrashimaTaro_Future_2: -4400436291233183879
+      UrashimaTaro_Future_3: -726724588769114763
+      UrashimaTaro_Future_4: -1513276169699101849
+      UrashimaTaro_Future_5: -5614523986566191719
+      UrashimaTaro_Future_6: 6243028793130714217
+      UrashimaTaro_Future_7: -4492657821250019953
+      UrashimaTaro_Future_8: -796174151871350266
+      UrashimaTaro_Future_9: -6186173423040465
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -9,8 +9,107 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: dd48833b7cad69e4c98a624085490865, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: Assembly-CSharp::GameSettingsData
   uiSelectSound: {fileID: 8300000, guid: f9dc2288261cec74f962ff1f7a8877c9, type: 3}
   uiDecideSound: {fileID: 8300000, guid: e1f6766620199604389d92020d8e740d, type: 3}
+  taroFaceNormal: {fileID: 6259428629967259519, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceJoy: {fileID: -5154733373883138722, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceAnger: {fileID: -3665702278254401242, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceSadness: {fileID: 230648033586997190, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceConfusion: {fileID: 3728049508138850164, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceSurprise: {fileID: 491978217679988412, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceDisgust: {fileID: -4730897342921998385, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceDamage: {fileID: -6075183031453291970, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceConfidence: {fileID: -6373264484776070808, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceSerious: {fileID: 9181738896386585654, guid: 1a916371abd837b4e8c591c384ab1102, type: 3}
+  taroFaceOld: {fileID: -4964881423477717381, guid: 7cc9959bb97c16e4280181af52a55829, type: 3}
+  futureTaroFaceNormal: {fileID: -1605810860945863924, guid: 49e037d263afab44fb7fd183369af68f, type: 3}
+  futureTaroFaceJoy: {fileID: 1385770889641455643, guid: 49e037d263afab44fb7fd183369af68f, type: 3}
+  childFaceConfidence: {fileID: 1517166437612333377, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
+  childFaceSurprise: {fileID: 4229814639890824125, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
+  childFaceDamage: {fileID: 8112001554782534201, guid: 065da1d699b1d5342ba3683185dc02e7, type: 3}
+  kameFaceNormal: {fileID: -4365204489684151380, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceJoy: {fileID: -5439008906135758942, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceAnger: {fileID: 1642211103116424736, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceSadness: {fileID: -3071645603610447900, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceConfusion: {fileID: -4449017477680482609, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceSurprise: {fileID: -3990566905473521325, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceDisgust: {fileID: -8486927094050392308, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceDamage: {fileID: -4014690897213794791, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  kameFaceConfidence: {fileID: 4569574973455645033, guid: aacb9b52cc335774ca7596ef1c2c68f2, type: 3}
+  otohimeFaceNormal: {fileID: 2571795894405695802, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceJoy: {fileID: -1595391849315462512, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceAnger: {fileID: -4217262754163807755, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceSadness: {fileID: 3430192909664037407, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceConfusion: {fileID: -3202968330043960948, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceSurprise: {fileID: 8389234435686506274, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceDisgust: {fileID: 461069686639208736, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceDamage: {fileID: -5828906475217516178, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceConfidence: {fileID: 8777720321289326319, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceSerious: {fileID: 4271708098846832752, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceDisbelief: {fileID: -5343830825105331410, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  otohimeFaceCute: {fileID: 3237423096566260696, guid: 2805ee50a7722f04db14491808023bdb, type: 3}
+  redKameFaceNormal: {fileID: 6992595120145625363, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceJoy: {fileID: -6517368155435269189, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceAnger: {fileID: 6820830186587232632, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceSadness: {fileID: -8114361547082195982, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceConfusion: {fileID: -2930180166069442789, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceSurprise: {fileID: -5389508484758126118, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceDisgust: {fileID: -1914897827798649479, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceDamage: {fileID: -5495938827994889490, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  redKameFaceConfidence: {fileID: -8482024607286963123, guid: 206fbdd7f95f8ed4a922627eb476ebf5, type: 3}
+  petIconNormal: {fileID: -5238412894070185512, guid: 42365357fd75c6242b5f978cbccd012f, type: 3}
+  petIconJoy: {fileID: -1860481344596284588, guid: 42365357fd75c6242b5f978cbccd012f, type: 3}
+  scientistFaceNormal: {fileID: -1666290041040479860, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  scientistFaceJoy: {fileID: 3895476508153794140, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  scientistFaceAnger: {fileID: 7903988936387745174, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  scientistFaceSadness: {fileID: -5775468463406113865, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  scientistFaceConfusion: {fileID: -3266189203368391834, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  scientistFaceSurprise: {fileID: -7329589172273878649, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  scientistFaceDisgust: {fileID: 7103990176396852970, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  scientistFaceDamage: {fileID: -1198319534748365678, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  scientistFaceConfidence: {fileID: 2453039264610078151, guid: 682ae172ebf21aa48b6391dd7fd5e7a3, type: 3}
+  modernPeopleAFaceNormal: {fileID: 2629332324047816456, guid: 5a42e9aa43ca8874a8dbbc2211ce67f7, type: 3}
+  modernPeopleAFaceJoy: {fileID: 6773166873220535865, guid: 5a42e9aa43ca8874a8dbbc2211ce67f7, type: 3}
+  modernPeopleAFaceFlustered: {fileID: 1482666484839922317, guid: 5a42e9aa43ca8874a8dbbc2211ce67f7, type: 3}
+  modernPeopleAFaceSadness: {fileID: 141547820721402435, guid: 5a42e9aa43ca8874a8dbbc2211ce67f7, type: 3}
+  modernPeopleAFaceWorry: {fileID: -2908511987112486567, guid: 5a42e9aa43ca8874a8dbbc2211ce67f7, type: 3}
+  modernPeopleAFaceSurprise: {fileID: -1769450215563210747, guid: 5a42e9aa43ca8874a8dbbc2211ce67f7, type: 3}
+  modernPeopleAFaceSerious: {fileID: -4165415656833022824, guid: 5a42e9aa43ca8874a8dbbc2211ce67f7, type: 3}
+  modernPeopleBFaceNormal: {fileID: 180467761333623039, guid: 7f768d7261245694fbd4a6ffe52990c7, type: 3}
+  modernPeopleBFaceJoy: {fileID: -8078379423727124681, guid: 7f768d7261245694fbd4a6ffe52990c7, type: 3}
+  modernPeopleBFaceFlustered: {fileID: -742222574016861259, guid: 7f768d7261245694fbd4a6ffe52990c7, type: 3}
+  modernPeopleBFaceSadness: {fileID: -2345893385737688235, guid: 7f768d7261245694fbd4a6ffe52990c7, type: 3}
+  modernPeopleBFaceWorry: {fileID: -3203809079930419499, guid: 7f768d7261245694fbd4a6ffe52990c7, type: 3}
+  modernPeopleBFaceSurprise: {fileID: 7945299554290737891, guid: 7f768d7261245694fbd4a6ffe52990c7, type: 3}
+  modernPeopleBFaceSerious: {fileID: -2833893149749507870, guid: 7f768d7261245694fbd4a6ffe52990c7, type: 3}
+  modernPeopleCFaceNormal: {fileID: -8409922555052350072, guid: b0835f959b2a3794a9416a00128785e7, type: 3}
+  modernPeopleCFaceJoy: {fileID: -394585798188598481, guid: b0835f959b2a3794a9416a00128785e7, type: 3}
+  modernPeopleCFaceFlustered: {fileID: 1068254137456029403, guid: b0835f959b2a3794a9416a00128785e7, type: 3}
+  modernPeopleCFaceSadness: {fileID: 3553598089185192772, guid: b0835f959b2a3794a9416a00128785e7, type: 3}
+  modernPeopleCFaceWorry: {fileID: 6445071836678128424, guid: b0835f959b2a3794a9416a00128785e7, type: 3}
+  modernPeopleCFaceSurprise: {fileID: 9026846480495710419, guid: b0835f959b2a3794a9416a00128785e7, type: 3}
+  modernPeopleCFaceSerious: {fileID: 7775610321666708943, guid: b0835f959b2a3794a9416a00128785e7, type: 3}
+  modernPeopleDFaceNormal: {fileID: -8292604018532156205, guid: 3d434035f93f9ad488090b7fa2a3c15a, type: 3}
+  modernPeopleDFaceJoy: {fileID: 7328614192346438702, guid: 3d434035f93f9ad488090b7fa2a3c15a, type: 3}
+  modernPeopleDFaceFlustered: {fileID: -5600168457760163857, guid: 3d434035f93f9ad488090b7fa2a3c15a, type: 3}
+  modernPeopleDFaceSadness: {fileID: 5195805861892099549, guid: 3d434035f93f9ad488090b7fa2a3c15a, type: 3}
+  modernPeopleDFaceWorry: {fileID: -3580930002481174049, guid: 3d434035f93f9ad488090b7fa2a3c15a, type: 3}
+  modernPeopleDFaceSurprise: {fileID: 6358675197008553639, guid: 3d434035f93f9ad488090b7fa2a3c15a, type: 3}
+  modernPeopleDFaceSerious: {fileID: -5545452084794270444, guid: 3d434035f93f9ad488090b7fa2a3c15a, type: 3}
+  modernPeopleEFaceNormal: {fileID: 6308353756784736699, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  modernPeopleEFaceJoy: {fileID: -4537002744105852406, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  modernPeopleEFaceFlustered: {fileID: 6077544519870707941, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  modernPeopleEFaceSadness: {fileID: -1990597056487600058, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  modernPeopleEFaceWorry: {fileID: 6275462640114158120, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  modernPeopleEFaceSurprise: {fileID: -114209822600264398, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  modernPeopleEFaceSerious: {fileID: -8515225920999422891, guid: d0cae698da0aee448a5e7147c8e8c79b, type: 3}
+  jetDashSprite: {fileID: 6296350222299792503, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
+  attackDownSprite: {fileID: 7562677769168342683, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
+  increaseAttackSprite: {fileID: 3827136672426700466, guid: 5e8ceb98d6be1c74e9133db7ec349092, type: 3}
+  insecticideSprite: {fileID: 2101287344137813679, guid: 1659c8e0047aa7a4281dda340888962c, type: 3}
+  vaccineSprite: {fileID: 5006185027451739633, guid: 828a623906be0c84e8f4c2ba411866b8, type: 3}
+  oldSkyColor: {r: 0.15686275, g: 0.6627451, b: 0.83921576, a: 1}
+  futureSkyColor: {r: 0.8000001, g: 0.63529414, b: 0.34117648, a: 1}

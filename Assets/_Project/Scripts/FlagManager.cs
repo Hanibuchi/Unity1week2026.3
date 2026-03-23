@@ -7,6 +7,44 @@ using System.Collections.Generic;
 /// </summary>
 public class FlagManager : MonoBehaviour
 {
+    public enum FlagKey
+    {
+        HasVisitedFuture,
+        HasBanquetEnded, // 宴が終わったかどうか
+
+        // ペットミッション
+        PetMissionRewardAvailable,   // ペットミッション完了
+        PetMissionFinished,    // ペットミッション達成
+
+        // 暴走ウミガメミッション
+        WildTurtleMissionStarted, // 暴走ウミガメミッション受諾
+        WildTurtleMissionRewardAvailable, // 暴走ウミガメミッション完了
+        WildTurtleMissionFinished,  // 暴走ウミガメミッション達成
+
+        // 食材確保ミッション
+        IngredientMissionStarted,   // 食材確保ミッション開始
+        IngredientMissionRewardAvailable, // 食材確保ミッション完了
+        IngredientMissionFinished,   // 食材確保ミッション達成
+
+        HasJetDash,   // ジェットダッシュを持っているか
+        HasAttackDown,   // 攻撃ダウンを持っているか
+        HasIncreaseAttack,   // 攻撃力アップを持っているか
+
+        HasTalkedToScientist, // 科学者と話したか
+
+        FoodWarehouseMissionStarted, // 食料倉庫ミッション開始
+        FoodWarehouseMissionRewardAvailable, // 食料倉庫ミッション完了
+        FoodWarehouseMissionFinished, // 食料倉庫ミッション達成
+
+        VaccineMissionStarted, // ワクチンミッション開始
+        VaccineMissionRewardAvailable, // ワクチンミッション完了
+        VaccineMissionFinished, // ワクチンミッション達成
+
+        ChemicalPlantMissionStarted, // 化学工場ミッション開始
+        ChemicalPlantMissionRewardAvailable, // 化学工場ミッション完了
+        ChemicalPlantMissionFinished, // 化学工場ミッション達成
+    }
+
     public static FlagManager Instance { get; private set; }
 
     // 現在のフラグを保持する辞書
@@ -26,6 +64,11 @@ public class FlagManager : MonoBehaviour
         }
     }
 
+    public bool testFlagValue = true;
+    public void TestSetFlag(string key)
+    {
+        SetFlag(key, testFlagValue);
+    }
     /// <summary>
     /// フラグを設定します
     /// </summary>
@@ -107,6 +150,21 @@ public class FlagManager : MonoBehaviour
         public List<T> target;
         public Serialization(List<T> target) { this.target = target; }
     }
+
+    /// <summary>
+    /// 現在保持している全てのフラグとその値をDebug.Logで表示するデバッグ用メソッド
+    /// </summary>
+    public void DebugPrintAllFlags()
+    {
+        Debug.Log("[FlagManager] --- 全フラグ表示 ---");
+        foreach (var kvp in currentFlags)
+        {
+            Debug.Log($"[FlagManager] {kvp.Key}: {kvp.Value}");
+        }
+        Debug.Log("[FlagManager] --- ここまで ---");
+    }
+
+    
 
     // public string testKey = "TestFlag";
     // public int testSlot = 1;

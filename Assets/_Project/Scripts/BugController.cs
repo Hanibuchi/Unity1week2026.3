@@ -9,13 +9,16 @@ public class BugController : EnemyController
     public float wallCheckDistance = 0.5f;
 
     private int moveDirection = 1; // 初期設定では右向きを想定
+    [SerializeField] bool flip = false;
 
-    protected override void Awake()
+    void Start()
     {
-        base.Awake();
-        
-        // isFacingRight (EnemyControllerで定義) に合わせて初期進行方向を設定
-        moveDirection = isFacingRight ? 1 : -1;
+        // scale.xの符号で進行方向を決定
+        if (flip)
+        {
+            Flip();
+            moveDirection *= -1;//
+        }
     }
 
     private void FixedUpdate()
@@ -42,11 +45,19 @@ public class BugController : EnemyController
         }
     }
 
+    protected override void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scale = transform.localScale;
+        scale.x = isFacingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+        transform.localScale = scale;
+    }
+
     private void Move()
     {
         // Y軸の力はそのままに、X軸方向のみ移動させる
         rb.linearVelocity = new Vector2(moveDirection * moveSpeed, rb.linearVelocity.y);
-        
+
         if (animator != null)
         {
             animator.SetBool("IsMoving", true);

@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 3d434035f93f9ad488090b7fa2a3c15a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8636775733924637594
+    second: ModernPeopleD_0
+  - first:
+      213: 8696902470371706164
+    second: ModernPeopleD_1
+  - first:
+      213: 871842382985298355
+    second: ModernPeopleD_2
+  - first:
+      213: -8292604018532156205
+    second: ModernPeopleD_3
+  - first:
+      213: 7328614192346438702
+    second: ModernPeopleD_4
+  - first:
+      213: -5600168457760163857
+    second: ModernPeopleD_5
+  - first:
+      213: 5195805861892099549
+    second: ModernPeopleD_6
+  - first:
+      213: -3580930002481174049
+    second: ModernPeopleD_7
+  - first:
+      213: 3919584203926873958
+    second: ModernPeopleD_8
+  - first:
+      213: 6358675197008553639
+    second: ModernPeopleD_9
+  - first:
+      213: -5545452084794270444
+    second: ModernPeopleD_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ModernPeopleD_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 603
+        width: 311
+        height: 390
+      alignment: 9
+      pivot: {x: 0.31725308, y: 0.043196302}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66455b6ca32042880800000000000000
+      internalID: -8636775733924637594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_1
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 606
+        width: 311
+        height: 388
+      alignment: 9
+      pivot: {x: 0.31022432, y: 0.043658543}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43509b8f7ba91b870800000000000000
+      internalID: 8696902470371706164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_2
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 601
+        width: 273
+        height: 353
+      alignment: 9
+      pivot: {x: 0.596085, y: 0.16560826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b108f13708691c00800000000000000
+      internalID: 871842382985298355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 318
+        width: 179
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dcf96cc490caec80800000000000000
+      internalID: -8292604018532156205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_4
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 317
+        width: 180
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2c12be77c774b560800000000000000
+      internalID: 7328614192346438702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_5
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 314
+        width: 181
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe7bbd865743842b0800000000000000
+      internalID: -5600168457760163857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_6
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 315
+        width: 179
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd88ff17e53b1840800000000000000
+      internalID: 5195805861892099549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_7
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 9
+        width: 178
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd92294a22bfd4ec0800000000000000
+      internalID: -3580930002481174049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_8
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 10
+        width: 178
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6672b4e0119256630800000000000000
+      internalID: 3919584203926873958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_9
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 11
+        width: 179
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a628c7e66d8e3850800000000000000
+      internalID: 6358675197008553639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ModernPeopleD_10
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 8
+        width: 179
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41d53eeb5b89a03b0800000000000000
+      internalID: -5545452084794270444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e3a20414c27e4984f90b6527130a71f7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ModernPeopleD_0: -8636775733924637594
+      ModernPeopleD_1: 8696902470371706164
+      ModernPeopleD_10: -5545452084794270444
+      ModernPeopleD_2: 871842382985298355
+      ModernPeopleD_3: -8292604018532156205
+      ModernPeopleD_4: 7328614192346438702
+      ModernPeopleD_5: -5600168457760163857
+      ModernPeopleD_6: 5195805861892099549
+      ModernPeopleD_7: -3580930002481174049
+      ModernPeopleD_8: 3919584203926873958
+      ModernPeopleD_9: 6358675197008553639
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

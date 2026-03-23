@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -48,7 +49,7 @@ public class EnemyHealth : MonoBehaviour
         TakeDamage(damageAmount, transform.position);
     }
 
-    public void TakeDamage(int damageAmount, Vector3 hitPosition)
+    public virtual void TakeDamage(int damageAmount, Vector3 hitPosition)
     {
         currentHealth -= damageAmount;
         if (SoundManager.Instance != null && damageSE != null) SoundManager.Instance.PlaySE(damageSE);
@@ -89,25 +90,25 @@ public class EnemyHealth : MonoBehaviour
         GameObject prefab = Resources.Load<GameObject>(globalSettings.fragmentPrefabPath);
         if (prefab != null)
         {
-            while (Random.value < globalSettings.fragmentSpawnProbability)
+            while (UnityEngine.Random.value < globalSettings.fragmentSpawnProbability)
             {
                 // ランダムな角度で
-                Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
+                Quaternion randomRotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0f, 360f));
                 GameObject fragment = Instantiate(prefab, position, randomRotation);
-                
+
                 // 一定時間後に削除
                 Destroy(fragment, globalSettings.fragmentLifetime);
-                
+
                 Rigidbody2D rb = fragment.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
                     // ランダムな方向に
-                    Vector2 randomDirection = Random.insideUnitCircle.normalized;
+                    Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
                     // ランダムな強さで
-                    float randomForce = Random.Range(globalSettings.minFragmentForce, globalSettings.maxFragmentForce);
-                    
+                    float randomForce = UnityEngine.Random.Range(globalSettings.minFragmentForce, globalSettings.maxFragmentForce);
+
                     rb.AddForce(randomDirection * randomForce, ForceMode2D.Impulse);
-                    rb.AddTorque(Random.Range(-randomForce, randomForce), ForceMode2D.Impulse);
+                    rb.AddTorque(UnityEngine.Random.Range(-randomForce, randomForce), ForceMode2D.Impulse);
                 }
             }
         }
@@ -115,7 +116,7 @@ public class EnemyHealth : MonoBehaviour
         // 回復アイテムのドロップ数を破片とは独立して計算
         int healItemCount = 0;
 
-        while (Random.value < globalSettings.healItemSpawnProbability)
+        while (UnityEngine.Random.value < globalSettings.healItemSpawnProbability)
         {
             healItemCount++;
         }
@@ -127,9 +128,15 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    public Action onDeath;
     private void Die()
     {
         if (SoundManager.Instance != null && dieSE != null) SoundManager.Instance.PlaySE(dieSE);
+
+        onDeath?.Invoke();
+
+        if (TryGetComponent<AddFishOnDestroy>(out var addFish))
+            addFish.AddFish();
 
         // EnemyControllerがあればアニメーション等の死亡処理を任せる
         EnemyController enemyController = GetComponent<EnemyController>();

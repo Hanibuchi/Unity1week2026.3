@@ -22,7 +22,13 @@ public class DialogueNode
 
     [Header("Events")]
     public UnityEvent onNodeStart;
+
+    /// <summary>
+    /// ノード開始時に呼ばれるグローバルイベント
+    /// </summary>
+    public Action OnNodeStart;
 }
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -48,7 +54,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void StartDialogue(List<DialogueNode> nodes, Action onComplete = null)
     {
-        if (isPlaying || nodes == null || nodes.Count == 0) return;
+        if (isPlaying || nodes == null) return;
 
         isPlaying = true;
         onSequenceComplete = onComplete;
@@ -57,6 +63,7 @@ public class DialogueManager : MonoBehaviour
         if (PlayerController.Instance != null)
         {
             PlayerController.Instance.SetControlEnabled(false, PlayerController.ControlPriority.Dialogue, this);
+            PlayerController.Instance.ForceCancelSpecialActions();
         }
 
         StartCoroutine(PlayDialogueSequence(nodes));
@@ -69,8 +76,10 @@ public class DialogueManager : MonoBehaviour
             var node = nodes[i];
             bool isWaitingForInput = true;
 
+
             // ノード開始時にイベントを発火
             node.onNodeStart?.Invoke();
+            node.OnNodeStart?.Invoke();
 
             // DialogueUI にセリフを表示させる
             var dialogueUI = UIManager.Instance.GetView<DialogueUI>();

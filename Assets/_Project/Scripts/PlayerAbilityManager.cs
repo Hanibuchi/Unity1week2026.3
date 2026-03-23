@@ -8,9 +8,6 @@ public class PlayerAbilityManager : MonoBehaviour
 {
     public static PlayerAbilityManager Instance { get; private set; }
 
-    [SerializeField]
-    private PlayerAbilities currentAbilities = new PlayerAbilities();
-
     private void Awake()
     {
         if (Instance == null)
@@ -32,17 +29,17 @@ public class PlayerAbilityManager : MonoBehaviour
     {
         if (FlagManager.Instance != null)
         {
-            currentAbilities.canJetDash = FlagManager.Instance.GetFlag("HasJetDash");
-            currentAbilities.canAttackDown = FlagManager.Instance.GetFlag("HasAttackDown");
-            currentAbilities.canIncreaseAttack = FlagManager.Instance.GetFlag("HasIncreaseAttack");
+            PlayerAbilities currentAbilities = new();
+            currentAbilities.canJetDash = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasJetDash.ToString());
+            currentAbilities.canAttackDown = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasAttackDown.ToString());
+            currentAbilities.canIncreaseAttack = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasIncreaseAttack.ToString());
+
+            ApplyAbilitiesToPlayer(currentAbilities);
         }
         else
         {
             Debug.LogWarning("[PlayerAbilityManager] FlagManagerが見つかりません。能力のロードをスキップします。");
         }
-
-        ApplyAbilitiesToPlayer();
-        Debug.Log("[PlayerAbilityManager] 能力をロードし、プレイヤーに適用しました。");
     }
 
     /// <summary>
@@ -51,39 +48,50 @@ public class PlayerAbilityManager : MonoBehaviour
     /// <param name="abilityName">解放するアビリティ名</param>
     public void UnlockAbility(string abilityName)
     {
+        PlayerAbilities currentAbilities = new();
+        currentAbilities.canJetDash = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasJetDash.ToString());
+        currentAbilities.canAttackDown = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasAttackDown.ToString());
+        currentAbilities.canIncreaseAttack = FlagManager.Instance.GetFlag(FlagManager.FlagKey.HasIncreaseAttack.ToString());
         switch (abilityName)
         {
             case "JetDash":
                 currentAbilities.canJetDash = true;
+                if (FlagManager.Instance != null)
+                {
+                    FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasJetDash.ToString(), true);
+                }
                 break;
             case "AttackDown":
                 currentAbilities.canAttackDown = true;
+                if (FlagManager.Instance != null)
+                {
+                    FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasAttackDown.ToString(), true);
+                }
                 break;
             case "IncreaseAttack":
                 currentAbilities.canIncreaseAttack = true;
+                if (FlagManager.Instance != null)
+                {
+                    FlagManager.Instance.SetFlag(FlagManager.FlagKey.HasIncreaseAttack.ToString(), true);
+                }
                 break;
             default:
                 Debug.LogWarning($"[PlayerAbilityManager] 不明なアビリティ名が指定されました: {abilityName}");
                 return;
         }
 
-        if (FlagManager.Instance != null)
-        {
-            FlagManager.Instance.SetFlag($"Has{abilityName}", true);
-        }
-
-        ApplyAbilitiesToPlayer();
+        ApplyAbilitiesToPlayer(currentAbilities);
         Debug.Log($"[PlayerAbilityManager] アビリティ '{abilityName}' を解放しました。");
     }
 
     /// <summary>
     /// 現在のアビリティ状態をプレイヤーに反映させます。
     /// </summary>
-    private void ApplyAbilitiesToPlayer()
+    private void ApplyAbilitiesToPlayer(PlayerAbilities abilities)
     {
         if (PlayerController.Instance != null)
         {
-            PlayerController.Instance.UpdateAbilities(currentAbilities);
+            PlayerController.Instance.UpdateAbilities(abilities);
         }
         else
         {
