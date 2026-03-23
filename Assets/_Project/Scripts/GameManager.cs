@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
             }
             var nodes = new List<DialogueNode>
             {
-                new DialogueNode { speakerName = "", speakerSprite = null, text = "十数年後" },
+                new DialogueNode { speakerName = "", speakerSprite = null, text = "数週間後。" },
                 new DialogueNode { speakerName = "うらしまたろう", speakerSprite = settings.taroFaceNormal, text = "はぁ……はぁ……。おら、やれることは全部やっただ。" },
                 new DialogueNode { speakerName = "科学者", speakerSprite = settings.scientistFaceJoy, text = "……見事じゃ、太郎。おぬしの持ってきた物資と勇気が、絶望に沈んでいた人々に火を灯した。この地には再び、緑が芽吹く兆しが見える。" },
                 new DialogueNode { speakerName = "現代人A", speakerSprite = settings.modernPeopleAFaceJoy, text = "ありがとう、太郎さん！あなたのおかげで、私たちは明日を信じることができるわ。" },
