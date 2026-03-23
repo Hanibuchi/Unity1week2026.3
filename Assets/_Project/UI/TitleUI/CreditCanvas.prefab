@@ -172,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 32.12802}
   m_SizeDelta: {x: 0.000030518, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7199072009892663526
@@ -221,7 +221,7 @@ MonoBehaviour:
     2D Platformer Tileset / Danil Chernyaev\r\n\r\n## Sound\r\n- \u9B54\u738B\u9B42\r\n-
     \u52B9\u679C\u97F3\u30E9\u30DC\r\n- FREE Casual Game SFX Pack / Dustyroom\r\n\r\n##
     UI\r\n- Violet Themed UI / Giniel Villacote\r\n\r\n## Font\r\n- Klee / The Klee
-    Project Authors"
+    Project Authors\n\nDeveloped by \u30CF\u30CB\u30C6\u30C3\u30AF"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb33889334a8ed04e8331899a48d37b4, type: 2}
   m_sharedMaterial: {fileID: -2933369161182027513, guid: fb33889334a8ed04e8331899a48d37b4, type: 2}
@@ -1277,8 +1277,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 100121315268713844}
   m_HandleRect: {fileID: 8022010249151930964}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.4262938
+  m_Value: 0.8999999
+  m_Size: 0.38367096
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

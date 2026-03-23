@@ -12,3 +12,5 @@
 
 ## Font
 - Klee / The Klee Project Authors
+
+Developed by ハニテック
